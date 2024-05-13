@@ -174,7 +174,7 @@ CREATE TABLE Chat_Room_Participant(
 
 -- チャットメッセージテーブル
 CREATE TABLE Chat_Room_Message(
-    message_id INT,
+    message_id BIGINT,
     chat_room_id INT NOT NULL,
     send_by CHAR(7) NOT NULL,
     message VARCHAR(255) NOT NULL,
