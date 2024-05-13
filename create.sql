@@ -157,7 +157,7 @@ CREATE TABLE Exam_Report(
 
 -- チャットルームテーブル
 CREATE TABLE Chat_Room(
-    chat_room_id,
+    chat_room_id INT,
     company_id CHAR(5),
     FOREIGN KEY(company_id) REFERENCE Company(company_id),
     PRIMARY KEY(chat_room_id)
@@ -165,7 +165,7 @@ CREATE TABLE Chat_Room(
 
 -- チャットルーム参加者テーブル
 CREATE TABLE Chat_Room_Participant(
-    chat_room_id,
+    chat_room_id INT,
     student_number CHAR(7) NOT NULL,
     participation_date DATE NOT NULL,
     PRIMARY KEY(chat_room_id,student_number),
@@ -174,13 +174,15 @@ CREATE TABLE Chat_Room_Participant(
 
 -- チャットメッセージテーブル
 CREATE TABLE Chat_Room_Message(
-    chat_room_id,
+    message_id INT,
+    chat_room_id INT NOT NULL,
     send_by CHAR(7) NOT NULL,
     message VARCHAR(255) NOT NULL,
     image VARCHAR(255),
     create_date DATE NOT NULL,
     delete_frag BOOLEAN NOT NULL DEFAULT 0,
     violation_count INT DEFAULT 0,
-    PRIMARY KEY(chat_room_id),
+    PRIMARY KEY(message_id),
     FOREIGN KEY(send_by) REFERENCE User(student_number),
+    FOREIGN KEY(chat_room_id) REFERENCE Chat_Room(chat_room_id)
 );
