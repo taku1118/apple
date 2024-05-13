@@ -155,8 +155,32 @@ CREATE TABLE Exam_Report(
     FOREIGN KEY(student_number) REFERENCE User(student_number)
 );
 
+-- チャットルームテーブル
+CREATE TABLE Chat_Room(
+    chat_room_id,
+    company_id CHAR(5),
+    FOREIGN KEY(company_id) REFERENCE Company(company_id),
+    PRIMARY KEY(chat_room_id)
+);
 
--- ルームテーブル
--- ルーム参加者テーブル
--- 掲示板
--- スレッド
+-- チャットルーム参加者テーブル
+CREATE TABLE Chat_Room_Participant(
+    chat_room_id,
+    student_number CHAR(7) NOT NULL,
+    participation_date DATE NOT NULL,
+    PRIMARY KEY(chat_room_id,student_number),
+    FOREIGN KEY(student_number) REFERENCE User(student_number),
+);
+
+-- チャットメッセージテーブル
+CREATE TABLE Chat_Room_Message(
+    chat_room_id,
+    send_by CHAR(7) NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    image VARCHAR(255),
+    create_date DATE NOT NULL,
+    delete_frag BOOLEAN NOT NULL DEFAULT 0,
+    violation_count INT DEFAULT 0,
+    PRIMARY KEY(chat_room_id),
+    FOREIGN KEY(send_by) REFERENCE User(student_number),
+);
