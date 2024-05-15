@@ -16,7 +16,7 @@ CREATE TABLE Courses(
 
 -- 地方テーブル
 CREATE TABLE Region(
-    region_id INT auto_increment,
+    region_id CHRA(2),
     region_name VARCHAR(6) NOT NULL,
     PRIMARY KEY(region_id)
 );
