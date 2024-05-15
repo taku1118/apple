@@ -7,7 +7,7 @@ CREATE TABLE Schools(
 
 -- 学科テーブル
 CREATE TABLE Courses(
-    course_id CHAR(4),
+    course_id CHAR(5),
     course_name VARCHAR(30) NOT NULL,
     school_id INT NOT NULL,
     PRIMARY KEY(course_id),
