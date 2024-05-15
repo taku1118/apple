@@ -1,13 +1,13 @@
 -- 学校テーブル
 CREATE TABLE Schools(
-    school_id INT auto_increment,
+    school_id CHRA(2),
     school_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(school_id)
 );
 
 -- 学科テーブル
 CREATE TABLE Courses(
-    course_id INT auto_increment,
+    course_id CHAR(4),
     course_name VARCHAR(30) NOT NULL,
     school_id INT NOT NULL,
     PRIMARY KEY(course_id),

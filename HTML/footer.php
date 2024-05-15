@@ -1,5 +1,5 @@
 <!-- Common.Script -->
-<script src="./script/common.js"></script>
+<script src="./SCRIPT/common.js"></script>
 </body>
 </html>
 <?php
