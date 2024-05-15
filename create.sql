@@ -1,17 +1,17 @@
 -- 学校テーブル
-CREATE TABLE School(
+CREATE TABLE Schools(
     school_id INT auto_increment,
     school_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(school_id)
 );
 
 -- 学科テーブル
-CREATE TABLE Course(
+CREATE TABLE Courses(
     course_id INT auto_increment,
     course_name VARCHAR(30) NOT NULL,
     school_id INT NOT NULL,
     PRIMARY KEY(course_id),
-    FOREIGN KEY(school_id) REFERENCES School(school_id)
+    FOREIGN KEY(school_id) REFERENCES Schools(school_id)
 );
 
 -- 地方テーブル
@@ -62,8 +62,8 @@ CREATE TABLE Users(
     desire_state_jobtype INT,
     profile_img VARCHAR(100),
     PRIMARY KEY(student_number),
-    FOREIGN KEY(school_id) REFERENCES School(school_id),
-    FOREIGN KEY(course_id) REFERENCES Course(course_id),
+    FOREIGN KEY(school_id) REFERENCES Schools(school_id),
+    FOREIGN KEY(course_id) REFERENCES Courses(course_id),
     FOREIGN KEY(address) REFERENCES Prefecture(prefecture_id),
     FOREIGN KEY(desire_state_prefecture) REFERENCES Prefecture(prefecture_id),
     FOREIGN KEY(desire_state_industry) REFERENCES Industry(industry_id),

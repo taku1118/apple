@@ -274,7 +274,11 @@ VALUES
 );
 
 -- 求人職種テーブル
-CREATE TABLE Company_JobType(
+INSERT INTO Company_JobType
+VALUES
+();
+
+CREATE TABLE (
     company_id CHAR(5),
     job_id CHAR(5),
     PRIMARY KEY(company_id,job_id),
