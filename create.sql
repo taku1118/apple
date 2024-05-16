@@ -1,6 +1,6 @@
 -- 学校テーブル
 CREATE TABLE Schools(
-    school_id CHRA(2),
+    school_id CHAR(2),
     school_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(school_id)
 );
@@ -9,37 +9,37 @@ CREATE TABLE Schools(
 CREATE TABLE Courses(
     course_id CHAR(5),
     course_name VARCHAR(30) NOT NULL,
-    school_id INT NOT NULL,
+    school_id CHAR(2) NOT NULL,
     PRIMARY KEY(course_id),
     FOREIGN KEY(school_id) REFERENCES Schools(school_id)
 );
 
 -- 地方テーブル
 CREATE TABLE Region(
-    region_id CHRA(2),
+    region_id CHAR(2),
     region_name VARCHAR(6) NOT NULL,
     PRIMARY KEY(region_id)
 );
 
 -- 都道府県テーブル
 CREATE TABLE Prefecture(
-    prefecture_id INT auto_increment,
+    prefecture_id CHAR(2),
     prefecture_name VARCHAR(3) NOT NULL,
-    region_id INT NOT NULL,
+    region_id CHRA(2) NOT NULL,
     PRIMARY KEY(prefecture_id),
     FOREIGN KEY(region_id) REFERENCES Region(region_id)
 );
 
 -- 業界テーブル
 CREATE TABLE Industry(
-    industry_id INT auto_increment,
+    industry_id CHAR(2),
     industry_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(industry_id)
 );
 
 -- 職種テーブル
 CREATE TABLE JobType(
-    job_id INT auto_increment,
+    job_id CHAR(2),
     job_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(job_id)
 );
@@ -47,19 +47,19 @@ CREATE TABLE JobType(
 -- ユーザーテーブル
 CREATE TABLE Users(
     student_number CHAR(7),
-    school_id INT NOT NULL,
-    course_id INT NOT NULL,
+    school_id CHAR(2) NOT NULL,
+    course_id CHAR(5) NOT NULL,
     user_name VARCHAR(60) NOT NULL,
     password VARCHAR(12) NOT NULL,
     gender CHAR(1),
-    address INT,
+    address CHAR(5),
     birthday DATE,
     graduate_date DATE,
     job_hunt BOOLEAN,
     job_offer BOOLEAN,
-    desire_state_prefecture INT,
-    desire_state_industry INT,
-    desire_state_jobtype INT,
+    desire_state_prefecture CHAR(2),
+    desire_state_industry CHAR(2),
+    desire_state_jobtype CHAR(2),
     profile_img VARCHAR(100),
     PRIMARY KEY(student_number),
     FOREIGN KEY(school_id) REFERENCES Schools(school_id),
@@ -73,43 +73,43 @@ CREATE TABLE Users(
 -- 企業テーブル
 CREATE TABLE Company(
     company_id INT auto_increment,
-    company_name VARCHAR(70) NOT NULL,
-    company_name_ruby VARCHAR(70) NOT NULL,
-    company_url VARCHAR(300) NOT NULL,
-    company_location VARCHAR(70) NOT NULL,
-    president_name VARCHAR(50) NOT NULL,
-    job_detail VARCHAR(300) NOT NULL,
-    capital VARCHAR(20) NOT NULL,
-    revenue VARCHAR(20) NOT NULL,
-    employee_number INT NOT NULL,
-    build_date VARCHAR(11) NOT NULL,
-    -- list_division VARCHAR(3) NOT NULL,上場区分
-    logo_image VARCHAR(300),
+    company_name VARCHAR(70) NOT NULL,--社名
+    company_name_ruby VARCHAR(70) NOT NULL,--ルビ
+    company_url VARCHAR(300) NOT NULL,--ホームページURL
+    company_location VARCHAR(70) NOT NULL,-- 所在地
+    president_name VARCHAR(50) NOT NULL,-- 代表者名
+    job_detail VARCHAR(300) NOT NULL,-- 業務内容
+    build_date VARCHAR(11) NOT NULL,-- 設立
+    capital VARCHAR(20) NOT NULL,-- 資本金
+    employee_number VARCHAR(20) NOT NULL,-- 社員数
+    revenue VARCHAR(20) NOT NULL,-- 売上高
+    -- list_division VARCHAR(3) NOT NULL,--上場区分
+    logo_image VARCHAR(300),--ロゴイメージ
     PRIMARY KEY(company_id)
 );
 
--- 求人職種テーブル
+-- 企業募集職種テーブル
 CREATE TABLE Company_JobType(
     company_id INT,
-    job_id INT,
+    job_id CHAR(2),
     PRIMARY KEY(company_id,job_id),
     FOREIGN KEY(company_id) REFERENCES Company(company_id),
     FOREIGN KEY(job_id) REFERENCES JobType(job_id)
 );
 
--- 求人地域テーブル
+-- 勤務地テーブル
 CREATE TABLE Company_Prefecture(
     company_id INT,
-    prefecture_id INT,
+    prefecture_id CHAR(2),
     PRIMARY KEY(company_id,prefecture_id),
     FOREIGN KEY(company_id) REFERENCES Company(company_id),
     FOREIGN KEY(prefecture_id) REFERENCES Prefecture(prefecture_id)
 );
 
--- 所属業界テーブル
+-- 企業所属業界テーブル
 CREATE TABLE Company_Industry(
     company_id INT,
-    industry_id INT,
+    industry_id CHAR(2),
     PRIMARY KEY(company_id,industry_id),
     FOREIGN KEY(company_id) REFERENCES Company(company_id),
     FOREIGN KEY(industry_id) REFERENCES Industry(industry_id)
@@ -137,7 +137,7 @@ CREATE TABLE Adopt_State_Details(
 
 -- 資格管理テーブル
 CREATE TABLE Licences(
-    licence_id INT auto_increment,
+    licence_id CHAR(4),
     licence_name VARCHAR(50),
     PRIMARY KEY(licence_id)
 );
@@ -170,7 +170,6 @@ CREATE TABLE Exam_Reports(
 -- チャットルームテーブル
 CREATE TABLE Chat_Rooms(
     chat_room_id INT auto_increment,
-    company_id INT,
     FOREIGN KEY(company_id) REFERENCES Company(company_id),
     PRIMARY KEY(chat_room_id)
 );
