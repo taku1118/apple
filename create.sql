@@ -25,7 +25,7 @@ CREATE TABLE Region(
 CREATE TABLE Prefecture(
     prefecture_id CHAR(2),
     prefecture_name VARCHAR(3) NOT NULL,
-    region_id CHRA(2) NOT NULL,
+    region_id CHAR(2) NOT NULL,
     PRIMARY KEY(prefecture_id),
     FOREIGN KEY(region_id) REFERENCES Region(region_id)
 );
@@ -73,18 +73,18 @@ CREATE TABLE Users(
 -- 企業テーブル
 CREATE TABLE Company(
     company_id INT auto_increment,
-    company_name VARCHAR(70) NOT NULL,--社名
-    company_name_ruby VARCHAR(70) NOT NULL,--ルビ
-    company_url VARCHAR(300) NOT NULL,--ホームページURL
-    company_location VARCHAR(70) NOT NULL,-- 所在地
-    president_name VARCHAR(50) NOT NULL,-- 代表者名
-    job_detail VARCHAR(300) NOT NULL,-- 業務内容
-    build_date VARCHAR(11) NOT NULL,-- 設立
-    capital VARCHAR(20) NOT NULL,-- 資本金
-    employee_number VARCHAR(20) NOT NULL,-- 社員数
-    revenue VARCHAR(20) NOT NULL,-- 売上高
-    -- list_division VARCHAR(3) NOT NULL,--上場区分
-    logo_image VARCHAR(300),--ロゴイメージ
+    company_name VARCHAR(70) NOT NULL,
+    company_name_ruby VARCHAR(70) NOT NULL,
+    company_url VARCHAR(300) NOT NULL,
+    company_location VARCHAR(70) NOT NULL,
+    president_name VARCHAR(50) NOT NULL,
+    job_detail VARCHAR(300) NOT NULL,
+    build_date VARCHAR(11) NOT NULL,
+    capital VARCHAR(20) NOT NULL,
+    employee_number VARCHAR(20) NOT NULL,
+    revenue VARCHAR(20) NOT NULL,
+    -- list_division VARCHAR(3) NOT NULL,
+    logo_image VARCHAR(300),
     PRIMARY KEY(company_id)
 );
 
@@ -145,7 +145,7 @@ CREATE TABLE Licences(
 -- 資格管理テーブル
 CREATE TABLE Licence_Manage(
     student_number CHAR(7),
-    licence_id INT,
+    licence_id CHAR(4),
     PRIMARY KEY(student_number,licence_id),
     FOREIGN KEY(licence_id) REFERENCES Licences(licence_id),
     FOREIGN KEY(student_number) REFERENCES Users(student_number)
