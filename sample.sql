@@ -253,7 +253,7 @@ VALUES
 -- ユーザーテーブル
 INSERT INTO Users(student_number,school_id,course_id,user_name,password)
 VALUES
-(0000000,1,1,"Admin","00000000");
+('0000000',1,1,'Admin','00000000');
 
 -- 企業テーブル
 INSERT INTO Company
@@ -307,9 +307,7 @@ VALUES
 );
 
 -- 資格管理テーブル
-INSERT INTO LicencesLicences(
-    licence_id,
-    licence_name)
+INSERT INTO LicencesLicences
 VALUES
 ('0001','ITパスポート'),
 ('0002','基本情報技術者'),
@@ -327,66 +325,41 @@ VALUES
 ('0014','宅地建物取引士'),
 ('0015','保育士'),
 ('0016','行政書士'),
-('0017','ITパスポート'),
-('0018','ITパスポート'),
-('0019','ITパスポート'),
-('0020','ITパスポート')
-;
+('0017','社会保険労務士'),
+('0018','社会福祉士'),
+('0019','危険物取扱者'),
+('0020','電気工事士'),
+('0021','衛生管理者'),
+('0022','マンション管理士');
 
 -- 資格管理テーブル
-CREATE TABLE Licence_Manage(
-    student_number CHAR(7),
-    licence_id INT,
-    PRIMARY KEY(student_number,licence_id),
-    FOREIGN KEY(licence_id) REFERENCES Licences(licence_id),
-    FOREIGN KEY(student_number) REFERENCES Users(student_number)
-);
+INSERT INTO Licence_Manage
+VALUES('0000000','0001');
 
 -- 受験報告書テーブル
-CREATE TABLE Exam_Reports(
-    report_id INT,
-    company_id CHAR(5) NOT NULL,
-    student_number CHAR(7) NOT NULL,
-    exam_date DATE NOT NULL,
-    apply_way VARCHAR(10) NOT NULL,
-    exam_way VARCHAR(30) NOT NULL,
-    question VARCHAR(400),
-    opinion VARCHAR(400),
-    other VARCHAR(400),
-    PRIMARY KEY(report_id),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
-    FOREIGN KEY(student_number) REFERENCES Users(student_number)
+INSERT INTO Exam_Reports
+VALUES(
+    1,
+    '0000000',
+    '2024-05-16',
+    '学校求人',
+    '一次面接',
+    '経歴・履歴書の内容について聞かれた。',
+    '緊張しすぎてしどろもどろになってしまった。',
+    '面接官がかわいかった',
 );
 
 -- チャットルームテーブル
-CREATE TABLE Chat_Rooms(
-    chat_room_id INT,
-    company_id CHAR(5),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
-    PRIMARY KEY(chat_room_id)
-);
+INSERT INTO Chat_Rooms
+VALUES
+("トム＆ジェリー");
 
 -- チャットルーム参加者テーブル
-CREATE TABLE Chat_Room_Participants(
-    chat_room_id INT,
-    student_number CHAR(7) NOT NULL,
-    participation_date DATE NOT NULL,
-    PRIMARY KEY(chat_room_id,student_number),
-    FOREIGN KEY(student_number) REFERENCES Users(student_number),
-    FOREIGN KEY(chat_room_id) REFERENCES Chat_Rooms(chat_room_id)
-);
+INSERT INTO Chat_Room_Participants
+VALUES
+(1,'0000000');
 
 -- チャットメッセージテーブル
-CREATE TABLE Chat_Room_Messages(
-    message_id BIGINT,
-    chat_room_id INT NOT NULL,
-    send_by CHAR(7) NOT NULL,
-    message VARCHAR(255) NOT NULL,
-    image VARCHAR(255),
-    create_date DATE NOT NULL,
-    delete_frag BOOLEAN NOT NULL DEFAULT 0,
-    violation_count INT DEFAULT 0,
-    PRIMARY KEY(message_id),
-    FOREIGN KEY(send_by) REFERENCES Users(student_number),
-    FOREIGN KEY(chat_room_id) REFERENCES Chat_Rooms(chat_room_id)
-);
+INSERT INTO Chat_Room_Messages
+VALUES
+(1,'0000000','ヒャッハー！');

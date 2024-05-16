@@ -170,7 +170,8 @@ CREATE TABLE Exam_Reports(
 -- チャットルームテーブル
 CREATE TABLE Chat_Rooms(
     chat_room_id INT auto_increment,
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
+    chat_room_title VARCHAR(30),
+    room_created_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY(chat_room_id)
 );
 
@@ -178,7 +179,8 @@ CREATE TABLE Chat_Rooms(
 CREATE TABLE Chat_Room_Participants(
     chat_room_id INT,
     student_number CHAR(7) NOT NULL,
-    participation_date DATE NOT NULL,
+    display_frag BOOLEAN NOT NULL DEFAULT 1,
+    participation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY(chat_room_id,student_number),
     FOREIGN KEY(student_number) REFERENCES Users(student_number),
     FOREIGN KEY(chat_room_id) REFERENCES Chat_Rooms(chat_room_id)
@@ -191,8 +193,10 @@ CREATE TABLE Chat_Room_Messages(
     send_by CHAR(7) NOT NULL,
     message VARCHAR(255) NOT NULL,
     -- image VARCHAR(255),画像アップロード
-    create_date DATE NOT NULL,
+    message_created_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    -- message_updated_date DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,更新日時
     -- delete_frag BOOLEAN NOT NULL DEFAULT 0,削除フラグ
+    -- read_flag BOOLEAN NOT NULL DEFAULT 0,既読フラグ
     -- violation_count INT DEFAULT 0,違反報告
     PRIMARY KEY(message_id),
     FOREIGN KEY(send_by) REFERENCES Users(student_number),
