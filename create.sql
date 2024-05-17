@@ -15,30 +15,30 @@ CREATE TABLE Courses(
 );
 
 -- 地方テーブル
-CREATE TABLE Region(
+CREATE TABLE Regions(
     region_id CHAR(2),
-    region_name VARCHAR(6) NOT NULL,
+    region_name VARCHAR(8) NOT NULL,
     PRIMARY KEY(region_id)
 );
 
 -- 都道府県テーブル
-CREATE TABLE Prefecture(
+CREATE TABLE Prefectures(
     prefecture_id CHAR(2),
-    prefecture_name VARCHAR(3) NOT NULL,
+    prefecture_name VARCHAR(4) NOT NULL,
     region_id CHAR(2) NOT NULL,
     PRIMARY KEY(prefecture_id),
-    FOREIGN KEY(region_id) REFERENCES Region(region_id)
+    FOREIGN KEY(region_id) REFERENCES Regions(region_id)
 );
 
 -- 業界テーブル
-CREATE TABLE Industry(
+CREATE TABLE Industries(
     industry_id CHAR(2),
     industry_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(industry_id)
 );
 
 -- 職種テーブル
-CREATE TABLE JobType(
+CREATE TABLE JobTypes(
     job_id CHAR(2),
     job_name VARCHAR(30) NOT NULL,
     PRIMARY KEY(job_id)
@@ -50,28 +50,28 @@ CREATE TABLE Users(
     school_id CHAR(2) NOT NULL,
     course_id CHAR(5) NOT NULL,
     user_name VARCHAR(60) NOT NULL,
-    password VARCHAR(12) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     gender CHAR(1),
     address CHAR(5),
     birthday DATE,
     graduate_date DATE,
     job_hunt BOOLEAN,
     job_offer BOOLEAN,
+    profile_img VARCHAR(100),
     desire_state_prefecture CHAR(2),
     desire_state_industry CHAR(2),
     desire_state_jobtype CHAR(2),
-    profile_img VARCHAR(100),
     PRIMARY KEY(student_number),
     FOREIGN KEY(school_id) REFERENCES Schools(school_id),
     FOREIGN KEY(course_id) REFERENCES Courses(course_id),
-    FOREIGN KEY(address) REFERENCES Prefecture(prefecture_id),
-    FOREIGN KEY(desire_state_prefecture) REFERENCES Prefecture(prefecture_id),
-    FOREIGN KEY(desire_state_industry) REFERENCES Industry(industry_id),
-    FOREIGN KEY(desire_state_jobtype) REFERENCES JobType(job_id)
+    FOREIGN KEY(address) REFERENCES Prefectures(prefecture_id),
+    FOREIGN KEY(desire_state_prefecture) REFERENCES Prefectures(prefecture_id),
+    FOREIGN KEY(desire_state_industry) REFERENCES Industries(industry_id),
+    FOREIGN KEY(desire_state_jobtype) REFERENCES JobTypes(job_id)
 );
 
 -- 企業テーブル
-CREATE TABLE Company(
+CREATE TABLE Companies(
     company_id INT auto_increment,
     company_name VARCHAR(70) NOT NULL,
     company_name_ruby VARCHAR(70) NOT NULL,
@@ -79,9 +79,9 @@ CREATE TABLE Company(
     company_location VARCHAR(70) NOT NULL,
     president_name VARCHAR(50) NOT NULL,
     job_detail VARCHAR(300) NOT NULL,
-    build_date VARCHAR(11) NOT NULL,
+    build_date DATE NOT NULL,
     capital VARCHAR(20) NOT NULL,
-    employee_number VARCHAR(20) NOT NULL,
+    employee_number INT NOT NULL,
     revenue VARCHAR(20) NOT NULL,
     -- list_division VARCHAR(3) NOT NULL,
     logo_image VARCHAR(300),
@@ -93,8 +93,8 @@ CREATE TABLE Company_JobType(
     company_id INT,
     job_id CHAR(2),
     PRIMARY KEY(company_id,job_id),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
-    FOREIGN KEY(job_id) REFERENCES JobType(job_id)
+    FOREIGN KEY(company_id) REFERENCES Companies(company_id),
+    FOREIGN KEY(job_id) REFERENCES JobTypes(job_id)
 );
 
 -- 勤務地テーブル
@@ -102,8 +102,8 @@ CREATE TABLE Company_Prefecture(
     company_id INT,
     prefecture_id CHAR(2),
     PRIMARY KEY(company_id,prefecture_id),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
-    FOREIGN KEY(prefecture_id) REFERENCES Prefecture(prefecture_id)
+    FOREIGN KEY(company_id) REFERENCES Companies(company_id),
+    FOREIGN KEY(prefecture_id) REFERENCES Prefectures(prefecture_id)
 );
 
 -- 企業所属業界テーブル
@@ -111,8 +111,8 @@ CREATE TABLE Company_Industry(
     company_id INT,
     industry_id CHAR(2),
     PRIMARY KEY(company_id,industry_id),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
-    FOREIGN KEY(industry_id) REFERENCES Industry(industry_id)
+    FOREIGN KEY(company_id) REFERENCES Companies(company_id),
+    FOREIGN KEY(industry_id) REFERENCES Industries(industry_id)
 );
 
 -- 選考状況テーブル
@@ -163,7 +163,7 @@ CREATE TABLE Exam_Reports(
     opinion VARCHAR(400),
     other VARCHAR(400),
     PRIMARY KEY(report_id),
-    FOREIGN KEY(company_id) REFERENCES Company(company_id),
+    FOREIGN KEY(company_id) REFERENCES Companies(company_id),
     FOREIGN KEY(student_number) REFERENCES Users(student_number)
 );
 
@@ -179,7 +179,6 @@ CREATE TABLE Chat_Rooms(
 CREATE TABLE Chat_Room_Participants(
     chat_room_id INT,
     student_number CHAR(7) NOT NULL,
-    display_frag BOOLEAN NOT NULL DEFAULT 1,
     participation_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY(chat_room_id,student_number),
     FOREIGN KEY(student_number) REFERENCES Users(student_number),

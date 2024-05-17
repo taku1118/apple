@@ -1,22 +1,22 @@
 -- 学校テーブル
-INSERT INTO Schools
-VALUES
-('01','麻生情報ビジネス専門学校 福岡校'),
-('02','麻生外語観光＆ブライダル専門学校'),
-('03','麻生医療福祉＆保育専門学校 福岡校'),
-('04','麻生建築＆デザイン専門学校'),
-('05','麻生公務員専門学校 福岡校'),
-('06','麻生美容専門学校 福岡校'),
-('07','麻生情報ビジネス専門学校 北九州校'),
-('08','麻生公務員専門学校 北九州校'),
-('09','麻生工科自動車大学校'),
-('10','麻生リハビリテーション大学校'),
-('11','麻生看護大学校'),
-('12','ASOポップカルチャー専門学校'),
-('13','ASO高等部');
+INSERT INTO Schools (school_id, school_name) 
+VALUES 
+('01', '麻生情報ビジネス専門学校 福岡校'),
+('02', '麻生外語観光＆ブライダル専門学校'),
+('03', '麻生医療福祉＆保育専門学校 福岡校'),
+('04', '麻生建築＆デザイン専門学校'),
+('05', '麻生公務員専門学校 福岡校'),
+('06', '麻生美容専門学校 福岡校'),
+('07', '麻生情報ビジネス専門学校 北九州校'),
+('08', '麻生公務員専門学校 北九州校'),
+('09', '麻生工科自動車大学校'),
+('10', '麻生リハビリテーション大学校'),
+('11', '麻生看護大学校'),
+('12', 'ASOポップカルチャー専門学校'),
+('13', 'ASO高等部');
 
 -- 学科テーブル
-INSERT INTO Courses
+INSERT INTO Courses (course_id, course_name, school_id)
 VALUES
 ('01-01','情報工学科','01'),
 ('01-02','情報システム専攻科','01'),
@@ -86,7 +86,7 @@ VALUES
 ('13-04','システムナレッジコース','13');
 
 -- 地方テーブル
-INSERT INTO Region
+INSERT INTO Regions (region_id, region_name)
 VALUES
 ('01','北海道・東北地方'),
 ('02','関東地方'),
@@ -97,7 +97,7 @@ VALUES
 ('07','九州・沖縄地方');
 
 -- 都道府県テーブル
-INSERT INTO Prefecture
+INSERT INTO  Prefectures (prefecture_id, prefecture_name, region_id)
 VALUES
 ('01', '北海道', '01'),
 ('02', '宮城県', '01'),
@@ -148,7 +148,7 @@ VALUES
 ('47', '佐賀県', '07');
 
 -- 業界テーブル
-INSERT INTO Industry(industry_id, industry_name)
+INSERT INTO Industries (industry_id, industry_name)
 VALUES
 ('01', '銀行（都市・信託・政府系）、信金'),
 ('02', '証券会社、投資ファンド、投資関連'),
@@ -216,8 +216,9 @@ VALUES
 ('64', '非政府組織(NGO)、非営利団体(NPO)'),
 ('65', '農業、林業、水産、畜産'),
 ('66', '鉱業');
+
 -- 職種テーブル
-INSERT INTO JobType
+INSERT INTO JobTypes (job_id, job_name)
 VALUES
 ('01', '総合職（事務職）'),
 ('02', '総合職（技術職）'),
@@ -251,13 +252,13 @@ VALUES
 ('30', 'その他専門職');
 
 -- ユーザーテーブル
-INSERT INTO Users(student_number,school_id,course_id,user_name,password)
-VALUES
-('0000000','01','01-01','Admin','00000000');
+INSERT INTO Users (student_number, school_id, course_id, user_name, password)
+VALUES 
+('0000000', '01', '01-01', 'Admin', '00000000');
 
 -- 企業テーブル
-INSERT INTO Company
-VALUES
+INSERT INTO Companies (company_id, company_name, company_name_ruby, company_url, company_location, president_name, job_detail, build_date, capital, employee_number, revenue, logo_image)
+VALUES 
 (
     NULL,
     '学校法人麻生塾【麻生専門学校グループ】',
@@ -266,31 +267,31 @@ VALUES
     '福岡県飯塚市芳雄町3-83',
     '麻生 健',
     '専門学校12校の運営',
-    '1939年',
+    '1939-01-01',
     '弊社規定により非公開',
-    '514名',
+    514,
     '弊社規定により売上高は非公開',
-    ' '
+    NULL
 );
 
 -- 求人職種テーブル
-INSERT INTO Company_JobType
-VALUES
-(1,'26');
+INSERT INTO Company_JobType (company_id, job_id)
+VALUES 
+(1, '26');
 
 -- 求人地域テーブル
-INSERT INTO Company_Prefecture
-VALUES
-(1,'40');
+INSERT INTO Company_Prefecture (company_id, prefecture_id)
+VALUES 
+(1, '40');
 
 -- 所属業界テーブル
-INSERT INTO Company_Industry
-VALUES
-(1,'55');
+INSERT INTO Company_Industry (company_id, industry_id)
+VALUES 
+(1, '55');
 
 -- 選考状況テーブル
-INSERT INTO Adopt_State
-VALUES
+INSERT INTO Adopt_State (adopt_id, student_number, company_name_txt, note)
+VALUES 
 (
     NULL,
     '0000000',
@@ -299,8 +300,8 @@ VALUES
 );
 
 -- 戦況状況詳細テーブル
-INSERT INTO Adopt_State_Details
-VALUES
+INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
+VALUES 
 (
     1,
     1,
@@ -309,8 +310,8 @@ VALUES
 );
 
 -- 資格管理テーブル
-INSERT INTO Licences
-VALUES
+INSERT INTO Licences (licence_id, licence_name)
+VALUES 
 ('0001','ITパスポート'),
 ('0002','基本情報技術者'),
 ('0003','応用情報技術者'),
@@ -335,12 +336,14 @@ VALUES
 ('0022','マンション管理士');
 
 -- 資格管理テーブル
-INSERT INTO Licence_Manage
-VALUES('0000000','0001');
+INSERT INTO Licence_Manage (student_number, licence_id)
+VALUES 
+('0000000', '0001');
 
 -- 受験報告書テーブル
-INSERT INTO Exam_Reports
-VALUES(
+INSERT INTO Exam_Reports (report_id, company_id, student_number, exam_date, apply_way, exam_way, question, opinion, other)
+VALUES 
+(
     NULL,
     1,
     '0000000',
@@ -353,16 +356,16 @@ VALUES(
 );
 
 -- チャットルームテーブル
-INSERT INTO Chat_Rooms(chat_room_title)
-VALUES
-("トム＆ジェリー");
+INSERT INTO Chat_Rooms (chat_room_title)
+VALUES 
+('トム＆ジェリー');
 
 -- チャットルーム参加者テーブル
-INSERT INTO Chat_Room_Participants(chat_room_id,student_number)
-VALUES
-(1,'0000000');
+INSERT INTO Chat_Room_Participants (chat_room_id, student_number)
+VALUES 
+(1, '0000000');
 
 -- チャットメッセージテーブル
-INSERT INTO Chat_Room_Messages(chat_room_id,send_by,message)
-VALUES
-(1,'0000000','ヒャッハー！');
+INSERT INTO Chat_Room_Messages (chat_room_id, send_by, message)
+VALUES 
+(1, '0000000', 'ヒャッハー！');
