@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選考状況</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="">
+</head>
+<body>
+    <style>
+        /* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.sidebar .nav-link {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card-deck .card {
+    margin: 10px 0;
+}
+
+.card-deck .card textarea {
+    margin-top: 10px;
+}
+
+    </style>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 bg-primary text-white sidebar">
+                <div class="sidebar-sticky">
+                    <h4 class="my-4 text-center">麻生</h4>
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">トップ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">トーク</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">専攻状況</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">受験報告</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#">マイページ</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Main content -->
+            <div class="col-md-10">
+                <div class="d-flex flex-column align-items-center mt-4">
+                    <div class="search-bar w-75 mb-4">
+                        <input type="text" class="form-control" placeholder="キーワードで検索">
+                        <button class="btn btn-success mt-2">検索</button>
+                    </div>
+                    <div class="card-deck w-75">
+                        <!-- Card 1 -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
+                                <p class="card-text">1次</p>
+                                <p class="card-text"><small class="text-muted">締切 3/9</small></p>
+                                <p class="card-text">エントリーシート</p>
+                                <p class="card-text">2次</p>
+                                <p class="card-text"><small class="text-muted">締切 4/5</small></p>
+                                <p class="card-text">グループ面接</p>
+                                <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
+                                <p class="card-text">1次</p>
+                                <p class="card-text"><small class="text-muted">締切 3/9</small></p>
+                                <p class="card-text">エントリーシート</p>
+                                <p class="card-text">2次</p>
+                                <p class="card-text"><small class="text-muted">日付 4/5</small></p>
+                                <p class="card-text">面接</p>
+                                <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success mt-4">+ 追加</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
