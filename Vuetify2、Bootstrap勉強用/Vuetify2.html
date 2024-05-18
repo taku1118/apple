@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <!-- ここからはサイドバーの部分になる -->
+            <v-navigation-drawer app v-model="drawer" clipped>
+                <v-container>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title class="title">
+                                Navigation lists
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-divider></v-divider>
+                    <v-list dense nav>
+                        <v-list-item v-for="(nav_list, index) in nav_lists" :key="index" :to="nav_list.route">
+                            <v-list-item-content>
+                                <v-list-item-title>{{ nav_list.name }}</v-list-item-title>
+                            </v-list-item-content>
+                        </v-list-item>
+                    </v-list>
+                </v-container>
+            </v-navigation-drawer>
+            <!-- ここまで -->
+
+            <!-- ここからはヘッダーの部分になる -->
+            <v-app-bar color="primary" dark app clipped-left>
+                <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+                <v-toolbar-title>Vuetify</v-toolbar-title>
+                <v-spacer></v-spacer><!-- 2つのコンポーネントの間にスペースをとりたい場合はv-spacerタグが使えます -->
+                <v-toolbar-items>
+                    <v-btn text>For Enterprise</v-btn><!-- textはボタンを透明にする  -->
+                    <v-menu offset-y>
+                        <template v-slot:activator="{on}">
+                            <v-btn v-on="on" text>Support<v-icon>mdi-menu-down</v-icon></v-btn>
+                        </template>
+                        <v-list>
+                            <v-subheader>Get help</v-subheader>
+                            <v-list-item v-for="(support, index) in supports" :key="index">
+                                <v-list-item-icon>
+                                    <v-icon>{{ support.icon }}</v-icon>
+                                </v-list-item-icon>
+                                <v-list-item-content>
+                                    <v-list-item-title>{{ support.name }}</v-list-item-title>
+                                </v-list-item-content>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+                </v-toolbar-items>
+
+                <v-btn outlined>Button</v-btn><!-- outlinedはボタンを枠線だけにする  -->
+            </v-app-bar>
+            <!-- ここまで -->
+
+            <!-- ここから本文記述 -->
+            <v-main>
+                ここからが本文
+                <router-view></router-view>
+            </v-main>
+            <v-footer color="primary" dark app>
+                Vuetify
+            </v-footer>
+        </v-app>
+
+        
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.5.1/dist/vue-router.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script src="https://unpkg.com/http-vue-loader"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
