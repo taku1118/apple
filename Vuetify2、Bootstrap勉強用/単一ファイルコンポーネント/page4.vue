@@ -6,7 +6,7 @@
 module.exports = {
   data: function() {
     return {
-      title: 'page4.vue'
+      title: 'pagetest'
     }
   }
 }

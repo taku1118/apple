@@ -1,12 +1,12 @@
 <template>
-  <h1>{{ title }}</h1>
+  <v-text-field label="Label"></v-text-field>
 </template>
 
 <script>
 module.exports = {
   data: function() {
     return {
-      title: 'page3.vue'
+      
     }
   }
 }

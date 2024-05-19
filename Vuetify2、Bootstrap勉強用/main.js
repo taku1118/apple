@@ -18,6 +18,7 @@ new Vue({
     data() {
         return {
             drawer: null,
+            com_name: "",
             supports: [
                 { name: 'Consulting and suppourt', icon: 'mdi-vuetify' },
                 { name: 'Discord community', icon: 'mdi-discord' },
