@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2ch風掲示板</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .thread {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .post-number {
+            font-weight: bold;
+        }
+        .username {
+            color: #0073e6;
+            margin-right: 5px;
+        }
+        .date {
+            color: #999;
+        }
+        .message {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2ch風掲示板</h1>
+    <div class="thread">
+        <div class="post">
+            <span class="post-number">1</span> 名前：<span class="username">名無しさん</span> 投稿日：<span class="date">2024/05/20(月) 10:00:00</span>
+            <div class="message">これはサンプルの投稿です。</div>
+        </div>
+        <div class="post">
+            <span class="post-number">2</span> 名前：<span class="username">名無しさん</span> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
+            <div class="message">これは別のサンプルの投稿です。</div>
+        </div>
+        <!-- 以下、投稿が続く -->
+    </div>
+</body>
+</html>
