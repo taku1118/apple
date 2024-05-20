@@ -4,6 +4,4 @@
 test
 leader
 #共有できているのかのテスト
-ssss
-member_add
 
