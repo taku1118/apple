@@ -44,7 +44,6 @@
         .container {
             display: flex;
             align-items: center;
-            position: fixed;
         }
         .add-button {
             margin-left: 100px;
@@ -52,11 +51,15 @@
     </style>
 </head>
 <body>
-    <div class="container">
-    <h1 class="w-50">2ch風掲示板</h1>
-    <button class="btn btn-secondary" type="submit">キャンセル</button>
-    <button class="btn btn-warning add-button" type="submit">発言する</button>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container-fluid">
+            <div class="container">
+                <h1 class="w-50">2ch風掲示板</h1>
+                <button class="btn btn-secondary" type="submit">キャンセル</button>
+                <button class="btn btn-warning add-button" type="submit">発言する</button>
+            </div>
+        </div>    
+    </nav>
     <div class="thread">
         <div class="post">
             <span class="post-number">1</span> 名前：<span class="username">名無しさん</span> 投稿日：<span class="date">2024/05/20(月) 10:00:00</span>
