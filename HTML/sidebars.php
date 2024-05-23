@@ -21,7 +21,7 @@
 </svg>
 
 <!-- サイドバー -->
-<main id="sidebar" class="d-flex flex-nowrap">
+<aside id="sidebar" class="d-flex flex-nowrap">
   <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-blue-custom" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
       <image src="../IMAGES/asologo.png" height="32">
@@ -79,5 +79,4 @@
       </ul>
     </div>
   </div>
-  <div class="b-example-divider b-example-vr"></div>
-</main>
+</aside>
