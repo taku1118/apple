@@ -17,7 +17,7 @@
     <!-- DB接続 -->
    
     <style>
-    .background-image1{
+    .background-image{
         background-image: url("../IMAGES/tukue.jpg");
         background-size: cover;
         height: 200px;
@@ -35,6 +35,9 @@
 
 
     <div class="container-fluid">
+    <div class="background-image">
+        
+    </div>
         
    
             <!-- Main content -->
