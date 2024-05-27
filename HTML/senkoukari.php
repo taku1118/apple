@@ -18,7 +18,7 @@
    
     <style>
     .background-image{
-        background-image: url("../IMAGES/tukue.jpg");
+        background-image: url("../IMAGE/kaisya.jpeg");
         background-size: cover;
         height: 200px;
     }
@@ -36,7 +36,7 @@
 
     <div class="container-fluid">
     <div class="background-image">
-        
+
     </div>
         
    
