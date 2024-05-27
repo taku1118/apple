@@ -7,30 +7,12 @@ html {
   height: -webkit-fill-available;
 }
 
-#sidebar {
+main {
   height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
-  position: fixed;
   overflow-x: auto;
   overflow-y: hidden;
-}
-
-.row {
-  height: 100%;
-}
-
-.content {
-  margin-left: 280px; /* サイドバーの幅と同じに設定 */
-  padding: 20px;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-.container-fluid {
-  height: 100%;
-  padding-left: 0; /* 左の余白を削除 */
-  padding-right: 0; /* 右の余白も削除 */
 }
 
 .dropdown-toggle { outline: 0; }
@@ -41,7 +23,6 @@ html {
   color: var(--bs-emphasis-color);
   background-color: transparent;
 }
-
 .btn-toggle:hover,
 .btn-toggle:focus {
   color: rgba(var(--bs-emphasis-color-rgb), .85);
@@ -101,13 +82,36 @@ html {
   fill: currentColor;
 }
 
-.text-bg-blue-custom {
+.text-bg-dark-custom {
   color: #fff !important;
   background-color: RGBA(42, 87, 164, var(--bs-bg-opacity, 1)) !important;
 }
 
-#sidebar .nav-link:hover {
-  color: var(--bs-nav-pills-link-active-color);
-  background-color: var(--bs-nav-pills-link-active-bg);
-}
-
+.wrapper {
+      display: flex;
+      flex-wrap: nowrap;
+      height: 100vh;
+  }
+  .sidebar {
+      width: 280px;
+      background-color: #f8f9fa;
+      padding-top: 20px;
+  }
+  .content {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+  }
+  @media (max-width: 768px) {
+      .wrapper {
+          flex-direction: column;
+      }
+      .sidebar {
+          width: 100%;
+          height: auto;
+          padding-top: 0;
+      }
+      .content {
+          margin-left: 0;
+      }
+  }

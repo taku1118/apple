@@ -8,7 +8,7 @@
 <script src="../SCRIPT/common.js"></script>
 
 <!-- Sidebar.Script -->
-<script src="../SCRIPT/sidebars.js"></script>
+<!-- <script src="../SCRIPT/sidebars.js"></script> -->
 
 <!-- DB切断 -->
 <?php $pdo = null;?>

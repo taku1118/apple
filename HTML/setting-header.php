@@ -11,4 +11,4 @@
 <link rel="stylesheet" href="../CSS/common.css"/>
 
 <!-- sidebarCSS -->
-<link href="../CSS/sidebars.css" rel="stylesheet">
+<!-- <link href="../CSS/sidebars.css" rel="stylesheet"> -->
