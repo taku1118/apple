@@ -16,10 +16,14 @@
 
     <!-- DB接続 -->
    
-
     <style>
-    
+    .background-image1{
+        background-image: url("../IMAGES/tukue.jpg");
+        background-size: cover;
+        height: 200px;
+    }
     </style>
+   
 
 </head>
 <body>
@@ -48,6 +52,7 @@
                 </div>
                 <div class="card-deck w-75">
                     <!-- Card 1 -->
+                    <form action="#">
                     <button class="card shadow mb-4">
                         <div class="card-body">
                             <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
@@ -58,7 +63,9 @@
                             <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
                         </div>
                     </button>
+                    </form>
                     <!-- Card 2 -->
+                    <form action="#">
                     <button class="card shadow mb-4">
                         <div class="card-body">
                             <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
@@ -69,6 +76,7 @@
                             <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
                         </div>
                     </button>
+                    </form>
                 </div>
             </div>
         <!-- </div> -->
