@@ -21,8 +21,9 @@
         background-image: url("../IMAGE/kaisya.jpeg");
         background-size: cover;
         height: 200px;
-        width:1500px;
-        
+        width:900px;
+        margin-left:0px;
+        padding-left:0px;
     }
     </style>
    
