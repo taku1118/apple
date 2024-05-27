@@ -28,60 +28,7 @@
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="content container-fluid">
-<!----------------------------------------------------ここから-------------------------------------------------------------------->
-<body>
-    <style>
-        /* styles.css */
 
-        .g-col-4 {}
-
-
-        body {
-            font-family: Arial, sans-serif;
-        }
-
-        .sidebar {
-            height: 100vh;
-            padding-top: 20px;
-        }
-
-        .sidebar .nav-link {
-            font-size: 1.2em;
-            margin: 10px 0;
-        }
-
-        .sidebar .nav-link:hover {
-            background-color: #0069d9;
-            color: #fff;
-        }
-
-        .search-bar {
-            display: flex;
-            flex-direction: column;
-            float: left;
-        }
-
-
-        .card-deck {
-            width: 100%;
-        }
-
-        .card-title {
-            font-weight: bold;
-        }
-
-        .status p {
-            margin: 0;
-        }
-
-        .text-muted {
-            font-size: 0.8em;
-        }
-
-        textarea {
-            margin-top: 10px;
-        }
-    </style>
 
     <div class="container-fluid">
         
