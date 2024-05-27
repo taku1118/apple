@@ -28,13 +28,7 @@
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="content container-fluid">
-<!----------------------------------------------------ここから-------------------------------------------------------------------->
-<body>
-    <style>
-        /* styles.css */
 
-       
-    </style>
 
     <div class="container-fluid">
         
