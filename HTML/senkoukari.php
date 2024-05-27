@@ -21,6 +21,8 @@
         background-image: url("../IMAGE/kaisya.jpeg");
         background-size: cover;
         height: 200px;
+        width:500px;
+        
     }
     </style>
    
@@ -46,12 +48,12 @@
 
                     <input type="text" class="form-control" style="width: 95%;" placeholder="キーワードで検索">
 
-                    <button class="btn shadow btn-success">検索</button>
+                    <button class="btn shadow btn-primary">検索</button>
 
                 </form>
 
                 <div class="d-flex justify-content-start w-75 mb-4">
-                    <button class="btn shadow btn-success">+ 追加</button>
+                    <button class="btn shadow btn-primary">+ 追加</button>
                 </div>
                 <div class="card-deck w-75">
                     <!-- Card 1 -->
