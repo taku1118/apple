@@ -15,7 +15,7 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
+    
 
     <style>
     .background-image1{
