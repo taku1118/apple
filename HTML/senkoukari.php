@@ -1,14 +1,34 @@
-<!DOCTYPE html>
-<html lang="ja">
-
+<!doctype html>
+<html lang="ja" data-bs-theme="auto">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>選考状況</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="">
-</head>
+    <title>テンプレート</title>
 
+    <!-- リセットCSS -->
+    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    
+    <!-- bootstrap.CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- sidebar.CSS -->
+    <link href="../CSS/sidebars.css" rel="stylesheet">
+
+    <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
+
+    <style>
+    
+    </style>
+
+</head>
+<body>
+    <!-- サイドバーとメインコンテンツのラッパー -->
+    <div class="wrapper">
+      <?php require 'sidebars.php'; ?>
+        <!-- メインコンテンツ -->
+        <main class="content container-fluid">
+<!----------------------------------------------------ここから-------------------------------------------------------------------->
 <body>
     <style>
         /* styles.css */
@@ -65,7 +85,7 @@
 
     <div class="container-fluid">
         
-    <?php require 'sidebars.php'; ?>
+   
             <!-- Main content -->
             <div class="mt-4">
                 <form class="form-inline">
@@ -106,9 +126,20 @@
             </div>
         <!-- </div> -->
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+<!----------------------------------------------------ここまで-------------------------------------------------------------------->
+        </main>
+    </div>
 
+    <!-- jquery.Script -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <!-- bootstrap.Script-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- sidebar.Script-->
+    <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- DB切断 -->
+    <?php $pdo = null;?>
+</body>
 </html>
