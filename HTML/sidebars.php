@@ -21,7 +21,7 @@
 </svg>
 
 <!-- サイドバー -->
-<nav class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark-custom" style="width: 280px;">
+<nav id="sidebar" class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark-custom" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <image src="../IMAGES/asologo.png" width="auto" height="34">
     </a>
@@ -80,7 +80,7 @@
 </nav>
 
 <!-- トップナビゲーションバー -->
-<nav class="navbar navbar-dark bg-dark text-bg-dark-custom d-md-none" aria-label="First navbar example">
+<nav id="topNabvar" class="navbar navbar-dark bg-dark text-bg-dark-custom d-md-none" aria-label="First navbar example">
     <div class="container-fluid">
         <a href="/" class="navbar-brand">
             <image src="../IMAGES/asologo.png" width=auto height="32">

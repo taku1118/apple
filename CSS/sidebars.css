@@ -16,7 +16,7 @@ html {
   overflow-y: hidden;
 }
 
-.content {
+main {
   height: 100vh;
   height: -webkit-fill-available;
   flex-shrink: 1;
@@ -35,4 +35,9 @@ html {
 .text-bg-dark-custom {
   color: #fff !important;
   background-color: RGBA(42, 87, 164, var(--bs-bg-opacity, 1)) !important;
+}
+
+#sidebar .nav-pills .nav-link:hover {
+  color: var(--bs-nav-pills-link-active-color);
+  background-color: var(--bs-nav-pills-link-active-bg);
 }

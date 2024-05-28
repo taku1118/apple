@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>トップページ
+    </title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -18,10 +19,7 @@
     <?php require 'db-connect.php'; ?>
 
     <style>
-    #sidebar .nav-pills .nav-link:hover {
-            color: var(--bs-nav-pills-link-active-color);
-            background-color: var(--bs-nav-pills-link-active-bg);
-        }
+    
     </style>
 
 </head>
@@ -30,7 +28,7 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="content container-fluid">
+        <main class="container-fluid">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
             <!-- 企業名検索フォーム -->
             <div class="mb-4 background-image1">
