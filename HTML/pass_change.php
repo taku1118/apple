@@ -15,7 +15,7 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
+    
 
     <style>
     
@@ -27,9 +27,25 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="content container-fluid">
+        <main class="m-auto">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-
+        <div style="margin: 20% 0;">
+            <div class="card p-5">
+                <h2>パスワード変更</h2>
+                    <div class="mb-3" style="width:450px;">
+                        <label for="formGroupExampleInput" class="form-label">パスワード</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
+                    </div>
+                    <div class="mb-3" style="width:450px;">
+                        <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
+                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
+                    </div>
+                    <div class="ms-auto">
+                        <button class="btn btn-secondary" type="submit">キャンセル</button>　
+                        <button class="btn btn-primary" type="submit">確定</button>
+                    </div>
+            </div>   
+        </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
