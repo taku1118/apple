@@ -18,7 +18,10 @@
     <?php require 'db-connect.php'; ?>
 
     <style>
-    
+    #sidebar .nav-pills .nav-link:hover {
+            color: var(--bs-nav-pills-link-active-color);
+            background-color: var(--bs-nav-pills-link-active-bg);
+        }
     </style>
 
 </head>
