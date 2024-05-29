@@ -20,17 +20,20 @@
     <style>
           
     .background-image{
-        background-image: url("../IMAGE/kaisya2.jpeg");
+        background-image: url("../IMAGE/kaisya2.jpg");
         background-size: cover;
-        height: 120px;
+        height: 110px;
         width:1000px;
         padding-left:0px;   
         
     }
 
     .background-image h1{
-        color:white;
+        color;
+       
     }
+
+    
    
     
     </style>
@@ -52,17 +55,18 @@
     
 
        
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding-left:70px; ">
    
         
    
             <!-- Main content -->
             <div class="mt-4">
                 <form class="form-inline">
+                    <div class="d-flex flex-row mb-3">
+                        <input type="text" class="form-control border border-primary border-3" style="width: 75%;" placeholder="キーワードで検索">
 
-                    <input type="text" class="form-control" style="width: 95%;" placeholder="キーワードで検索">
-
-                    <button class="btn shadow btn-primary">検索</button>
+                        <button class="btn shadow btn-primary" style="width:100px;" >検索</button>
+                    </div>
 
                 </form>
 
