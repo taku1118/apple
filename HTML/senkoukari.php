@@ -20,11 +20,9 @@
     .background-image{
         background-image: url("../IMAGE/kaisya.jpeg");
         background-size: cover;
-        height: 200px;
-        width:900px;
-        margin-left:0px;
-        padding-left:0px;
-    }
+        height: 150px;
+        width:1000px;
+        padding-left:0px;   }
     </style>
    
 
@@ -33,14 +31,16 @@
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
+  
         <!-- メインコンテンツ -->
         <main class="content container-fluid">
+            <div class="background-image">
 
+            </div>
 
+       
     <div class="container-fluid">
-    <div class="background-image">
-
-    </div>
+   
         
    
             <!-- Main content -->
