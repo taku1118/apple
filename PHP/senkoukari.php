@@ -20,11 +20,17 @@
     <style>
           
     .background-image{
-        background-image: url("../IMAGE/kaisya.jpeg");
+        background-image: url("../IMAGE/kaisya2.jpeg");
         background-size: cover;
-        height: 150px;
+        height: 120px;
         width:1000px;
-        padding-left:0px;   }
+        padding-left:0px;   
+        
+    }
+
+    .background-image h1{
+        color:white;
+    }
    
     
     </style>
@@ -39,8 +45,8 @@
          <!-- サイドバーとメインコンテンツのラッパー -->
     
          
-            <div class="background-image">
-                <h1>選考状況</h1>
+            <div class="background-image d-flex align-items-center" >
+                <h1 style="margin-left:2rem">選考状況</h1>
 
             </div>
     
