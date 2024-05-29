@@ -29,8 +29,8 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<div style="margin-top: 10%;">
-            <div class="card p-5 m-auto" style="width: 63%;"><!--  カードの幅を調整したいときはwidthを編集 -->
+        <div style="margin-top: 10%;">
+            <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
@@ -44,8 +44,7 @@
                         <button class="btn btn-secondary" type="submit">キャンセル</button>　
                         <button class="btn btn-primary" type="submit">確定</button>
                     </div>
-            </div> 
-              
+            </div>  
         </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
