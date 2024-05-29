@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>テスト</title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -29,6 +29,21 @@
         <!-- メインコンテンツ -->
         <main class="content container-fluid">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+<div class="card">
+<div class="mb-3">
+<label for="formGroupExampleInput" class="form-label">パスワード</label>
+        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
+</div>
+<div class="mb-3">
+<label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
+        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
+</div>
+<div class="text-right">
+      <button class="btn btn-secondary" type="submit">キャンセル</button>
+      <button class="btn btn-primary" type="submit">確定</button>
+    </div>
+</div>
+
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
