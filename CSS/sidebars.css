@@ -16,6 +16,12 @@ html {
   overflow-y: hidden;
 }
 
+@media (max-width: 768px) {
+  .wrapper {
+      flex-direction: column;
+  }
+}
+
 main {
   height: 100vh;
   height: -webkit-fill-available;
