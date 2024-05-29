@@ -26,7 +26,6 @@ main {
   height: 100vh;
   height: -webkit-fill-available;
   flex-shrink: 1;
-  padding: 20px;
   overflow-y: auto;
   background-color: #f0edf7;
 }

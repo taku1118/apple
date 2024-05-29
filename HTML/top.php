@@ -27,7 +27,7 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="container-fluid">
+        <main class="container-fluid" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
             <!-- 企業名検索フォーム -->
             <div class="mb-4 background-image1">
