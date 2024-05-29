@@ -15,28 +15,35 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-   
+    
+
     <style>
+          
     .background-image{
         background-image: url("../IMAGE/kaisya.jpeg");
         background-size: cover;
         height: 150px;
         width:1000px;
         padding-left:0px;   }
-    </style>
    
+    
+    </style>
 
 </head>
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
-  
         <!-- メインコンテンツ -->
-        <main class="content container-fluid">
+        <main class="content container-fluid" style="padding: 0;">
+         <!-- サイドバーとメインコンテンツのラッパー -->
+    
+         
             <div class="background-image">
+                <h1>選考状況</h1>
 
             </div>
+    
 
        
     <div class="container-fluid">
@@ -87,7 +94,7 @@
             </div>
         <!-- </div> -->
     </div>
-<!----------------------------------------------------ここまで-------------------------------------------------------------------->
+<
         </main>
     </div>
 
@@ -104,3 +111,5 @@
     <?php $pdo = null;?>
 </body>
 </html>
+   
+  
