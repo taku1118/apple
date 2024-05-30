@@ -23,7 +23,6 @@
             background-color: #f0f0f0;
             color: #333;
             margin: 0;
-            padding: 20px;
         }
         .thread {
             background-color: #fff;
