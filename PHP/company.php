@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>トップページ</title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -15,20 +15,9 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
 
     <style>
-    
-    </style>
-
-</head>
-<body>
-    <!-- サイドバーとメインコンテンツのラッパー -->
-    <div class="wrapper">
-      <?php require 'sidebars.php'; ?>
-        <!-- メインコンテンツ -->
-        <main class="content container-fluid">
-<!----------------------------------------------------ここから-------------------------------------------------------------------->
-<style>
         .search-box {
             margin-top: 15px; /* テキストボックスの位置を調整 */
         }
@@ -36,8 +25,8 @@
             margin-bottom: 20px; /* カード間の余白を設定 */
         }
         .col-lg-10 {
-        flex: 0 0 auto;
-        width: 100%;
+            flex: 0 0 auto;
+            width: 100%;
         }
         .card-text {
             margin-bottom: 5px; 
@@ -46,9 +35,17 @@
             margin-right: 5px;
             margin-top: 5px;
         }
-        
     </style>
-    <div class="container-fluid">
+
+</head>
+<body>
+    <!-- サイドバーとメインコンテンツのラッパー -->
+    <div class="wrapper">
+      <?php require 'sidebars.php'; ?>
+        <!-- メインコンテンツ -->
+        <main class="container-fluid main-content" style="padding: 0;">
+<!----------------------------------------------------ここから-------------------------------------------------------------------->
+<div class="container-fluid">
         <div class="row">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <form class="form-inline mb-3 search-box">
@@ -128,8 +125,6 @@
             </main>
         </div>
     </div>
-
-
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>

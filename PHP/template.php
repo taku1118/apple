@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>トップページ</title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -27,8 +27,9 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="container-fluid" style="padding: 0;">
+        <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
