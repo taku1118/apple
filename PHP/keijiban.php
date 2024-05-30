@@ -56,10 +56,7 @@
             align-items: center;
         }
         .add-button {
-            margin-left: 100px;
-        }
-        h2{
-            width: 73%;
+            margin-left: 1rem;
         }
     </style>
 
@@ -71,14 +68,14 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-            <div class="container">
-                <h2>株式会社アウトソーシングについて</h2>
-                <button ss="btn btn-secondary" type="submit">キャンセル</button>
-                <button class="btn btn-warning add-button" type="submit">発言する</button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <div class="navbar-brand text-break" style="width: 65%;">
+                <h3>株式会社アウトソーシングについて</h3>
             </div>
-        </div>    
+            <div class="navbar-nav-brand ms-auto" style="width: 30%;">
+                <button class="btn btn-secondary text-nowrap" type="submit">キャンセル</button>
+                <button class="btn btn-warning add-button text-nowrap" type="submit">発言する</button>
+            </div>
     </nav>
     <div class="thread">
         <div class="post">
