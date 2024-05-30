@@ -23,7 +23,7 @@
 <!-- サイドバー -->
 <nav id="sidebar" class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark-custom" style="width: 280px;">
     <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-        <image src="../IMAGES/asologo.png" width="auto" height="34">
+        <image src="../IMAGE/asologo.png" width="auto" height="34">
     </a>
     <hr>
     <ul class="nav nav-pills flex-column mb-auto">
@@ -67,7 +67,7 @@
     <!-- アイコン -->
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../IMAGES/cat.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
+            <img src="../IMAGE/cat.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
             <strong>吾輩は猫</strong>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
@@ -83,7 +83,7 @@
 <nav id="topNabvar" class="navbar navbar-dark bg-dark text-bg-dark-custom d-md-none" aria-label="First navbar example">
     <div class="container-fluid">
         <a href="/" class="navbar-brand">
-            <image src="../IMAGES/asologo.png" width=auto height="32">
+            <image src="../IMAGE/asologo.png" width=auto height="32">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

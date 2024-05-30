@@ -19,7 +19,7 @@
 
     <style>
     .background-image{
-        background-image: url("../IMAGES/school.jpg");
+        background-image: url("../IMAGE/school.jpg");
         background-size: cover;
         height: 200px;
         width:100%;
