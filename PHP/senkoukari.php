@@ -15,18 +15,28 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-   
+    
+
     <style>
+          
     .background-image{
-        background-image: url("../IMAGE/kaisya.jpeg");
+        background-image: url("../IMAGE/kaisya2.jpg");
         background-size: cover;
-        height: 200px;
-        width:900px;
-        margin-left:0px;
-        padding-left:0px;
+        height: 110px;
+        width:1000px;
+        padding-left:0px;   
+        
     }
-    </style>
+
+    .background-image h1{
+        color;
+       
+    }
+
+    
    
+    
+    </style>
 
 </head>
 <body>
@@ -34,22 +44,29 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="content container-fluid">
+        <main class="content container-fluid" style="padding: 0;">
+         <!-- サイドバーとメインコンテンツのラッパー -->
+    
+         
+            <div class="background-image d-flex align-items-center" >
+                <h1 style="margin-left:2rem">選考状況</h1>
 
+            </div>
+    
 
-    <div class="container-fluid">
-    <div class="background-image">
-
-    </div>
+       
+    <div class="container-fluid" style="padding-left:70px; ">
+   
         
    
             <!-- Main content -->
             <div class="mt-4">
                 <form class="form-inline">
+                    <div class="d-flex flex-row mb-3">
+                        <input type="text" class="form-control border border-primary border-3" style="width: 75%;" placeholder="キーワードで検索">
 
-                    <input type="text" class="form-control" style="width: 95%;" placeholder="キーワードで検索">
-
-                    <button class="btn shadow btn-primary">検索</button>
+                        <button class="btn shadow btn-primary" style="width:100px;" >検索</button>
+                    </div>
 
                 </form>
 
@@ -87,7 +104,7 @@
             </div>
         <!-- </div> -->
     </div>
-<!----------------------------------------------------ここまで-------------------------------------------------------------------->
+<
         </main>
     </div>
 
@@ -104,3 +121,5 @@
     <?php $pdo = null;?>
 </body>
 </html>
+   
+  
