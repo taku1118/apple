@@ -24,6 +24,16 @@
         height: 200px;
         width:100%;
     }
+
+    #company-name-search-form{
+        padding: 0 3rem;
+        width: 100%;
+        height: 3rem;
+    }
+
+    #company-name-search-form button{   
+        padding: 0 1.3rem;
+    }
     </style>
 
 </head>
@@ -38,30 +48,33 @@
             <div class="mb-4 background-image d-flex align-items-center">
                 <form id="company-name-search-form" action = "search.php" method="post" class="d-flex" role="search" style="width: 100%;">
                     <input class="form-control me-2" type="search" placeholder="企業名を入力" aria-label="Search" >
-                    <button class="btn btn-success" type="submit">Search</button>
+                    <button class="btn btn-success text-nowrap" type="submit">検索</button>
                 </form>
             </div>
-            <div class="container">
+            <div class="container-fluid">
                 <!-- 勤務地検索フォーム -->
-                <div class="card mb-4">
+                <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h3>勤務地から企業を検索</h3>
+                        <h5>勤務地から企業を検索</h5>
                     </div>
                     <!-- 地域ごとのボタン -->
-                    <div id="card-body location-buttons">
+                    <div class="card-body">
                     <?php
                     $sql1=$pdo->query('SELECT * FROM Regions');
                     foreach($sql1 as $row1){
                         echo '<div class="row">';
-                        echo '<div class="col-2">';
-                        echo '<h5>',$row1['region_name'],'</h5>';
+                        echo '<div class="col-3">';
+                        echo '<h6>',$row1['region_name'],'</h6>';
                         echo '</div>';
                         $sql2=$pdo->prepare('SELECT * FROM Prefectures where region_id = ?');
                         $sql2->execute([$row1['region_id']]);
-                        echo '<div class="col btn-group mb-2" role="group">';
+                        echo '<div class="col mb-2">';
+                        echo '<div class="btn-group" role="group" style="display: flex;flex-wrap: wrap;">';
                         foreach($sql2 as $row2){
-                            echo '<a class="me-2 mb-2" href="search.php?prefecture_id=',$row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
+                            
+                            echo '<a class="me-2 mb-2 text-nowrap" href="search.php?prefecture_id=',$row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
                         }
+                        echo '</div>';
                         echo '</div>';
                         echo '</div>';
                     }
@@ -69,31 +82,34 @@
                     </div>
                 </div>
                 <!-- 職種検索フォーム -->
-                <div class="card mb-4">
+                <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h3>職種から企業を検索</h3>
+                        <h5>職種から企業を検索</h5>
                     </div>
                     <!-- 職種ごとのボタン -->
-                    <div id="job-type-buttonsbtn-group mb-2" role="group">
+                    <div class="card-body">
+                        <div id="job-type-buttonsbtn-group" role="group">
                 <?php
                 $sql = $pdo->query('SELECT * FROM JobTypes');
                 foreach ($sql as $row) {
                     echo '<a class="btn btn-primary me-2 mb-2" href="search.php?job_id=' ,$row['job_id'], '">' ,$row['job_name'],'</a>';
                 }
                 ?>
+                        </div>
                     </div>
                 </div>
                 <!-- 業界検索フォーム -->
-                <div class="card mb-4">
+                <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h2>業界から企業を検索</h2>
+                        <h5>業界から企業を検索</h5>
                     </div>
                     <!-- 業界検索ボタン -->
-                    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="collapse" data-bs-target="#industry-buttons" aria-expanded="false" aria-controls="industry-buttons">
-                            業界を選択
-                    </button>
-                    <div id="industry-buttons" class="collapse">
-                        <div class="mb-2" role="group">
+                    <div class="card-body">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="collapse" data-bs-target="#industry-buttons" aria-expanded="true" aria-controls="industry-buttons" style="display: block;width:95%;margin-left: auto;margin-right: auto;">
+                                業界を選択
+                        </button>
+                        <div id="industry-buttons" class="collapse mt-3">
+                            <div class="mb-2" role="group">
                 <?php
                 $sql = $pdo->query('SELECT * FROM Industries');
                 $industry=$sql->fetchAll();
@@ -101,13 +117,14 @@
                     if($i%3==0){
                         echo '<div class="row">';
                     }
-                    echo '<a class="col me-2 mb-2" href="search.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a>';
+                    echo '<a class="col mx-auto mb-2" href="search.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a>';
                     if($i%3==2||count($industry)==$i){
                         echo '</div>';
                     }
 
                 }
                 ?>    
+                            </div>
                         </div>
                     </div>
                 </div>
