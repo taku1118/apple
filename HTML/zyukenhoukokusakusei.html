@@ -8,6 +8,45 @@
     <title>受験報告作成</title>
 </head>
 <body>
-    <button type="submit" class="btn btn-primary">確認</button>
+    <div class="container mt-5">
+        <h1>受験報告作成</h1>
+
+        <div class="mb-3">
+            <label for="companyName" class="form-label">企業名</label>
+            <input type="text" class="form-control" id="companyName">
+            <label for="examDate" class="form-label">受験日</label>
+
+            <select class="form-select" id="examDate">
+                <option value="2023-05-01">2023年5月1日</option>
+                <option value="2023-05-02">2023年5月2日</option>
+                <option value="2023-05-03">2023年5月3日</option>
+                <!-- 他の日付も追加可能 -->
+            </select>
+
+            <label for="applicationMethod" class="form-label">応募方法</label>
+            <select class="form-select" id="applicationMethod">
+                <option value="online">オンライン</option>
+                <option value="in-person">直接応募</option>
+                <option value="agency">エージェント経由</option>
+                <!-- 他の応募方法も追加可能 -->
+            </select>
+
+            <label for="examContent" class="form-label">試験内容</label>
+            <select class="form-select" id="examContent">
+                <option value="written">筆記試験</option>
+                <option value="interview">面接</option>
+                <option value="practical">実技試験</option>
+                <!-- 他の試験内容も追加可能 -->
+            </select>
+            <label for="companyName" class="form-label">質問内容</label>
+            <input type="text" class="form-control" id="companyName">
+            <label for="companyName" class="form-label">感想</label>
+            <input type="text" class="form-control" id="companyName">
+            <label for="companyName" class="form-label">備考</label>
+            <input type="text" class="form-control" id="companyName">
+        </div>
+        <button type="submit" class="btn btn-primary">確認</button>
+    <button type="submit" class="btn btn-primary">キャンセル</button>
+    
 </body>
 </html>
