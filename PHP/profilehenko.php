@@ -34,12 +34,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        function editField(fieldId) {
-            var field = document.getElementById(fieldId);
-            field.readOnly = false;
-            field.focus();
-        }
-
         function previewImage(event) {
             var input = event.target;
             var reader = new FileReader();
@@ -53,39 +47,40 @@
             reader.readAsDataURL(input.files[0]);
         }
     </script>
-</head>
+    <style>
+        </style>
 <body style="background-color: #E6ECF0;">
     <div class="container-fluid">
         <div class="row">
-            <main class="col-md-10" style="padding: 20px;">
+            <main class="col-md-10 mx-auto" style="padding: 20px;">
                 <h1>プロフィール</h1>
                 <form>
-                    <div cs="form-group">
-                        <div class="d-flex align-items-center">
+                    <div class="form-group">
+                        <div class="d-flex flex-column align-items-left">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
                                 <span id="profilePicturePlaceholder" class="text-white">画像</span>
                                 <img id="profilePicturePreview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
                             </div>
-                            <label for="profilePicture" class="btn btn-secondary ml-3">
+                            <label for="profilePicture" class="btn btn-primary mt-3" style="width: 11%;">
                                 <i class="fas fa-camera"></i> 写真を選択
                             </label>
                             <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>ユーザーネーム</label>
+                        <label for="username">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="username" value="りんごチュッパチャップス" style="flex-grow: 1;">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>卒業年度</label>
+                        <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="graduationYear" value="2025年卒業" style="flex-grow: 1;">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label>保有資格</label>
+                        <label for="qualifications">保有資格</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="qualifications" value="基本情報技術者" style="flex-grow: 1;">
                         </div>
@@ -93,11 +88,16 @@
                             <input type="text" class="form-control" id="additionalQualifications" value="応用情報技術者" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">変更</button>
+                    <div class="text-center" style="margin-top: 3%;">
+                    <button type="submit" class="btn btn-primary" style="width: 10%;">変 更</button>
+                    </div>
+
                 </form>
             </main>
         </div>
     </div>
+
+
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
