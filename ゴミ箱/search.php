@@ -6,8 +6,8 @@ if (isset($_POST['company-name'])) {
     if($company_name=''){
         $company_ids = $pdo->query('SELECT company_id FROM Companies');
     }else{
-        $company_ids = $pdo->prepare('SELECT company_id FROM Companies WHERE company_name LIKE ?');
-        $company_ids->execute(['%' . $_POST['company-name'] . '%']);
+        $company_ids = $pdo->prepare('SELECT company_id FROM Companies WHERE company_name LIKE ? OR company_name-ruby LIKE ?');
+        $company_ids->execute([$_POST['company-name'] . '%' , $_POST['company-name'] . '%']);
     }
 } elseif (isset($_GET['prefecture_id'])) {
     $company_ids = $pdo->prepare('SELECT company_id FROM Company_Prefecture WHERE prefecture_id = ?');
@@ -19,7 +19,8 @@ if (isset($_POST['company-name'])) {
     $company_ids = $pdo->prepare('SELECT company_id FROM Company_Industry WHERE industry_id = ?');
     $company_ids->execute([$_GET['industry_id']]);
 }
-
+?>
+<?php
 if (empty($company_ids)) {
     echo '該当する企業が見つかりませんでした。';
 } else {

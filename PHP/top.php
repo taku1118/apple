@@ -46,8 +46,8 @@
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
             <!-- 企業名検索フォーム -->
             <div class="mb-4 background-image d-flex align-items-center">
-                <form id="company-name-search-form" action = "search.php" method="post" class="d-flex" role="search" style="width: 100%;">
-                    <input class="form-control me-2" type="search" placeholder="企業名を入力" aria-label="Search" >
+                <form id="company-name-search-form" action = "company.php" method="post" class="d-flex" role="search" style="width: 100%;">
+                    <input class="form-control me-2" type="search" name="company-name" placeholder="企業名を入力" aria-label="Search" >
                     <button class="btn btn-success text-nowrap" type="submit">検索</button>
                 </form>
             </div>
@@ -72,7 +72,7 @@
                         echo '<div class="btn-group" role="group" style="display: flex;flex-wrap: wrap;">';
                         foreach($sql2 as $row2){
                             
-                            echo '<a class="me-2 mb-2 text-nowrap" href="search.php?prefecture_id=',$row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
+                            echo '<a class="me-2 mb-2 text-nowrap" href="company.php?prefecture_id=',$row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
                         }
                         echo '</div>';
                         echo '</div>';
@@ -92,7 +92,7 @@
                 <?php
                 $sql = $pdo->query('SELECT * FROM JobTypes');
                 foreach ($sql as $row) {
-                    echo '<a class="btn btn-primary me-2 mb-2" href="search.php?job_id=' ,$row['job_id'], '">' ,$row['job_name'],'</a>';
+                    echo '<a class="btn btn-primary me-2 mb-2" href="company.php?job_id=' ,$row['job_id'], '">' ,$row['job_name'],'</a>';
                 }
                 ?>
                         </div>
@@ -117,7 +117,7 @@
                     if($i%3==0){
                         echo '<div class="row">';
                     }
-                    echo '<a class="col mx-auto mb-2" href="search.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a>';
+                    echo '<a class="col mx-auto mb-2" href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a>';
                     if($i%3==2||count($industry)==$i){
                         echo '</div>';
                     }
