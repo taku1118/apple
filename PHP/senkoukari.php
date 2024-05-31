@@ -46,7 +46,7 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="content container-fluid" style="padding: 0;">
+        <main class="container-fluid main-content" style="padding: 0;">
          <!-- サイドバーとメインコンテンツのラッパー -->
     
          
