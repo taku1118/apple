@@ -44,7 +44,7 @@
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
-<!----------------------------------------------------ここから-------------------------------------------------------------------->
+<!----------------------------------------------------ここから OR-------------------------------------------------------------------->
 <?php
 $company_ids = [];
 if (isset($_POST['company-name'])) {
@@ -52,8 +52,8 @@ if (isset($_POST['company-name'])) {
     if($company_name==''){
         $company_ids = $pdo->query('SELECT company_id FROM Companies');
     }else{
-        $company_ids = $pdo->prepare('SELECT company_id FROM Companies WHERE company_name LIKE ? OR company_name-ruby LIKE ?');
-        $company_ids->execute([$_POST['company-name'] . '%' , $_POST['company-name'] . '%']);
+        $company_ids = $pdo->prepare('SELECT company_id FROM Companies WHERE company_name LIKE ? OR company_name_ruby LIKE ?');
+                    $company_ids->execute(['%' . $company_name . '%', $company_name . '%']);
     }
 } elseif (isset($_GET['prefecture_id'])) {
     $company_ids = $pdo->prepare('SELECT company_id FROM Company_Prefecture WHERE prefecture_id = ?');

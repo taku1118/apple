@@ -79,7 +79,7 @@ CREATE TABLE Companies(
     company_location VARCHAR(70) NOT NULL,
     president_name VARCHAR(50) NOT NULL,
     job_detail VARCHAR(300) NOT NULL,
-    build_date DATE NOT NULL,
+    build_date VARCHAR(12) NOT NULL,
     capital VARCHAR(20) NOT NULL,
     employee_number INT NOT NULL,
     revenue VARCHAR(20) NOT NULL,
