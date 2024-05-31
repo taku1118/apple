@@ -17,6 +17,8 @@
     <!-- DB接続 -->
     
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
     <style>
           
     .background-image{
@@ -29,7 +31,7 @@
     }
 
     .background-image h1{
-        color;
+        color:white;
        
     }
 
@@ -71,36 +73,89 @@
                 </form>
 
                 <div class="d-flex justify-content-start w-75 mb-4">
-                    <button class="btn shadow btn-primary">+ 追加</button>
+                    <button class="btn shadow btn-primary" data-bs-toggle="modal" data-bs-target="#company_id">+ 追加</button>
                 </div>
-                <div class="card-deck w-75">
-                    <!-- Card 1 -->
-                    <form action="#">
-                    <button class="card shadow mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
-                            <div class="status">
-                                <p>1次: エントリーシート <span class="text-muted">締切 3/9</span></p>
-                                <p>2次: グループ面接 <span class="text-muted">締切 4/5</span></p>
-                            </div>
-                            <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
-                        </div>
-                    </button>
-                    </form>
-                    <!-- Card 2 -->
-                    <form action="#">
-                    <button class="card shadow mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">株式会社〇〇〇〇〇〇</h5>
-                            <div class="status">
-                                <p>1次: エントリーシート <span class="text-muted">締切 3/9</span></p>
-                                <p>2次: 面接 <span class="text-muted">日付 4/5</span></p>
-                            </div>
-                            <textarea class="form-control" rows="2" placeholder="メモ"></textarea>
-                        </div>
-                    </button>
-                    </form>
+                <div class="row row-cols-1 row-cols-md-2">
+        <div class="col ">
+            <div class="card w-75 mx-auto shadow" data-bs-toggle="modal" data-bs-target="#company_id">
+                <div class="card-body">
+                    <h2 class="card-title my-5">株式会社○○○○</h2>
+
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                    </div>
+                    <div class="pe-none">
+                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
                 </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- モーダルの設定 -->
+    <div class="modal fade" id="company_id" tabindex="-1" aria-labelledby="exampleModalLabel">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+
+
+                <div class="card w-100">
+
+                    <div class=" d-flex justify-content-end">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-text" id="sheet_content">
+                            <h2 class="card-title">株式会社○○○○</h2>
+
+                            <!-- ここから : 面接回数でループ-->
+                            <div id="select_ways">
+                                <div class="card-text" id="sheet_content">
+                                    <input type="text" class="form-control form-control-lg" id="Input"
+                                        placeholder="入力プレースホルダの例" value="エントリーシート">
+                                </div>
+                                <!-- <div class="d-none" id="toggle_icon">
+                                    <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                </div> -->
+                                
+                            </div>
+                            <div class="mx-auto">
+                                <button type="button" id="add_input" class="btn"><i class="bi bi-plus-circle"
+                                        style="font-size: 2rcap;"></i></button>
+                            </div>
+                            <!-- ここまで-->
+                            
+                        </div>
+
+
+
+                        <div class="">
+                            <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    <button type="button" class="btn btn-primary">変更を保存</button>
+                </div>/.modal-footer -->
+            <!-- </div>/.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
             </div>
         <!-- </div> -->
     </div>
