@@ -27,7 +27,7 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="container-fluid" style="padding: 0;">
+        <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
         <div style="margin-top: 10%;">
             <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->

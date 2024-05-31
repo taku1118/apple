@@ -8,6 +8,46 @@
     <title>受験報告確認</title>
 </head>
 <body>
-    <button type="submit" class="btn btn-primary">確認</button>
+    <div class="container mt-5">
+        <h1>受験報告確認</h1>
+        <div class="mb-3">
+            <label class="form-label">企業名</label>
+            <p id="companyName"></p>
+            
+            <label class="form-label">受験日</label>
+            <p id="examDate"></p>
+            
+            <label class="form-label">応募方法</label>
+            <p id="applicationMethod"></p>
+            
+            <label class="form-label">試験内容</label>
+            <p id="examContent"></p>
+            
+            <label class="form-label">質問内容</label>
+            <p id="questionContent"></p>
+            
+            <label class="form-label">感想</label>
+            <p id="impression"></p>
+            
+            <label class="form-label">備考</label>
+            <p id="remarks"></p>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="window.history.back();">戻る</button>
+    </div>
+
+
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // ローカルストレージから値を取得して表示
+            document.getElementById('companyName').innerText = localStorage.getItem('companyName');
+            document.getElementById('examDate').innerText = localStorage.getItem('examDate');
+            document.getElementById('applicationMethod').innerText = localStorage.getItem('applicationMethod');
+            document.getElementById('examContent').innerText = localStorage.getItem('examContent');
+            document.getElementById('questionContent').innerText = localStorage.getItem('questionContent');
+            document.getElementById('impression').innerText = localStorage.getItem('impression');
+            document.getElementById('remarks').innerText = localStorage.getItem('remarks');
+        });
+    </script>
 </body>
 </html>
