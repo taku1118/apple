@@ -25,8 +25,8 @@
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
-        <!-- メインコンテンツ -->
-        <main class="content container-fluid">
+         <!-- メインコンテンツ -->
+         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -76,11 +76,41 @@
                     <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="graduationYear" value="2025年卒業" style="flex-grow: 1;">
+                        <select class="form-select" id="exampleFormSelect1">
+                            <option selected>この選択メニューを開く</option>
+                            <option value="1">2000</option>
+                            <option value="2">2001</option>
+                            <option value="3">2003</option>
+                            <option value="1">2004</option>
+                            <option value="2">2005</option>
+                            <option value="3">2006</option>
+                            <option value="1">2007</option>
+                            <option value="2">2008</option>
+                            <option value="3">2009</option>
+                            <option value="1">2010</option>
+                            <option value="2">2011</option>
+                            <option value="3">2012</option>
+                            <option value="1">2013</option>
+                            <option value="2">2014</option>
+                            <option value="3">2015</option>
+                            <option value="1">2016</option>
+                            <option value="2">2017</option>
+                            <option value="3">2018</option>
+                            <option value="1">2019</option>
+                            <option value="2">2020</option>
+                            <option value="3">2021</option>
+                            <option value="1">2022</option>
+                            <option value="2">2023</option>
+                            <option value="3">2024</option>
+                            <option value="1">2025</option>
+                            <option value="2">2026</option>
+                            <option value="3">2027</option>
+                        </select>
                         </div>
                     </div>
                     <div class="form-group" style="font-size:20px;">
                         <label for="qualifications">保有資格</label>
+                        <button class="btn btn-primary rounded-circle p-0">+</button>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="qualifications" value="基本情報技術者" style="flex-grow: 1;">
                         </div>
