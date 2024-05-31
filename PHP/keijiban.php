@@ -66,7 +66,7 @@
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
-        <main class="container-fluid" style="padding: 0;">
+        <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="navbar-brand text-break" style="width: 65%;">
