@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-                <h1>プロフィール</h1>
+            <h1 class="title" style="text-align:center;">プロフィール</h1>
                 <form>
                     <div class="form-group">
                         <div class="d-flex flex-column align-items-left">
@@ -68,18 +68,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="username">ユーザーネーム</label>
+                        <label for="username" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="username" value="りんごチュッパチャップス" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="graduationYear" value="2025年卒業" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="font-size:20px;">
                         <label for="qualifications">保有資格</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="qualifications" value="基本情報技術者" style="flex-grow: 1;">
@@ -89,7 +89,7 @@
                         </div>
                     </div>
                     <div class="text-center" style="margin-top: 3%;">
-                    <button type="submit" class="btn btn-primary" style="width: 10%;">変 更</button>
+                    <button type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px">変 更</button>
                     </div>
 
                 </form>
