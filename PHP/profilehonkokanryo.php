@@ -53,7 +53,7 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-            <h1 class="title" style="text-align:center;">プロフィール</h1>
+            <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <form>
                     <div class="form-group">
                         <div class="d-flex flex-column align-items-left">
@@ -73,7 +73,7 @@
                     <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="graduationYear" placeholder="2025年卒業" style="flex-grow: 1;">
+                            <input type="text" class="form-control" id="graduationYear" placeholder="2025年" style="flex-grow: 1;">
                         </div>
                     </div>
                     <div class="form-group" style="font-size:20px;">
@@ -86,7 +86,12 @@
                         </div>
                     </div>
             
-                    <p class="text" style="text-align:center; margin-top: 3%; font-size:25px; color:#007bff;">プロフィールが変更されました</p>
+                    <div class="d-flex"  style="margin-top:3%;">
+                    <button type="submit" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
+                    <p class="text" style="flex-grow: 1; margin-left:240px; font-size: 25px; color: #007bff;">プロフィールが変更されました</p>
+                    </div>
+
+
 
                 </form>
             </main>
