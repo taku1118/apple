@@ -16,6 +16,8 @@
 
     <!-- DB接続 -->
     
+    <?php require 'db-connect.php'; ?>
+    
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -76,32 +78,78 @@
                     <button class="btn shadow btn-primary" data-bs-toggle="modal" data-bs-target="#company_id">+ 追加</button>
                 </div>
                 <div class="row row-cols-1 row-cols-md-2">
-        <div class="col ">
-            <div class="card w-75 mx-auto shadow" data-bs-toggle="modal" data-bs-target="#company_id">
+        <div class="col">
+            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
                 <div class="card-body">
-                    <h2 class="card-title my-5">株式会社○○○○</h2>
+                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
 
                     <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
+                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
                     </div>
                     <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
                     </div>
                     <div class="card-text pe-none">
                         <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
                     </div>
                     <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
                     </div>
-                    <div class="pe-none">
+                    <div class="mb-3 pe-none">
                         <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                 </div>
             </div>
         </div>
-        
-    </div>
+        <div class="col">
+            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
+                <div class="card-body">
+                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
+
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
+                    </div>
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
+                    </div>
+                    <div class="mb-3 pe-none">
+                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
+                <div class="card-body">
+                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
+
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
+                    </div>
+                    <div class="card-text pe-none">
+                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
+                    </div>
+                    <div class="mb-3 pe-none">
+                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- モーダルの設定 -->
     <div class="modal fade" id="company_id" tabindex="-1" aria-labelledby="exampleModalLabel">
