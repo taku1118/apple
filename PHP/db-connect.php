@@ -1,8 +1,12 @@
 <?php
-const SERVER = 'mysql304.phy.lolipop.lan';
-const DBNAME = 'LAA1517449-apple';
-const USER = 'LAA1517449';
-const PASS = '4649';
+// const SERVER = 'mysql304.phy.lolipop.lan';
+// const DBNAME = 'LAA1517449-apple';
+// const USER = 'LAA1517449';
+// const PASS = '4649';
+const SERVER = 'localhost';
+const DBNAME = 'applechaps';
+const USER = 'root';
+const PASS = 'root';
 
 $connect = 'mysql:host=' . SERVER . ';dbname=' . DBNAME . ';charset=utf8';
 
