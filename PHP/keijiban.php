@@ -18,7 +18,7 @@
 
 
     <style>
-    body {
+        body {
             font-family: Arial, sans-serif;
             background-color: #f0f0f0;
             color: #333;
@@ -50,13 +50,6 @@
         }
         .message {
             margin-top: 5px;
-        }
-        .container {
-            display: flex;
-            align-items: center;
-        }
-        .add-button {
-            margin-left: 1rem;
         }
     </style>
 
