@@ -16,7 +16,7 @@
 
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
-
+    <?php session_start(); ?>
     <style>
     
     </style>
@@ -32,7 +32,7 @@
         <div style="margin-top: 10%;">
             <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
-                <form action="change-password.php" method="post">
+                <form action="my_page_screen.php" method="post">
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
                         <input type="text" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
@@ -41,11 +41,11 @@
                         <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
                         <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
                     </div>
-                </form>
                     <div class="ms-auto">
                         <button class="btn btn-secondary" type="submit">キャンセル</button>　
-                        <button class="btn btn-primary" type="submit">確定</button>
+                        <button class="btn btn-primary" id="change_confirm" type="submit">確定</button>
                     </div>
+                </form>
             </div>  
         </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
@@ -60,6 +60,9 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- pass_change.js-->
+    <script src="../SCRIPT/pass_change.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
