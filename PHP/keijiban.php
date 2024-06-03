@@ -69,13 +69,15 @@
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-            <div class="navbar-brand text-break" style="width: 65%;">
-                <h3>株式会社アウトソーシングについて</h3>
+        <div class="container-fluid">
+            <div class="navbar-brand">
+                <h3 class="mb-0 text-wrap">株式会社アウトソーシングについて</h3>
             </div>
-            <div class="navbar-nav-brand ms-auto" style="width: 30%;">
-                <button class="btn btn-secondary text-nowrap" type="submit">戻る</button>
-                <button class="btn btn-warning add-button text-nowrap" type="submit">参加する</button>
+            <div class="ms-auto d-flex">
+                <button class="btn btn-secondary text-nowrap me-3" type="submit">戻る</button>
+                <button class="btn btn-warning text-nowrap" type="submit">参加する</button>
             </div>
+        </div>
     </nav>
     <div class="thread">
         <div class="post">
