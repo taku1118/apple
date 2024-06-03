@@ -102,54 +102,7 @@
                 </div>
             </div>
         </div>
-        <div class="col">
-            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
-                <div class="card-body">
-                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
-
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="mb-3 pe-none">
-                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col">
-            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
-                <div class="card-body">
-                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
-
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="mb-3 pe-none">
-                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
 
     <!-- モーダルの設定 -->
     <div class="modal fade" id="company_id" tabindex="-1" aria-labelledby="exampleModalLabel">
