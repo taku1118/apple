@@ -73,8 +73,8 @@
                 <h3>株式会社アウトソーシングについて</h3>
             </div>
             <div class="navbar-nav-brand ms-auto" style="width: 30%;">
-                <button class="btn btn-secondary text-nowrap" type="submit">キャンセル</button>
-                <button class="btn btn-warning add-button text-nowrap" type="submit">発言する</button>
+                <button class="btn btn-secondary text-nowrap" type="submit">戻る</button>
+                <button class="btn btn-warning add-button text-nowrap" type="submit">参加する</button>
             </div>
     </nav>
     <div class="thread">

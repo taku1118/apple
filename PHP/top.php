@@ -46,7 +46,7 @@
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
             <!-- 企業名検索フォーム -->
             <div class="mb-4 background-image d-flex align-items-center">
-                <form id="company-name-search-form" action = "company.php" method="post" class="d-flex" role="search" style="width: 100%;">
+                <form id="company-name-search-form" action = "company.php" method="post" class="d-flex" role="search">
                     <input class="form-control me-2" type="search" name="company-name" placeholder="企業名を入力" aria-label="Search" >
                     <button class="btn btn-success text-nowrap" type="submit">検索</button>
                 </form>
