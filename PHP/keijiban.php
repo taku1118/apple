@@ -1,9 +1,10 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>掲示板</title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -15,6 +16,10 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
+
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
 
 
     <style>
@@ -67,7 +72,7 @@
                 <h3 class="mb-0 text-wrap">株式会社アウトソーシングについて</h3>
             </div>
             <div class="ms-auto d-flex">
-                <button class="btn btn-secondary text-nowrap me-3" type="submit">戻る</button>
+                <button class="btn btn-secondary text-nowrap me-3" onclick="history.back()">戻る</button>
                 <button class="btn btn-warning text-nowrap" type="submit">参加する</button>
             </div>
         </div>

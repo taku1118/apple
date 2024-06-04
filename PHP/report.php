@@ -47,9 +47,6 @@
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
 
-    <!-- common.Script-->
-    <script src="../SCRIPT/common.js"></script>
-
     <!-- DB切断 -->
     <?php $pdo = null;?>
 </body>
