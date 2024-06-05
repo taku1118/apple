@@ -35,11 +35,11 @@
                 <form action="my_page_screen.php" method="post">
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
+                        <input type="password" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
                     </div>
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
                     </div>
                     <div class="ms-auto">
                         <button class="btn btn-secondary" type="submit">キャンセル</button>　
