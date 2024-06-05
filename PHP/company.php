@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
@@ -16,6 +17,9 @@
 
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
+
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
         .search-box{
@@ -99,7 +103,7 @@ if (empty($company_ids)) {
                     echo '<p class="card-text mb-2">会社ホームページ : <a href="',$row['company_url'],'" target="_blank">',$row['company_url'],'</a></p>';
                     echo '<p class="card-text mb-2">本社所在地 : ',$row['company_location'],'</p>';
                     echo '<a class="btn btn-primary me-2" href="keijiban.php?company_id=',$row['company_id'],'">掲示板</a>';
-                    echo '<a class="btn btn-primary" href="keijiban.php?company_id=',$row['company_id'],'">受験報告書一覧</a>';
+                    echo '<a class="btn btn-primary" href="report-list.php?company_id=',$row['company_id'],'">受験報告書一覧</a>';
                   echo '</div>';
                 echo '</div>';
               echo '</div>';
@@ -122,6 +126,9 @@ if (empty($company_ids)) {
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- common.Script-->
+    <script src="../SCRIPT/common.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
