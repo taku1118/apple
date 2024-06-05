@@ -2,7 +2,6 @@ $(function(){
     $("#change_confirm").click(function(){
         if ($("#formGroupExampleInput").val() != $("#formGroupExampleInput2").val()) {
             alert("パスワードが一致しません。もう一度入力してください。");
-            // return false;
         }else{
             let password = $("#formGroupExampleInput2").val();
             $.ajax({
