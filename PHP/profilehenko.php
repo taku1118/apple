@@ -111,7 +111,8 @@
                     <div class="form-group" style="font-size:20px;">
                     <div class="d-flex align-items-center">
                         <label for="qualifications" class="mr-2">保有資格</label>
-                            <button type="button" class="btn btn-primary rounded-circle d-flex justify-content-center align-items-center p-0" style="width: 1.5rem; height: 1.5rem; font-size: 1rem; line-height: 1;">＋</button>
+                        <button type="button" class="btn btn-primary">+追加</button>
+                            
                         </div>
 
 
@@ -124,7 +125,7 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;">変 更</button>
+                    <button type="button" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;">変 更</button>
                     
 
                 </form>
