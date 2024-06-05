@@ -33,9 +33,9 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<div class="container mt-3">
+<div class="container mt-3 mb-3">
         <h1>受験報告作成</h1>
-        <form id="reportForm" onsubmit="return submitForm()" class="card p-3 mb-3">
+        <form id="reportForm" onsubmit="return submitForm()" class="card p-3">
             <div class="mb-3">
                 <label for="companyName" class="form-label">企業名</label>
                 <input type="text" class="form-control" id="companyName" required>
