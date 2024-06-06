@@ -61,7 +61,7 @@ if(isset($_GET['company_id'])){
   echo '<tbody>';
   if(!empty($reports)){
     foreach($reports as $row){
-      echo '<tr data-href="report.php?report_id=',$row['report_id'],'">';
+      echo '<tr data-href="report-show.php?report_id=',$row['report_id'],'">';
       echo '<td>',$row['exam_date'],'</td>';
       echo '<td>',$row['exam_way'],'</td>';
       echo '<td>',$row['user_name'],'</td>';
