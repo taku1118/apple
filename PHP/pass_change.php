@@ -17,6 +17,7 @@
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
     <?php session_start(); ?>
+    <?php $sql=$pdo->query("SELECT student_number FROM users where student_number = '0000000'"); ?>
 
 </head>
 <body>
