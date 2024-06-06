@@ -87,7 +87,7 @@
                     </div>
             
                     <div class="d-flex"  style="margin-top:3%;">
-                    <button type="submit" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
+                    <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
                     <p class="text" style="flex-grow: 1; margin-left:240px; font-size: 25px; color: #007bff;">プロフィールが変更されました</p>
                     </div>
 

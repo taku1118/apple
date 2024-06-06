@@ -17,9 +17,7 @@
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
     <?php session_start(); ?>
-    <style>
-    
-    </style>
+    <?php $sql=$pdo->query("SELECT student_number FROM users where student_number = '0000000'"); ?>
 
 </head>
 <body>
@@ -35,15 +33,15 @@
                 <form action="my_page_screen.php" method="post">
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
+                        <input type="password" class="form-control" id="formGroupExampleInput" name="password" placeholder="パスワード">
                     </div>
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
-                        <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="パスワード確認">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
                     </div>
                     <div class="ms-auto">
-                        <button class="btn btn-secondary" type="submit">キャンセル</button>　
-                        <button class="btn btn-primary" id="change_confirm" type="submit">確定</button>
+                        <button class="btn btn-secondary" type="button">キャンセル</button>　
+                        <button class="btn btn-primary" id="change_confirm" type="button">確定</button>
                     </div>
                 </form>
             </div>  
