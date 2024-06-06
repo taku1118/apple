@@ -15,7 +15,8 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-
+    <?php session_start();?>
+    <?php require 'db-connect.php'; ?>
     <style>
     
     </style>
@@ -73,12 +74,35 @@
                             <input type="text" class="form-control" id="username" value="りんごチュッパチャップス" style="flex-grow: 1;">
                         </div>
                     </div>
+
+                    <div class="form-group" style="font-size:20px;">
+                        <label for="school">所属学校</label>
+                        <div class="d-flex align-items-center">
+                        <select class="form-select" id="exampleFormSelect1">
+                            <option selected>所属学校を選択</option>
+                            <option value="1">麻生情報ビジネス専門学校 福岡校</option>
+                            <option value="2">麻生外語観光＆ブライダル専門学校</option>
+                            <option value="3">麻生医療福祉＆保育専門学校 福岡校</option>
+                            <option value="4">麻生建築＆デザイン専門学校</option>
+                            <option value="5">麻生公務員専門学校 福岡校</option>
+                            <option value="6">麻生美容専門学校 福岡校</option>
+                            <option value="7">麻生情報ビジネス専門学校 北九州校</option>
+                            <option value="8">麻生公務員専門学校 北九州校</option>
+                            <option value="9">麻生工科自動車大学校</option>
+                            <option value="10">麻生リハビリテーション大学校</option>
+                            <option value="11">麻生看護大学校</option>
+                            <option value="12">ASOポップカルチャー専門学校</option>
+                            <option value="13">ASO高等部</option>
+                        </select>
+                        </div>
+                    </div>
+
                     <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                         <select class="form-select" id="exampleFormSelect1">
                             <option selected>卒業年度を選択</option>
-                            <option value="1">2001年</option>
+                            <option value="1">在校生</option>
                             <option value="2">2002年</option>
                             <option value="3">2003年</option>
                             <option value="4">2004年</option>
@@ -105,9 +129,15 @@
                             <option value="25">2025年</option>
                             <option value="26">2026年</option>
                             <option value="27">2027年</option>
+                            <option value="28">2028年</option>
+                            <option value="29">2029年</option>
                         </select>
                         </div>
                     </div>
+                    
+
+                    
+
                     <div class="form-group" style="font-size:20px;">
                     <div class="d-flex align-items-center">
                         <label for="qualifications" class="mr-2">保有資格</label>
