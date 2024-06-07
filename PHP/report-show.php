@@ -22,7 +22,13 @@
     <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
-    
+    #exam-report{
+        aspect-ratio: 210/297;
+    }
+    #exam-report .row{
+        margin-left: 0;
+        margin-right: 0;
+    }
     </style>
 
 </head>
@@ -48,71 +54,95 @@ if (isset($_GET['report_id'])) {
         $student_datas->execute([$report_datas['student_number']]);
         $student_datas = $student_datas->fetch();
         echo '<div class="card p-3 mb-3">';
-        echo '<table class="table table-bordered mb-0">';
-        echo '<tr>';
-        echo '<th>会社病院施設名</th>';
-        echo '<td>',$company_datas['company_name'],'</td>';
-        echo '<th>所在地</th>';
-        echo '<td>',$company_datas['company_location'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<th>応募方法</th>';
-        echo '<td colspan="3">',$report_datas['apply_way'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<th>試験次数</th>';
-        echo '<td colspan="3">',$report_datas['exam_step'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<th>試験内容</th>';
-        echo '<td colspan="3">',$report_datas['exam_way'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<th>試験日</th>';
-        echo '<td colspan="3">',$report_datas['exam_date'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<td>';
-        echo '<tr>';
-        echo '<th>学校名</th>';
-        echo '<td>',$student_datas['school_name'],'</td>';
-        echo '</tr>';
-        echo '<tr>';
-        echo '<th>学科名</th>';
-        echo '<td>',$student_datas['course_name'],'</td>';
-        echo '</tr>';
-        echo '</td>';
-        echo '<th>氏名</th>';
-        echo '<td>',$student_datas['user_name'],'</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '<th>質問内容</th>';
-        echo '<td colspan="3">';
+        echo '<div id="exam-report">';
+        // 社名と所在地
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '会社<br>病院<br>施設<br>名';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $company_datas['company_name'];
+        echo '</div>';
+        echo '<div class="col border">';
+        echo '所<br>在<br>地';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $company_datas['company_location'];
+        echo '</div>';
+        echo '</div>';
+        // 応募方法
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '応募方法';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo '学校求人';
+        echo '</div>';
+        echo '</div>';
+        // 試験次数
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '試験次数';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $report_datas['exam_step'];
+        echo '</div>';
+        echo '</div>';
+        // 試験内容
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '試験分類';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $report_datas['exam_way'];
+        echo '</div>';
+        echo '</div>';
+        // 試験日
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '試験日';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $report_datas['exam_date'];
+        echo '</div>';
+        echo '</div>';
+        // 所属と氏名
+        echo '<div class="row">';
+        echo '<div class="col border">';
+        echo '学校名';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $student_datas['school_name'];
+        echo '</div>';
+        echo '<div class="col border">';
+        echo '学科名';
+        echo '</div>';
+        echo '<div class="col border">';
+        echo $student_datas['course_name'];
+        echo '</div>';
+        echo '</div>';
+        // 質問内容・試験問題
+        echo '<div class="row border">';
+        echo '試験内容(面接で質問された事項、試験で出た問題をできる限り書いてください)';
+        echo '</div>';
+        echo '<div class="row border">';
         echo $report_datas['question'];
-        echo '</td>';
-        echo '</tr>';
-
-        echo '<tr>';
-        echo '</tr>';
-        echo '<th>感想</th>';
-        echo '<td colspan="3">';
+        echo '</div>';
+        // 感想
+        echo '<div class="row border">';
+        echo '感想(感じたこと及び今後の受験者へのアドバイス)   ';
+        echo '</div>';
+        echo '<div class="row border">';
         echo $report_datas['opinion'];
-        echo '</td>';
-
-        echo '<tr>';
-        echo '<th>備考</th>';
-        echo '<td colspan="3">';
+        echo '</div>';
+        // 備考
+        echo '<div class="row border">';
+        echo '備考';
+        echo '</div>';
+        echo '<div class="row border">';
         echo $report_datas['other'];
-        echo '</td>';
-        echo '</tr>';
-
-        echo '</table>';
+        echo '</div>';
+        echo '</div>';
         
         echo '</div>';
     }else{
