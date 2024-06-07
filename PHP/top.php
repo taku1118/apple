@@ -121,7 +121,7 @@
                     if($i%3==0){
                         echo '<div class="row">';
                     }
-                    echo '<a class="col mx-auto mb-2" href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a>';
+                    echo '<div class="col mx-auto mb-2"><a href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
                     if($i%3==2||count($industry)==$i){
                         echo '</div>';
                     }
