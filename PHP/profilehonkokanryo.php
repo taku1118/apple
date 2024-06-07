@@ -67,15 +67,32 @@
                     <div class="form-group">
                         <label for="username" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="username" placeholder="りんごチュッパチャップス" style="flex-grow: 1;">
+                        <!-- <p class="form-control" id="username" placeholder="りんごチュッパチャップス" style="flex-grow: 1;"> -->
+                            <p>りんごチュッパチャップス</p>
                         </div>
                     </div>
+
+                    <div class="form-group" style="font-size:20px;">
+                        <label for="message">コメント</label>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control" id="message" placeholder="よろしくお願いします" style="flex-grow: 1;">
+                        </div>
+                    </div>
+                    
+                        <div class="form-group" style="font-size:20px;">
+                        <label for="school">所属学校</label>
+                        <div class="d-flex align-items-center">
+                            <input type="text" class="form-control" id="school" placeholder="麻生情報ビジネス専門学校 福岡校" style="flex-grow: 1;">
+                        </div>
+                        </div>
+
                     <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="graduationYear" placeholder="2025年" style="flex-grow: 1;">
                         </div>
-                    </div>
+                        </div>
+                    
                     <div class="form-group" style="font-size:20px;">
                         <label for="qualifications">保有資格</label>
                         <div class="d-flex align-items-center">
@@ -88,7 +105,7 @@
             
                     <div class="d-flex"  style="margin-top:3%;">
                     <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
-                    <p class="text" style="flex-grow: 1; margin-left:240px; font-size: 25px; color: #007bff;">プロフィールが変更されました</p>
+                    
                     </div>
 
 
