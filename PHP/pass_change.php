@@ -30,7 +30,7 @@
         <div style="margin-top: 10%;">
             <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
-                <form action="my_page_screen.php" method="post">
+                <form action="my_page_screen.php" method="post" style="display: inline-block;">
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
                         <input type="password" class="form-control" id="formGroupExampleInput" name="password" placeholder="パスワード">
