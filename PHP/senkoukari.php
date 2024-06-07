@@ -78,34 +78,59 @@
                     <button class="btn shadow btn-primary" data-bs-toggle="modal" data-bs-target="#company_id">+ 追加</button>
                 </div>
                 <div class="row row-cols-1 row-cols-md-2">
-        <div class="col">
-            <div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#company_id">
-                <div class="card-body">
-                    <h2 class="card-title my-3 text-center">株式会社○○○○</h2>
 
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg " id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="card-text pe-none">
-                        <input type="text" class="form-control form-control-lg" id="Input" placeholder="入力プレースホルダの例">
-                    </div>
-                    <div class="text-center">
-                        <i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>
-                    </div>
-                    <div class="mb-3 pe-none">
-                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <!-- 選考シート -->
+        <?php
+        $student_number ='0000000';
+        $sql = $pdo->prepare('SELECT * FROM adopt_state WHERE student_number= ?');
+        $sql -> execute([$student_number]);
+        foreach($sql as $row1){
+            echo '<div class="col">';
+            echo '<div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#',$row1['adopt_id'],'">';
+            echo '<div class="card-body">';
+            echo '<h2 class="card-title my-3 text-center">',$row1['company_name_txt'],'</h2>';
+            $sql2 = $pdo->prepare('SELECT * FROM adopt_state_details WHERE adopt_id= ?');
+            $sql2 -> execute([$row1['adopt_id']]);
+            $sql2 = $sql2->fetchAll();
+            foreach($sql2 as $i=> $row2){
+                echo '<div class="card-text pe-none">';
+                echo '<input type="text" class="form-control form-control-lg border border-2 border-primary" id="Input" placeholder=',$row2['adopt_way'],'>';
+                echo '</div>';
+                if($i+1 !== count($sql2)){
+                    echo '<div class="text-center">';
+                    echo '<i class="bi bi-caret-down-fill" style="font-size: 2rem;"></i>';
+                    echo '</div>';
+
+                }
+
+
+            }
+            echo '<div class="mt-2 pe-none">';
+            echo 'メモ';
+            echo '<textarea class="form-control form-control-lg border border-2 border-primary fs-5" id="Input" rows=2 placeholder=メモ>',$row1['note'],'</textarea>';
+            echo '</div>';
+
+
+            
+
+                
+
+           
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            
+        
+        }
+        
+        
+        ?>
+
         
 
+<?php foreach($sql as $row1): ?>
     <!-- モーダルの設定 -->
-    <div class="modal fade" id="company_id" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal fade" id="<?= $row1['adopt_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel">
 
         <div class="modal-dialog modal-dialog-centered">
 
@@ -119,7 +144,7 @@
                     </div>
                     <div class="card-body">
                         <div class="card-text" id="sheet_content">
-                            <h2 class="card-title">株式会社○○○○</h2>
+                            <h2 class="card-title"><?= $row1['company_name_txt'] ?></h2>
 
                             <!-- ここから : 面接回数でループ-->
                             <div id="select_ways">
@@ -157,10 +182,11 @@
             <!-- </div>/.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+<?php endforeach; ?>
             </div>
         <!-- </div> -->
     </div>
-<
+
         </main>
     </div>
 
@@ -172,6 +198,7 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
