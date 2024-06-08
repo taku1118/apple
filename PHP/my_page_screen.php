@@ -48,7 +48,7 @@
                         $display = array_values($fetch_data);
                     ?>
                     <span class="fs-1 d-inline-block" style="width: 68%;">あなたの情報</span>
-                    <a href="./personal_information_change_screen.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./personal_information_change_screen.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
@@ -71,11 +71,12 @@
                 </div>
                 <div class="col">
                     <?php
-                        $Licence_Inform = $pdo->query('SELECT * FROM Licence_Inform');
+                        $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
+                        $Licence_Inform->execute([$_SESSION['student_number']]);
                         $fetch_data = $Licence_Inform->fetchAll();
                     ?>
                     <span class="fs-1 d-inline-block" style="width: 50%;">所有スキル</span>
-                    <a href="./ownership_skill.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./ownership_skill.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
@@ -91,12 +92,13 @@
                 <div class="col my-4">
                     <?php
                         $Desire_items = ["希望する勤務地","希望する業界","希望する職種"];
-                        $Desire_Inform = $pdo->query('SELECT prefecture_name, industry_name, job_name FROM Desire_Inform where student_number = "0000000"');
+                        $Desire_Inform = $pdo->prepare('SELECT prefecture_name, industry_name, job_name FROM Desire_Inform where student_number = ?');
+                        $Desire_Inform->execute([$_SESSION['student_number']]);
                         $desire_fetch = $Desire_Inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($desire_fetch);
                     ?>
                     <span class="fs-1 d-inline-block">希望する条件</span>
-                    <a href="./suggested_condition.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./suggested_condition.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
@@ -126,10 +128,10 @@
                         <h5 class="card-header fs-1">個人設定</h5>
                         <div class="card-body">
                             <div class="card-text">
-                                <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                                <a href="./profilehenko.php" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                                     <span class="fs-4">プロフィール変更</span>
                                 </a>
-                                <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                                <a href="./pass_change.php" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                                     <span class="fs-4">パスワード変更</span>
                                 </a>
                                 <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
