@@ -47,60 +47,12 @@
       <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
-            <?php session_start(); ?>
-<!doctype html>
-<html lang="ja" data-bs-theme="auto">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トップページ</title>
-
-    <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
-    
-    <!-- bootstrap.CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- sidebar.CSS -->
-    <link href="../CSS/sidebars.css" rel="stylesheet">
-
-    <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
-
-    <!-- common.CSS -->
-    <link href="../CSS/common.css" rel="stylesheet">
-
-    <style>
-    .background-image{
-        background-image: url("../IMAGE/school.jpg");
-        background-size: cover;
-        height: 200px;
-        width:100%;
-    }
-
-    #company-name-search-form{
-        padding: 0 3rem;
-        width: 100%;
-        height: 3rem;
-    }
-
-    #company-name-search-form button{   
-        padding: 0 1.3rem;
-    }
-    </style>
-
-</head>
-<body>
-    <!-- サイドバーとメインコンテンツのラッパー -->
-    <div class="wrapper">
-      <?php require 'sidebars.php'; ?>
-        <!-- メインコンテンツ -->
-        <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<?php require 'modules/header.php'; ?>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <h1 class="page_title">麻生就職サポート</h1>
 <br>
@@ -117,10 +69,6 @@
 </form>
 
 <p class="has-text-danger" id="check_input"></p>
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="./scripts/login_select.js"></script>
-<?php require 'modules/footer.php'; ?>
 
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
 </main>

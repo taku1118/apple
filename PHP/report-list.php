@@ -47,13 +47,14 @@
 <?php
 if(isset($_GET['company_id'])){
   $company_id=$_GET['company_id'];
-  $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_way,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
+  $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_step,A.exam_way,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
   $reports->execute([$company_id]);
   $reports = $reports->fetchAll();
   echo '<table class="table table-hover">';
   echo '<thead>';
   echo '<tr>';
   echo '<th scope="col">日付</th>';
+  echo '<th scope="col">試験次数</th>';
   echo '<th scope="col">試験内容</th>';
   echo '<th scope="col">名前</th>';
   echo '</tr>';
@@ -63,6 +64,7 @@ if(isset($_GET['company_id'])){
     foreach($reports as $row){
       echo '<tr data-href="report-show.php?report_id=',$row['report_id'],'">';
       echo '<td>',$row['exam_date'],'</td>';
+      echo '<td>',$row['exam_step'],'</td>';
       echo '<td>',$row['exam_way'],'</td>';
       echo '<td>',$row['user_name'],'</td>';
       echo '</tr>';

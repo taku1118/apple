@@ -23,3 +23,12 @@ INSERT INTO Post VALUES
 (null, 5, "0000000", CURRENT_DATE(), "株式会社スペースアウト 投稿内容を格納する"),
 (null, 5, "0000000", CURRENT_DATE(), "株式会社スペースアウト 投稿内容を格納する"),
 (null, 5, "0000000", CURRENT_DATE(), "株式会社スペースアウト 投稿内容を格納する");
+
+INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
+VALUES 
+(
+    1,
+    (SELECT COALESCE(MAX(adopt_step_id)+1,1) FROM (SELECT * FROM adopt_state_details) AS details WHERE adopt_id=1),
+    '一次面接',
+    '2024-05-19'
+);

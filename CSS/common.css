@@ -1,3 +1,52 @@
+/* フォントレイアウト */
 body{
 	font-family:Google Sans,arial,sans-serif-medium,sans-serif;
+}
+
+/* テキスト1行 */
+.txt-limit1 {
+	width: 100%;
+	white-space: nowrap;/* 折り返し無しにする */
+	overflow: hidden;/* はみ出た部分を非表示 */
+	text-overflow: ellipsis;/* 語尾を3点リーダーに */
+}
+
+/* テキスト2行 */
+.txt-limit2 {
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 2; /* 任意の行数を指定 */
+}
+
+/* テキスト3行 */
+.txt-limit3 {
+overflow: hidden;/* はみ出た部分を非表示 */
+display: -webkit-box; /* 必須 */
+-webkit-box-orient: vertical; /* 必須 */
+-webkit-line-clamp: 3; /* 任意の行数を指定 */
+}
+
+/* テキスト5行 */
+.txt-limit5 {
+overflow: hidden;/* はみ出た部分を非表示 */
+display: -webkit-box; /* 必須 */
+-webkit-box-orient: vertical; /* 必須 */
+-webkit-line-clamp: 5; /* 任意の行数を指定 */
+}
+
+/* テキスト6行 */
+.txt-limit6 {
+overflow: hidden;/* はみ出た部分を非表示 */
+display: -webkit-box; /* 必須 */
+-webkit-box-orient: vertical; /* 必須 */
+-webkit-line-clamp: 6; /* 任意の行数を指定 */
+}
+
+/* テキスト10行 */
+.txt-limit10 {
+overflow: hidden;/* はみ出た部分を非表示 */
+display: -webkit-box; /* 必須 */
+-webkit-box-orient: vertical; /* 必須 */
+-webkit-line-clamp: 10; /* 任意の行数を指定 */
 }
