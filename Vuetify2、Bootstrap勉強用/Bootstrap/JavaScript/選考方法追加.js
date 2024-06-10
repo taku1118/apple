@@ -17,7 +17,8 @@ function save_sheet(target){
     ways.forEach((element)=>{
         formData.append("ways[]",element.value);
     });
-    formData.append("adopt_id",target.id.substring(8))
+    formData.append("adopt_id",target.id.substring(8));
+    
     fetch("update_select_state.php",{
         method: "POST",
         body: formData

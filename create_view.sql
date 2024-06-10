@@ -9,5 +9,5 @@
 -- 
 
 -- 掲示板用
-    CREATE VIEW Post_Content AS SELECT post_id, student_number, thread_id, thread_name, thread_date, is_active, post_date, post_content FROM Thread JOIN Post USING (thread_id) JOIN Users USING (student_number);
+    CREATE VIEW Post_Content AS SELECT post_id, company_id, student_number, thread_id, thread_name, thread_date, is_active, post_date, post_content FROM Thread JOIN Post USING (thread_id) JOIN Users USING (student_number);
 -- 
