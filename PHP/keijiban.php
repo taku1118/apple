@@ -66,10 +66,15 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+<?php
+$id = $_GET['company_id'];
+$sql=$pdo->query("SELECT * FROM post_content where company_id = $id"); 
+$res = $sql->fetchAll(PDO::FETCH_ASSOC);
+?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
             <div class="navbar-brand">
-                <h3 class="mb-0 text-wrap">株式会社アウトソーシングについて</h3>
+                <h3 class="mb-0 text-wrap"><?php echo $res[0]['thread_name']; ?></h3>
             </div>
             <div class="ms-auto d-flex">
                 <button class="btn btn-secondary text-nowrap me-3" onclick="history.back()">戻る</button>
@@ -77,74 +82,26 @@
             </div>
         </div>
     </nav>
+<?php foreach($res as $row): ?>
     <div class="thread">
         <div class="post">
-            <span class="post-number">1</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:00:00</span>
-            <div class="message">これはサンプルの投稿です。</div>
+            <span class="post-number">
+                <?= $row['post_id'] ?>
+            </span> 
+            名前：
+            <a href="#" class="username">
+                <?= $row['student_number'] ?>
+            </a> 
+            投稿日：
+            <span class="date">
+                <?= $row['post_date'] ?>
+            </span>
+            <div class="message">
+                <?= $row['post_content'] ?>
+            </div>
         </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        <div class="post">
-            <span class="post-number">2</span> 名前：<a href="#" class="username">名無しさん</a> 投稿日：<span class="date">2024/05/20(月) 10:05:00</span>
-            <div class="message">これは別のサンプルの投稿です。</div>
-        </div>
-        
-        <!-- 以下、投稿が続く -->
     </div>
+<?php endforeach; ?>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
