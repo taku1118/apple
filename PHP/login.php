@@ -97,10 +97,6 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<?php require 'modules/header.php'; ?>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
 
 <h1 class="page_title">麻生就職サポート</h1>
 <br>
@@ -117,10 +113,6 @@
 </form>
 
 <p class="has-text-danger" id="check_input"></p>
-
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="./scripts/login_select.js"></script>
-<?php require 'modules/footer.php'; ?>
 
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
 </main>
