@@ -30,55 +30,26 @@
          <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        function previewImage(event) {
-            var input = event.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var profilePicturePreview = document.getElementById('profilePicturePreview');
-                profilePicturePreview.src = dataURL;
-                profilePicturePreview.style.display = 'block';
-                document.getElementById('profilePicturePlaceholder').style.display = 'none';
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    </script>
-    <style>
-        </style>
+    
 <body style="background-color: #E6ECF0;">
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
-                <form>
+                <?php
+                $pdo=new PDO($connect,USER,PASS);
+                $sql=$pdo->prepare('insert into users(nickname,comment)values (?, ?)');
                     <div class="form-group">
-                        <div class="d-flex flex-column align-items-left">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
-                                <span id="profilePicturePlaceholder" class="text-white">画像</span>
-                                <img id="profilePicturePreview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
-                            </div>
-                            <label for="profilePicture" class="btn btn-primary mt-3" style="width: 11%;">
-                                <i class="fas fa-camera"></i> 写真を選択
-                            </label>
-                            <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="username" style="font-size:20px;">ユーザーネーム</label>
+                        <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="username" value="りんごチュッパチャップス" style="flex-grow: 1;">
+                            <input type="text" class="form-control" name="nickname" value="りんごチュッパチャップス" style="flex-grow: 1;">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="message" style="font-size:20px;">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="komento" value="よろしく願いします" style="flex-grow: 1;">
+                            <input type="text" class="form-control" name="comment" value="よろしく願いします" style="flex-grow: 1;">
                         </div>
                     </div>
 
@@ -86,7 +57,7 @@
                     <button type="button" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;">変 更</button>
                     
 
-                </form>
+                ?>
             </main>
         </div>
     </div>
