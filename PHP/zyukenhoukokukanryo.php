@@ -48,6 +48,7 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -58,11 +59,16 @@
     <title>受験報告完了画面</title>
 </head>
 <body>
-    <h1>報告完了しました！</h1><br>
-    <h1>ご協力ありがとうございます。</h1>
-    <button type="submit" class="btn btn-primary">TOPに戻る</button>
+    <div class="container mt-5">
+        <h1>報告完了しました！</h1><br>
+        <h1>ご協力ありがとうございます。</h1>
+        <form action="index.php" method="post">
+            <button type="submit" class="btn btn-primary">TOPに戻る</button>
+        </form>
+    </div>
 </body>
 </html>
+
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
 </main>
     </div>
