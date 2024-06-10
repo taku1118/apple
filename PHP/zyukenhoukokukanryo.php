@@ -1,10 +1,9 @@
-<?php session_start(); ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トップページ</title>
+    <title>テンプレート</title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -16,28 +15,9 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
-
-    <!-- common.CSS -->
-    <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
-    .background-image{
-        background-image: url("../IMAGE/school.jpg");
-        background-size: cover;
-        height: 200px;
-        width:100%;
-    }
-
-    #company-name-search-form{
-        padding: 0 3rem;
-        width: 100%;
-        height: 3rem;
-    }
-
-    #company-name-search-form button{   
-        padding: 0 1.3rem;
-    }
+    
     </style>
 
 </head>
@@ -45,8 +25,8 @@
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
-        <!-- メインコンテンツ -->
-        <main class="container-fluid main-content" style="padding: 0;">
+         <!-- メインコンテンツ -->
+         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 
 <!DOCTYPE html>
@@ -81,9 +61,6 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
-
-    <!-- common.Script-->
-    <script src="../SCRIPT/common.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
