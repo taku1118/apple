@@ -38,7 +38,7 @@
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <?php
                 $pdo=new PDO($connect,USER,PASS);
-                $sql=$pdo->prepare('insert into users(nickname,comment)values (?, ?)');
+                $sql = "UPDATE users SET nickname = :nickname WHERE comment = :comment";
                     <div class="form-group">
                         <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
