@@ -15,7 +15,7 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-
+    <?php require 'db-connect.php' ?>
     <style>
     
     </style>
@@ -50,7 +50,7 @@
     <style>
         </style>
 <body style="background-color: #E6ECF0;">
-    <div class="container-fluid">
+    <div class="container-fluid" style="margin-top:30px;">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
