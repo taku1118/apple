@@ -14,9 +14,8 @@ function open_sheet(target){
 function save_sheet(target){
     const formData = new FormData();
     const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
-    ways.forEach((element)=>{
-        formData.append("ways[]",element.value);
-    });
+    
+    formData.append("ways[]",ways);
     formData.append("adopt_id",target.id.substring(8));
     
     fetch("update_select_state.php",{
