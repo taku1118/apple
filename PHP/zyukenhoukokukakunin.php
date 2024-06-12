@@ -63,7 +63,7 @@
             <label class="form-label">備考</label>
             <p id="remarks"></p>
         </div>
-        <button type="button" class="btn btn-primary" onclick="window.history.back();">戻る</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href='my_pege_screen.php';">戻る</button>
     </div>
 
 </body>
