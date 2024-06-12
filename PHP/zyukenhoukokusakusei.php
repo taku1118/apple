@@ -41,7 +41,7 @@
 <body>
     <div class="container mt-5">
         <h1>受験報告作成</h1>
-        <form action="confirmation.php" method="post">
+        <form action="zyukenhoukokukanryo.php" method="post">
             <div class="mb-3">
                 <label for="companyName" class="form-label">企業名</label>
                 <input type="text" class="form-control" id="companyName" name="companyName" required>
@@ -109,9 +109,9 @@
 
                 <label for="applicationMethod" class="form-label">応募方法</label>
                 <select class="form-select" id="applicationMethod" name="applicationMethod" required>
-                    <option value="オンライン">オンライン</option>
+                    <option value="学校求人">学校求人</option>
                     <option value="直接応募">直接応募</option>
-                    <option value="エージェント経由">エージェント経由</option>
+                    <option value="あああ">あああ</option>
                 </select>
 
                 <label for="examContent" class="form-label">試験内容</label>
