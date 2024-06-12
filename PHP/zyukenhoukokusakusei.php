@@ -109,9 +109,9 @@
 
                 <label for="applicationMethod" class="form-label">応募方法</label>
                 <select class="form-select" id="applicationMethod" name="applicationMethod" required>
-                    <option value="オンライン">オンライン</option>
+                    <option value="学校求人">学校求人</option>
                     <option value="直接応募">直接応募</option>
-                    <option value="エージェント経由">エージェント経由</option>
+                    <option value="あああ">あああ</option>
                 </select>
 
                 <label for="examContent" class="form-label">試験内容</label>

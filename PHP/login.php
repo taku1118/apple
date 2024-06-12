@@ -41,7 +41,7 @@
 <body>
     <div class="container mt-5">
         <h1>麻生就職サポート</h1>
-        <form action="mypage.php" method="post">
+        <form action="my_page_screen.php" method="post">
             <div class="mb-3">
                 <label for="loginID" class="form-label">ログインID</label>
                 <input type="text" class="form-control" id="loginID" name="loginID" required>
