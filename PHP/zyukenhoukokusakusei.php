@@ -41,7 +41,7 @@
 <body>
     <div class="container mt-5">
         <h1>受験報告作成</h1>
-        <form action="confirmation.php" method="post">
+        <form action="zyukenhoukokukanryo.php" method="post">
             <div class="mb-3">
                 <label for="companyName" class="form-label">企業名</label>
                 <input type="text" class="form-control" id="companyName" name="companyName" required>
