@@ -37,11 +37,21 @@
        
     }
 
+    .element{
+        max-height:290px;
+       
+        overflow-y: scroll;
+        /* IE, Edge 対応 */
+        -ms-overflow-style: none;
+        /* Firefox 対応 */
+        scrollbar-width: none;
+    }
+
+
     
    
     
     </style>
-
 </head>
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
@@ -84,11 +94,14 @@
         $student_number ='0000000';
         $sql = $pdo->prepare('SELECT * FROM adopt_state WHERE student_number= ?');
         $sql -> execute([$student_number]);
+        $sql = $sql->fetchAll();
+        $modal_sql = $sql;
         foreach($sql as $row1){
             echo '<div class="col">';
             echo '<div class="card w-75 mb-3 shadow" data-bs-toggle="modal" data-bs-target="#',$row1['adopt_id'],'">';
             echo '<div class="card-body">';
             echo '<h2 class="card-title my-3 text-center">',$row1['company_name_txt'],'</h2>';
+            echo '<div class="element">';
             $sql2 = $pdo->prepare('SELECT * FROM adopt_state_details WHERE adopt_id= ?');
             $sql2 -> execute([$row1['adopt_id']]);
             $sql2 = $sql2->fetchAll();
@@ -102,6 +115,7 @@
                     echo '</div>';
 
                 }
+                
 
 
             }
@@ -109,13 +123,7 @@
             echo 'メモ';
             echo '<textarea class="form-control form-control-lg border border-2 border-primary fs-5" id="Input" rows=2 placeholder=メモ>',$row1['note'],'</textarea>';
             echo '</div>';
-
-
-            
-
-                
-
-           
+            echo '</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -123,12 +131,14 @@
         
         }
         
-        
         ?>
 
-        
-
-<?php foreach($sql as $row1): ?>
+<?php foreach($modal_sql as $row1): ?>
+    <?php
+    $modal_sql_details = $pdo->prepare('SELECT * FROM adopt_state_details WHERE adopt_id= ?');
+    $modal_sql_details -> execute([$row1['adopt_id']]);
+    $modal_sql_details = $modal_sql_details->fetchAll();
+    ?>
     <!-- モーダルの設定 -->
     <div class="modal fade" id="<?= $row1['adopt_id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel">
 
@@ -145,41 +155,50 @@
                     <div class="card-body">
                         <div class="card-text" id="sheet_content">
                             <h2 class="card-title"><?= $row1['company_name_txt'] ?></h2>
-
-                            <!-- ここから : 面接回数でループ-->
-                            <div id="select_ways">
-                                <div class="card-text" id="sheet_content">
-                                    <input type="text" class="form-control form-control-lg" id="Input"
-                                        placeholder="入力プレースホルダの例" value="エントリーシート">
-                                </div>
-                                <!-- <div class="d-none" id="toggle_icon">
-                                    <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
-                                </div> -->
+                            <?php foreach($modal_sql_details as $i => $row):  ?>
                                 
-                            </div>
+                                <!-- ここから : 面接回数でループ-->
+                                <div id="select_ways">
+                                    <div class="card-text" id="sheet_content">
+                                        <input type="text" class="form-control form-control-lg" id="Input"
+                                            placeholder="入力プレースホルダの例" value="<?= $row['adopt_way'] ?>">
+                                    </div>
+                                    <!-- <div class="d-none" id="toggle_icon">
+                                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                    </div> -->
+                                    
+                                </div>
+                                <?php if($i+1 !== count($modal_sql_details)) : ?>
+                                    <div class="text-center">
+                                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                             <div class="mx-auto">
                                 <button type="button" id="add_input" class="btn"><i class="bi bi-plus-circle"
-                                        style="font-size: 2rcap;"></i></button>
+                                style="font-size: 2rcap;"></i></button>
                             </div>
-                            <!-- ここまで-->
+                                <!-- ここまで-->
                             
                         </div>
 
 
 
                         <div class="">
+                            
                             <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $row1['note'] ?></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary" id="edit_btn<?= $row['adopt_id'] ?>" onclick="edit_sheet(this)" type="button">編集</button>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-primary d-none" id="save_btn<?= $row['adopt_id'] ?>" onclick="save_sheet(this)" type="button">保存</button>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
-                    <button type="button" class="btn btn-primary">変更を保存</button>
-                </div>/.modal-footer -->
-            <!-- </div>/.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
 <?php endforeach; ?>

@@ -16,7 +16,6 @@ function save_sheet(target){
     const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
     let values = Array.from(ways).map((way) => way.value);
     values.forEach((element)=>{
-        // values.push(element.value);
         formData.append("ways[]",element);
     });
     console.log(values);
