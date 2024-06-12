@@ -1,25 +1,36 @@
 <?php
 require('../../../PHP/db-connect.php');
+
+$datas = $_POST['ways'] ?? [];
 $case = [];
 $ids = [];
 $exe_value = [];
-$data = $_POST['adopt_id'];
-// for($i = 0; $i<count($_POST['ways']); $i++){
-//     $case[] = "WHEN adopt_step_id = ? THEN ?";
-//     $ids[] = $i+1;
-//     $exe_value[] = $i+1;
-//     $exe_value[] = '"'.$_POST['ways'][$i].'"';
-// }
-// $increment_case = implode(" ",$case);
-// $exe_ids = implode(",",$ids);
-// $exe_str = implode(',',$exe_value);
-// try {
-//     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//     $update_select_state = $pdo->prepare('UPDATE adopt_state_details SET adopt_way = CASE '.$increment_case.' END WHERE adopt_step_id IN (?) AND adopt_id = ?');
-//     $update_select_state->execute([$increment_case,$exe_str,$exe_ids,$_POST['adopt_id']]);
-// } catch (PDOException $e) {
-//     // レスポンスを返す
-//     echo json_encode(['status' => 'success', 'data' => $increment_case]);
-// }
-echo json_encode(['status' => 'success', 'data' => $data]);
+for($i = 0; $i<count($datas); $i++){
+    $case[] = "WHEN adopt_step_id = ? THEN ?";
+    $ids[] = $i+1;
+    $exe_value[] = $i+1;
+    $exe_value[] = $_POST['ways'][$i];
+}
+
+// CASE文の中身を生成
+$increment_case = implode(" ", $case);
+
+// adopt_step_idのリストをプレースホルダとして生成
+$placeholders = implode(',', array_fill(0, count($ids), '?'));
+
+// プレースホルダを含めた全体のSQL文を生成
+$sql = 'UPDATE adopt_state_details SET adopt_way = CASE ' . $increment_case . ' END WHERE adopt_step_id IN (' . $placeholders . ') AND adopt_id = ?';
+
+// 全てのパラメータを結合
+$exe_value = array_merge($exe_value, $ids);
+$exe_value[] = $_POST['adopt_id'];
+
+try {
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $update_select_state = $pdo->prepare($sql);
+    $update_select_state->execute($exe_value);
+    echo json_encode(['status' => 'success', 'data' => $increment_case]);
+} catch (PDOException $e) {
+    echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
+}
 exit;
