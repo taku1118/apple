@@ -152,7 +152,7 @@
                     <div class=" d-flex justify-content-end">
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body" id="edit_area<?= $row1['adopt_id'] ?>">
                         <div class="card-text" id="sheet_content">
                             <h2 class="card-title"><?= $row1['company_name_txt'] ?></h2>
                             <?php foreach($modal_sql_details as $i => $row):  ?>
@@ -217,7 +217,8 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
-
+    
+    <script src="../SCRIPT/select_conditon.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
