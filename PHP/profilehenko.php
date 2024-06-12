@@ -37,19 +37,21 @@
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <?php
-                $pdo=new PDO($connect,USER,PASS);
-                $sql = "UPDATE users SET nickname = :nickname WHERE comment = :comment";
+                $sql=$pdo->query("SELECT * FROM users where student_number='0000000'");
+                $res = $sql->fetch(PDO::FETCH_ASSOC);
+                ?>
+
+
                     <div class="form-group">
                         <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="nickname" value="りんごチュッパチャップス" style="flex-grow: 1;">
-                        </div>
+                            <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $res['nickname']; ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="message" style="font-size:20px;">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="comment" value="よろしく願いします" style="flex-grow: 1;">
+                            <input type="text" class="form-control" name="comment" value="<?php echo $res['my_comment']; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
 
@@ -57,7 +59,7 @@
                     <button type="button" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;">変 更</button>
                     
 
-                ?>
+                
             </main>
         </div>
     </div>
