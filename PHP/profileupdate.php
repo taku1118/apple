@@ -37,26 +37,35 @@
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <?php
-                $sql=$pdo->query("SELECT * FROM users where student_number='0000000'");
-                $res = $sql->fetch(PDO::FETCH_ASSOC);
+                $sql=$pdo->prepare("update users SET nickname=? , my_comment=? where student_number='0000000'");
+                $sql->execute([$_POST["nickname"],$_POST["comennt"]]);
+
+
+                // $res = $sql->fetch(PDO::FETCH_ASSOC);
                 ?>
 
-                <form action="profileupdate.php" method="post" enctype="multipart/foem-date">
+
                     <div class="form-group">
                         <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $res['nickname']; ?>">
+                            <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $_POST['nickname']; ?>">
                     </div>
 
                     <div class="form-group">
                         <label for="message" style="font-size:20px;">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="comment" value="<?php echo $res['my_comment']; ?>" style="flex-grow: 1;">
+                            <input type="text" class="form-control" name="comment" value="<?php echo $_POST["comennt"]; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <button type="button" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;">
-                        変 更</button>
-                </form>
+
+                    <h3>変更が完了しました</h3>
+                    
+                    <div class="d-flex"  style="margin-top:3%;">
+                    <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
+                    
+                    </div>
+                    
+                    
 
                 
             </main>

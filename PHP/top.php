@@ -38,6 +38,16 @@
     #company-name-search-form button{   
         padding: 0 1.3rem;
     }
+
+    .btn-bd-primary {
+        --bs-btn-bg: #1dc219;
+        --bs-btn-border-color: #1dc219;
+        --bs-btn-hover-bg: #04BC00;
+        --bs-btn-hover-border-color: #04BC00;
+        --bs-btn-focus-shadow-rgb: 29, 194, 25;
+        --bs-btn-active-bg: #03a900;
+        --bs-btn-active-border-color: #03a900;
+    }
     </style>
 
 </head>
