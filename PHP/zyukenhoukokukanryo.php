@@ -42,7 +42,7 @@
     <div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 text-center">
         <h1 class="mb-4">報告完了しました！</h1>
         <h1 class="mb-4">ご協力ありがとうございます。</h1>
-        <form action="my_pege_screen.php" method="post">
+        <form action="top.php" method="post">
             <button type="submit" class="btn btn-primary">TOPに戻る</button>
         </form>
     </div>
