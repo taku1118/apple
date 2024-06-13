@@ -254,7 +254,8 @@ VALUES
 -- ユーザーテーブル
 INSERT INTO Users (student_number, school_id, course_id, user_name, password)
 VALUES 
-('0000000', '01', '01-01', 'Admin', '00000000');
+('0000000', '01', '01-01', 'Admin', '00000000'),
+('0000001', '01', '01-02', '吾輩は猫', '12345678');
 
 -- 企業テーブル
 INSERT INTO Companies (company_id, company_name, company_name_ruby, company_url, company_location, president_name, job_detail, build_date, capital, employee_number, revenue, logo_image)
@@ -531,12 +532,14 @@ VALUES
 -- チャットルームテーブル
 INSERT INTO Chat_Rooms (chat_room_title)
 VALUES 
-('トム＆ジェリー');
+('トム＆ジェリー'),
+('りんごチュッパチャップス');
 
 -- チャットルーム参加者テーブル
 INSERT INTO Chat_Room_Participants (chat_room_id, student_number)
 VALUES 
-(1, '0000000');
+(1, '0000000'),
+(2, '0000000');
 
 -- チャットメッセージテーブル
 INSERT INTO Chat_Room_Messages (chat_room_id, send_by, message)
