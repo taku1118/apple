@@ -1,9 +1,10 @@
 $(document).ready(function() {
     var currentChatRoomId = null;
+    var currentUser = '0000001'; // 現在のユーザー。セッションなどで管理することを推奨
 
     function fetchChatRooms() {
         $.ajax({
-            url: 'fetch_chat_rooms.php',
+            url: '../PHP/fetch_chat_rooms.php',
             method: 'GET',
             success: function(data) {
                 $('#chat-room-list').empty();
@@ -22,13 +23,14 @@ $(document).ready(function() {
     function fetchMessages() {
         if (currentChatRoomId !== null) {
             $.ajax({
-                url: 'fetch_messages.php',
+                url: '../PHP/fetch_messages.php',
                 method: 'GET',
                 data: { chat_room_id: currentChatRoomId },
                 success: function(data) {
                     $('#messages').empty();
                     data.forEach(function(message) {
-                        $('#messages').append('<div class="message"><strong>' + message.send_by + ':</strong> ' + message.message + '</div>');
+                        var messageClass = (message.send_by === currentUser) ? 'message-sent' : 'message-received';
+                        $('#messages').append('<div class="message ' + messageClass + '"><strong>' + message.send_by + ':</strong> ' + message.message + '</div>');
                     });
                 }
             });
@@ -40,7 +42,7 @@ $(document).ready(function() {
         var message = $('#message').val();
         if (message.trim() !== '' && currentChatRoomId !== null) {
             $.ajax({
-                url: 'chat.php',
+                url: '../PHP/chat.php',
                 method: 'POST',
                 data: { message: message, chat_room_id: currentChatRoomId },
                 success: function() {

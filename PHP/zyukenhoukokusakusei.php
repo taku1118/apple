@@ -130,7 +130,7 @@
                 <label for="remarks" class="form-label">備考</label>
                 <input type="text" class="form-control" id="remarks" name="remarks">
             </div>
-            <button type="submit" class="btn btn-primary">確認</button>
+            <button type="submit" class="btn btn-primary">送信</button>
         </form>
     </div>
 </body>

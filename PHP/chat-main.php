@@ -15,11 +15,11 @@
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
-    <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
-
     <!-- common.CSS -->
     <link href="../CSS/common.css" rel="stylesheet">
+
+    <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
 
     <style>
         .chat-container {
@@ -33,6 +33,22 @@
             padding: 10px;
             background-color: #f8f9fa;
         }
+        .message {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 10px;
+            max-width: 60%;
+        }
+        .message-sent {
+            margin-left: auto;
+            background-color: #d1e7dd;
+            align-self: flex-end;
+        }
+        .message-received {
+            margin-right: auto;
+            background-color: #f8d7da;
+            align-self: flex-start;
+        }
         .message-input {
             display: flex;
         }
@@ -43,8 +59,11 @@
         .message-input button {
             margin-left: 10px;
         }
+        .chat-room-list {
+            overflow-y: auto;
+            max-height: 100vh;
+        }
     </style>
-
 </head>
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
@@ -53,24 +72,23 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-    <div class="row">
-        <div class="col-3 p-3 chat-room-list bg-light">
-            <h5>チャットルーム</h5>
-            <ul id="chat-room-list" class="list-group">
-                <!-- チャットルームリスト -->
-            </ul>
-        </div>
-        <div class="col-9 chat-container">
-            <div class="messages" id="messages">
-                <!-- メッセージが表示される -->
+            <div class="row">
+                <div class="col-3 p-3 chat-room-list bg-light">
+                    <h5>チャットルーム</h5>
+                    <ul id="chat-room-list" class="list-group">
+                        <!-- チャットルームリスト -->
+                    </ul>
+                </div>
+                <div class="col-9 chat-container">
+                    <div class="messages" id="messages">
+                        <!-- メッセージが表示される -->
+                    </div>
+                    <form id="message-form" class="message-input p-3">
+                        <textarea id="message" class="form-control" rows="1" placeholder="メッセージを入力..."></textarea>
+                        <button type="submit" class="btn btn-primary">送信</button>
+                    </form>
+                </div>
             </div>
-            <form id="message-form" class="message-input p-3">
-                <textarea id="message" class="form-control" rows="1" placeholder="メッセージを入力..."></textarea>
-                <button type="submit" class="btn btn-primary">送信</button>
-            </form>
-        </div>
-    </div>
-
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
         </main>
     </div>
