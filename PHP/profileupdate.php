@@ -38,7 +38,7 @@
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <?php
                 $sql=$pdo->prepare("update users SET nickname=? , my_comment=? where student_number='0000000'");
-                $sql->execute([$_POST["nickname"],$_POST["comennt"]]);
+                $sql->execute([$_POST["nickname"],$_POST["comment"]]);
 
 
                 // $res = $sql->fetch(PDO::FETCH_ASSOC);
@@ -54,7 +54,7 @@
                     <div class="form-group">
                         <label for="message" style="font-size:20px;">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="comment" value="<?php echo $_POST["comennt"]; ?>" style="flex-grow: 1;">
+                            <input type="text" class="form-control" name="comment" value="<?php echo $_POST["comment"]; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
 
