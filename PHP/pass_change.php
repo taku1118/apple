@@ -40,7 +40,7 @@
                         <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
                     </div>
                     <div class="ms-auto">
-                        <button class="btn btn-secondary" type="button">キャンセル</button>　
+                        <button class="btn btn-secondary" type="button" onclick="history.back()">キャンセル</button>　
                         <button class="btn btn-primary" id="change_confirm" type="button">確定</button>
                     </div>
                 </form>
