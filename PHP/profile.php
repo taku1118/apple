@@ -29,6 +29,18 @@
          <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <?php
+    $student_num = "0000000";
+                $sql=$pdo->prepare("SELECT * FROM personal_inform where student_number=?");
+                $sql->execute([$student_num]);
+                $sql->execute([$student_num]);
+    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+                // $sql=$pdo->prepare("SELECT users SET nickname=? , my_comment=? where student_number='0000000'");
+                // $sql->execute([$_POST["nickname"],$_POST["comment"]]);
+            ?>
+
+
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -47,15 +59,25 @@
             reader.readAsDataURL(input.files[0]);
         }
     </script>
-    <style>
-        </style>
+    
+           
+
+
 <body style="background-color: #E6ECF0;">
     <div class="container-fluid" style="margin-top:30px;">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
+            <!-- ここからforeach -->
+            <?php
+            foreach ($result as $row) {
+                $username = htmlspecialchars($row['username']);
+            }
+            ?>
+                
+
                 <form>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                         <div class="d-flex flex-column align-items-left">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
                                 <span id="profilePicturePlaceholder" class="text-white">画像</span>
@@ -63,12 +85,11 @@
                             </div>
                             <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
                         </div>
-                    </div>
+                    </div> -->
                     <div class="form-group">
                         <label for="username" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
-                        <!-- <p class="form-control" id="username" placeholder="りんごチュッパチャップス" style="flex-grow: 1;"> -->
-                            <p>りんごチュッパチャップス</p>
+                        <p class="form-control" id="username" placeholder="<?php echo $username; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
 
@@ -92,7 +113,10 @@
                             <input type="text" class="form-control" id="graduationYear" placeholder="2025年" style="flex-grow: 1;">
                         </div>
                         </div>
-                    
+            <!-- ここまで -->
+            
+
+
                     <div class="form-group" style="font-size:20px;">
                         <label for="qualifications">保有資格</label>
                         <div class="d-flex align-items-center">
