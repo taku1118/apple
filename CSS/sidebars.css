@@ -46,3 +46,14 @@ html {
   color: var(--bs-nav-pills-link-active-color);
   background-color: var(--bs-nav-pills-link-active-bg);
 }
+
+.copyright{
+  height: 65px;
+  width: 100%;
+  line-height: 65px;
+  background-color: RGBA(42, 87, 164);
+  background-size: cover;
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center;
+}

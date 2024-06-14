@@ -39,7 +39,7 @@
         padding: 0 1.3rem;
     }
 
-    .btn-bd-primary {
+    .btn-success {
         --bs-btn-bg: #1dc219;
         --bs-btn-border-color: #1dc219;
         --bs-btn-hover-bg: #04BC00;
@@ -143,7 +143,11 @@
                     </div>
                 </div>
             </div>
+            </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 
