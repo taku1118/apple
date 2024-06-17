@@ -41,7 +41,7 @@
                 $res = $sql->fetch(PDO::FETCH_ASSOC);
                 ?>
 
-                <form action="profileupdate.php" method="post" enctype="multipart/foem-date">@
+                <form action="profileupdate.php" method="post" enctype="multipart/foem-date">
                     <div class="form-group">
                         <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">

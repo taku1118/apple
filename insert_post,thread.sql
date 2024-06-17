@@ -23,7 +23,3 @@ INSERT INTO Post VALUES
 --     '一次面接',
 --     '2024-05-19'
 -- );
---     $update_select_state = $pdo->prepare('UPDATE Adopt_State_Details SET 
---     adopt_way = ELT(FIELD(adopt_step_id,?),?), 
---     adopt_date = ELT(FIELD(adopt_step_id,1,2,3),CURRENT_DATE(),CURRENT_DATE(),CURRENT_DATE())  
---     WHERE adopt_step_id IN (1,2,3) AND adopt_id = ?');

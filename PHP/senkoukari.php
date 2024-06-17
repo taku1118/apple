@@ -130,6 +130,7 @@
                                         </div>
                                         <div class="card-body" id="edit_area<?= $row['adopt_id'] ?>"><!-- こいつを使う予定 -->
                                             <h2 class="card-title my-5 text-center"><?= $row['company_name_txt'] ?></h2>
+
                                             <!-- テキストと矢印のブロック -->
                                             <?php foreach ($select_detail_modal as $x => $detail_modal) : ?>
                                                 <div class="card-text" id="input_<?= $detail_modal['adopt_step_id'] ?>">
@@ -143,20 +144,17 @@
                                             <?php endforeach; ?>
                                             <!-- ここまで -->
 
-                                            <!-- アイコンボタン -->
-                                            <div class="mx-auto text-center pe-none">
-                                                <button type="button" id="add_input" class="btn"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
-                                            </div>
-                                            
 
                                             <!-- ここにパーツを追加 -->
 
-
-                                            <div class="mb-3">
-                                                <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $row['note'] ?></textarea>
-                                            </div>
-                                            
+                                        </div>
+                                        <!-- アイコンボタン -->
+                                        <div class="mx-auto text-center">
+                                            <button type="button" id="add_input<?= $row['adopt_id'] ?>" class="btn d-none" onclick="add_input(this)"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $row['note'] ?></textarea>
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary" id="edit_btn<?= $row['adopt_id'] ?>" onclick="edit_sheet(this)" type="button">編集</button>
@@ -186,7 +184,7 @@
 
     <script src="../SCRIPT/select_conditon.js"></script>
 
-    <script src="../SCRIPT/"></script>
+    <script src="../SCRIPT/add_form.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null; ?>
