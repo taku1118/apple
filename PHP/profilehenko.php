@@ -43,18 +43,18 @@
 
                 <form action="profileupdate.php" method="post" enctype="multipart/foem-date">
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $res['nickname']; ?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="message" style="font-size:20px;">コメント</label>
+                        <label for="message" style="font-size:20px; margin-top:30px;">コメント</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="comment" value="<?php echo $res['my_comment']; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 2%; margin-left:450px;"
+                    <input type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 40px; margin-left:440px;"
                         value="変 更">
                 </form>
 

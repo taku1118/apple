@@ -46,13 +46,13 @@
 
 
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px;">ユーザーネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:20px;">ユーザーネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $_POST['nickname']; ?>">
                     </div>
 
                     <div class="form-group">
-                        <label for="message" style="font-size:20px;">コメント</label>
+                        <label for="message" style="font-size:20px; margin-top:30px;">コメント</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="comment" value="<?php echo $_POST["comment"]; ?>" style="flex-grow: 1;">
                         </div>

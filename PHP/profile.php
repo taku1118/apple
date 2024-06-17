@@ -32,12 +32,10 @@
     <?php
     $student_num = "0000000";
                 $sql=$pdo->prepare("SELECT * FROM personal_inform where student_number=?");
-                $sql->execute([$student_num]);
+
                 $sql->execute([$student_num]);
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-                // $sql=$pdo->prepare("SELECT users SET nickname=? , my_comment=? where student_number='0000000'");
-                // $sql->execute([$_POST["nickname"],$_POST["comment"]]);
             ?>
 
 
@@ -70,10 +68,13 @@
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
             <!-- ここからforeach -->
             <?php
-            foreach ($result as $row) {
-                $username = htmlspecialchars($row['username']);
-            }
-            ?>
+                foreach ($result as $row) {
+                    $nick_name = htmlspecialchars($row['nickname']);
+                    $comment = htmlspecialchars($row['my_comment']);
+                    $schoolname = htmlspecialchars($row['school_name']);
+                    $graduate = htmlspecialchars($row['graduate_date']);
+                }
+                ?>
                 
 
                 <form>
@@ -87,43 +88,50 @@
                         </div>
                     </div> -->
                     <div class="form-group">
-                        <label for="username" style="font-size:20px;">ユーザーネーム</label>
+                        <label for="username" style="font-size:20px;">ニックネーム</label>
                         <div class="d-flex align-items-center">
-                        <p class="form-control" id="username" placeholder="<?php echo $username; ?>" style="flex-grow: 1;">
+                        <input type="text" class="form-control" id="username" placeholder="<?php echo $nick_name; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
 
                     <div class="form-group" style="font-size:20px;">
                         <label for="message">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="message" placeholder="よろしくお願いします" style="flex-grow: 1;">
+                            <input type="text" class="form-control" id="message" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
                     
                         <div class="form-group" style="font-size:20px;">
                         <label for="school">所属学校</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="school" placeholder="麻生情報ビジネス専門学校 福岡校" style="flex-grow: 1;">
+                            <input type="text" class="form-control" id="school" placeholder="<?php echo $schoolname; ?>" style="flex-grow: 1;">
                         </div>
                         </div>
 
                     <div class="form-group" style="font-size:20px;">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="graduationYear" placeholder="2025年" style="flex-grow: 1;">
+                            <input type="text" class="form-control" id="graduationYear" placeholder="<?php echo $graduate; ?>" style="flex-grow: 1;">
                         </div>
                         </div>
+                
             <!-- ここまで -->
-            
+                    
+            <?php
+                $student_num = "0000000";
+                $sql=$pdo->prepare("SELECT * FROM licence_inform where student_number=?");
 
+                $sql->execute([$student_num]);
+                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+            
+                foreach ($result as $row) :
+                    $licencename = htmlspecialchars($row['licence_name']);
+                ?>
 
                     <div class="form-group" style="font-size:20px;">
                         <label for="qualifications">保有資格</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="qualifications" placeholder="基本情報技術者" style="flex-grow: 1;">
-                        </div>
-                        <div class="d-flex align-items-center mt-2">
-                            <input type="text" class="form-control" id="additionalQualifications" placeholder="応用情報技術者" style="flex-grow: 1;">
+                            <input type="text" class="form-control" id="qualifications" placeholder="<?php echo $licencename; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
             
@@ -131,8 +139,8 @@
                     <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
                     
                     </div>
-
-
+                <?php endforeach; ?>
+                
 
                 </form>
             </main>
