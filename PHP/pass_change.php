@@ -17,9 +17,9 @@
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
     <?php session_start(); ?>
-    <?php $sql=$pdo->query("SELECT student_number FROM users where student_number = '0000000'"); ?>
+    <?php $sql=$pdo->query("SELECT password FROM users where student_number = '0000000'"); ?>
 
-</head>
+</head> 
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">

@@ -2,7 +2,7 @@ $(function(){
     $("#change_confirm").click(function(){
         if($("#formGroupExampleInput").val() == '' || $("#formGroupExampleInput2").val() == ''){
             alert("値が入っていません。");
-        }else{
+        }else{ 
             if ($("#formGroupExampleInput").val() != $("#formGroupExampleInput2").val()) {
                 alert("パスワードが一致しません。もう一度入力してください。");
             }else{
