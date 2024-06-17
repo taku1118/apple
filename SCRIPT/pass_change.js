@@ -1,3 +1,17 @@
+function pushHideButton() {
+    var txtPass = document.getElementById("formGroupExampleInput");
+    var btnEye = document.getElementById("buttonEye");
+    var btnEye2 = document.getElementById("buttonEye2");
+    if (txtPass.type === "text") {
+      txtPass.type = "password";
+      btnEye.className = "fa fa-eye";
+      btnEye2.className = "fa fa-eye";
+    } else {
+      txtPass.type = "text";
+      btnEye.className = "fa fa-eye-slash";
+      btnEye2.className = "fa fa-eye-slash";
+    }
+}
 $(function(){
     $("#change_confirm").click(function(){
         if($("#formGroupExampleInput").val() == '' || $("#formGroupExampleInput2").val() == ''){

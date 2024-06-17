@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>テンプレート</title>
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -13,6 +14,12 @@
 
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
+
+    <style>
+        #textPassword {
+            border: none; /* デフォルトの枠線を消す */
+        }
+    </style>
 
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
@@ -33,11 +40,13 @@
                 <form action="my_page_screen.php" method="post" style="display: inline-block;">
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput" class="form-label">パスワード</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput" name="password" placeholder="パスワード">
+                        <input type="password" class="form-control" id="formGroupExampleInput" maxlength="224" placeholder="パスワード">
+                        <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
                     </div>
                     <div class="mb-3" style="width:100%;">
                         <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" maxlength="224" placeholder="パスワード確認">
+                        <span id="buttonEye2" class="fa fa-eye" onclick="pushHideButton()"></span>
                     </div>
                     <div class="ms-auto">
                         <button class="btn btn-secondary" type="button" onclick="history.back()">キャンセル</button>　
