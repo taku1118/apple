@@ -1,0 +1,19 @@
+text-overflow: ellipsis;使えないとき
+<div class='flexbox'>
+  <div>→flexboxitemないでサイズ指定がない
+    <div class='text'>→ここにoverflow: hidden;もしくは　min-width: 0
+      省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい
+    </div>
+  </div>
+</div>
+もしくは
+<div class='flexbox'>
+  <div class='fix'>→flexboxitem
+    固定サイズ
+  </div>
+  <div class='flex1'>→flexboxitemでflex: 1;
+    <div class='text'>→ここにoverflow: hidden;もしくは　min-width: 0
+      省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい省略したい
+    </div>
+  </div>
+</div>

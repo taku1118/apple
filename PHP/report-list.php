@@ -22,7 +22,15 @@
     <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
-
+      .report-table{
+        max-width: 100%;
+        font-size: 3vw;
+      }
+      @media (min-width: 768px) {
+        .report-table{
+        font-size: 1.4vw;
+        }
+    }
     </style>
 
 </head>
@@ -43,14 +51,14 @@
     </div>
   </div>
 </nav>
-<div class="card px-4 py-3 mx-4 my-4">
+<div class="card px-3 py-3 mx-4 my-4" style="overflow: hidden;">
 <?php
 if(isset($_GET['company_id'])){
   $company_id=$_GET['company_id'];
   $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_step,A.exam_way,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
   $reports->execute([$company_id]);
   $reports = $reports->fetchAll();
-  echo '<table class="table table-hover">';
+  echo '<table class="table table-hover report-table">';
   echo '<thead>';
   echo '<tr>';
   echo '<th scope="col">日付</th>';
@@ -63,10 +71,10 @@ if(isset($_GET['company_id'])){
   if(!empty($reports)){
     foreach($reports as $row){
       echo '<tr data-href="report-show.php?report_id=',$row['report_id'],'">';
-      echo '<td>',$row['exam_date'],'</td>';
+      echo '<td scope="col">',$row['exam_date'],'</td>';
       echo '<td>',$row['exam_step'],'</td>';
       echo '<td>',$row['exam_way'],'</td>';
-      echo '<td>',$row['user_name'],'</td>';
+      echo '<td><span>',$row['user_name'],'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<span></td>';
       echo '</tr>';
     }
   }else{

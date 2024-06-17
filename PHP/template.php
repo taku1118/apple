@@ -15,11 +15,11 @@
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
-    <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
-
     <!-- common.CSS -->
     <link href="../CSS/common.css" rel="stylesheet">
+
+    <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
 
     <style>
     
@@ -29,12 +29,16 @@
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
-      <?php require 'sidebars.php'; ?>
+        <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 

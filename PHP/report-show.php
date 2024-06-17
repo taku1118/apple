@@ -27,6 +27,7 @@
         width: 100%;
         max-width: 720px;
         font-size: 2vw;
+        padding: 0;
     }
     @media (min-width: 768px) {
         #exam-report{
@@ -45,19 +46,6 @@
         display: -webkit-box; /* 必須 */
         -webkit-box-orient: vertical; /* 必須 */
         -webkit-line-clamp: 6; /* 任意の行数を指定 */
-    }
-    .Scrolltxt{
-        width: 100%;
-        overflow-y: scroll;
-        /* IE, Edge 対応 */
-        -ms-overflow-style: none;
-        /* Firefox 対応 */
-        scrollbar-width: none;
-    }
-
-    /* Chrome, Safari 対応 */
-    .Scrolltxt::-webkit-scrollbar {
-        display:none;
     }
 
     @media (min-width: 768px) {
@@ -78,8 +66,17 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="container-fluid">
+    <div class="navbar-brand">
+        <h3 class="mb-0 text-wrap">受験報告書</h3>
+    </div>
+    <div class="ms-auto d-flex">
+        <button class="btn btn-secondary text-nowrap" onclick="history.back()">戻る</button>
+    </div>
+  </div>
+</nav>
 <div class="mt-3 mb-3 mx-3">
-        <h1>受験報告書</h1>
 <?php
 if (isset($_GET['report_id'])) {
     $report_datas = $pdo->prepare('SELECT * FROM Exam_Reports WHERE report_id = ?');
@@ -165,21 +162,21 @@ if (isset($_GET['report_id'])) {
         echo '<div class="d-flex align-items-center px-2 border" style="height:6%">';
         echo '<span><b>試験内容</b><br>・・・面接で質問された事項、試験で出た問題をできる限り書いてください。</span>';
         echo '</div>';
-        echo '<div class="d-flex py-2 px-2 border" style="height:28%">';
-        echo '<span class="Scrolltxt">',$report_datas['question'],'</span>';
+        echo '<div class="d-flex py-2 px-2 border" style="height:28%; width:100%;">';
+        echo '<span class="Scrollbox">',$report_datas['question'],'</span>';
         echo '</div>';
         // 感想
         echo '<div class="d-flex align-items-center px-2 border" style="height:6%">';
         echo '<span><b>受験後の感想(所感)</b><br>・・・感じたこと及び今後の受験者へのアドバイス</span>';
         echo '</div>';
-        echo '<div class="d-flex py-2 px-2 border" style="height:16%">';
-        echo '<span class="Scrolltxt">',$report_datas['opinion'],'</span>';
+        echo '<div class="d-flex py-2 px-2 border" style="height:16%; width:100%;">';
+        echo '<span class="Scrollbox">',$report_datas['opinion'],'</span>';
         echo '</div>';
         // 備考
         echo '<div class="d-flex align-items-center px-2 border" style="height:3%">';
         echo '<span class="fw-bold">備考</span>';
         echo '</div>';
-        echo '<div class="d-flex align-items-center px-2 border" style="height:6%">';
+        echo '<div class="d-flex align-items-center px-2 border" style="height:6%; width:100%;">';
         echo '<span class="txt-limit2">',$report_datas['other'],'</span>';
         echo '</div>';
         echo '</div>';
@@ -192,11 +189,12 @@ if (isset($_GET['report_id'])) {
     // echo '<p>該当の受験報告書はありません。</p>';
  }
   ?>
-<div class="d-flex">
-        <button class="ms-auto me-3 btn btn-secondary text-nowrap btn-lg" onclick="history.back()">戻る</button>
-</div>
 </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 
@@ -208,6 +206,9 @@ if (isset($_GET['report_id'])) {
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- common.Script-->
+    <script src="../SCRIPT/common.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>

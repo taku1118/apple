@@ -21,32 +21,89 @@ body{
 
 /* テキスト3行 */
 .txt-limit3 {
-overflow: hidden;/* はみ出た部分を非表示 */
-display: -webkit-box; /* 必須 */
--webkit-box-orient: vertical; /* 必須 */
--webkit-line-clamp: 3; /* 任意の行数を指定 */
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 3; /* 任意の行数を指定 */
+}
+
+/* テキスト4行 */
+.txt-limit4 {
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 4; /* 任意の行数を指定 */
 }
 
 /* テキスト5行 */
 .txt-limit5 {
-overflow: hidden;/* はみ出た部分を非表示 */
-display: -webkit-box; /* 必須 */
--webkit-box-orient: vertical; /* 必須 */
--webkit-line-clamp: 5; /* 任意の行数を指定 */
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 5; /* 任意の行数を指定 */
 }
 
 /* テキスト6行 */
 .txt-limit6 {
-overflow: hidden;/* はみ出た部分を非表示 */
-display: -webkit-box; /* 必須 */
--webkit-box-orient: vertical; /* 必須 */
--webkit-line-clamp: 6; /* 任意の行数を指定 */
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 6; /* 任意の行数を指定 */
+}
+
+/* テキスト7行 */
+.txt-limit7 {
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 7; /* 任意の行数を指定 */
+}
+
+/* テキスト8行 */
+.txt-limit8 {
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 8; /* 任意の行数を指定 */
+}
+
+/* テキスト9行 */
+.txt-limit9 {
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 9; /* 任意の行数を指定 */
 }
 
 /* テキスト10行 */
 .txt-limit10 {
-overflow: hidden;/* はみ出た部分を非表示 */
-display: -webkit-box; /* 必須 */
--webkit-box-orient: vertical; /* 必須 */
--webkit-line-clamp: 10; /* 任意の行数を指定 */
+	overflow: hidden;/* はみ出た部分を非表示 */
+	display: -webkit-box; /* 必須 */
+	-webkit-box-orient: vertical; /* 必須 */
+	-webkit-line-clamp: 10; /* 任意の行数を指定 */
+}
+
+/* スクロールバー非表示 */
+.Scrollbox{
+	width: 100%;
+	overflow-y: scroll;
+	/* IE, Edge 対応 */
+	-ms-overflow-style: none;
+	/* Firefox 対応 */
+	scrollbar-width: none;
+}
+/* Chrome, Safari 対応 */
+.Scrollbox::-webkit-scrollbar {
+	display:none;
+}
+
+/* ボタン書き換え */
+.btn-success {
+	--bs-btn-bg: #1dc219;
+	--bs-btn-border-color: #1dc219;
+	--bs-btn-hover-bg: #04BC00;
+	--bs-btn-hover-border-color: #04BC00;
+	--bs-btn-focus-shadow-rgb: 29, 194, 25;
+	--bs-btn-active-bg: #03a900;
+	--bs-btn-active-border-color: #03a900;
 }
