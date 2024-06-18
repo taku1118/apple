@@ -91,7 +91,7 @@ if (empty($company_ids)) {
             echo '<div class="col-xl-6">';
               echo '<div class="card mb-3">';
                 echo '<div class="card-body d-flex">';
-                  echo '<figure class="figure me-3 align-self-center">';
+                  echo '<figure class="figure me-3 align-self-center d-none d-sm-block">';
             if (empty($row['logo_image'])) {
                 echo '<img src="../IMAGE/no_image.jpg" alt="..." width="100" height="auto">';
             } else {

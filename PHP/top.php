@@ -38,6 +38,13 @@
     #company-name-search-form button{   
         padding: 0 1.3rem;
     }
+
+    .col-txt{
+        white-space: nowrap;
+	    overflow: hidden;
+	    text-overflow: ellipsis;
+        color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    }
     </style>
 
 </head>
@@ -117,16 +124,14 @@
                 <?php
                 $sql = $pdo->query('SELECT * FROM Industries');
                 $industry=$sql->fetchAll();
+                echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 row-cols-lg-2 row-cols-xxl-3">';
                 foreach ($industry as $i=>$row) {
-                    if($i%3==0){
-                        echo '<div class="row">';
-                    }
-                    echo '<div class="col mx-auto mb-2"><a href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
-                    if($i%3==2||count($industry)==$i){
-                        echo '</div>';
-                    }
+                    
+                    echo '<div class="col mx-auto mb-2 col-txt"><a href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
+                    
 
                 }
+                echo '</div>';
                 ?>    
                             </div>
                         </div>

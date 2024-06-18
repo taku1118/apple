@@ -30,6 +30,9 @@
         .report-table{
         font-size: 1.4vw;
         }
+      .rowTable{
+
+      }
     }
     </style>
 
@@ -58,30 +61,32 @@ if(isset($_GET['company_id'])){
   $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_step,A.exam_way,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
   $reports->execute([$company_id]);
   $reports = $reports->fetchAll();
-  echo '<table class="table table-hover report-table">';
+  echo '<div>';
+  echo '<table class="table table-hover report-table" style="width:100%;table-layout:fixed;">';
   echo '<thead>';
   echo '<tr>';
-  echo '<th scope="col">日付</th>';
-  echo '<th scope="col">試験次数</th>';
-  echo '<th scope="col">試験内容</th>';
-  echo '<th scope="col">名前</th>';
+  echo '<th scope="col" class="txt-limit1" style="width:25%;">日付</th>';
+  echo '<th scope="col" class="txt-limit1" style="width:25%;">試験次数</th>';
+  echo '<th scope="col" class="txt-limit1" style="width:25%;">試験内容</th>';
+  echo '<th scope="col" class="txt-limit1" style="width:25%;">名前</th>';
   echo '</tr>';
   echo '</thead>';
   echo '<tbody>';
   if(!empty($reports)){
     foreach($reports as $row){
       echo '<tr data-href="report-show.php?report_id=',$row['report_id'],'">';
-      echo '<td scope="col">',$row['exam_date'],'</td>';
-      echo '<td>',$row['exam_step'],'</td>';
-      echo '<td>',$row['exam_way'],'</td>';
-      echo '<td><span>',$row['user_name'],'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa<span></td>';
+      echo '<td scope="col" style="width:25%;"><div class="txt-limit1">',$row['exam_date'],'</div></td>';
+      echo '<td style="width:25%;"><div class="txt-limit1">',$row['exam_step'],'</div></td>';
+      echo '<td style="width:25%;"><div class="txt-limit1">',$row['exam_way'],'</div></td>';
+      echo '<td style="width:25%;"><div class="txt-limit1">',$row['user_name'],'</div></td>';
       echo '</tr>';
     }
   }else{
-    echo '<tr><td colspan="3">該当企業の受験報告書はありません。</td></tr>';
+    echo '<tr><td colspan="4">該当企業の受験報告書はありません。</td></tr>';
   }
   echo '</tbody>';
   echo '</table>';
+  echo '</div>';
 }else{
   echo '<h3>該当する企業が見つかりませんでした。</h3>';
 }

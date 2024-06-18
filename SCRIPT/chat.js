@@ -9,7 +9,7 @@ $(document).ready(function() {
             success: function(data) {
                 $('#chat-room-list').empty();
                 data.forEach(function(chatRoom) {
-                    $('#chat-room-list').append('<li class="list-group-item chat-room" data-id="' + chatRoom.chat_room_id + '">' + chatRoom.chat_room_title + '</li>');
+                    $('#chat-room-list').append('<li class="list-group-item list-group-item-action chat-room" data-id="' + chatRoom.chat_room_id + '" style="border-radius: 0;height:4rem;">' + chatRoom.chat_room_title + '</li>');
                 });
 
                 $('.chat-room').click(function() {

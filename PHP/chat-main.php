@@ -41,12 +41,12 @@
         }
         .message-sent {
             margin-left: auto;
-            background-color: #d1e7dd;
+            background-color: #C3F69D;
             align-self: flex-end;
         }
         .message-received {
             margin-right: auto;
-            background-color: #f8d7da;
+            background-color: #EFEFEF;
             align-self: flex-start;
         }
         .message-input {
@@ -72,15 +72,15 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-            <div class="row">
-                <div class="col-3 p-3 chat-room-list bg-light">
-                    <h5>チャットルーム</h5>
-                    <ul id="chat-room-list" class="list-group">
+            <div class="row m-0" style="height: 100%;">
+                <div class="col-3 chat-room-list bg-light p-0 d-flex flex-column">
+                    <h5 class="m-3">チャットルーム</h5>
+                    <ul id="chat-room-list" class="list-group flex-grow-1">
                         <!-- チャットルームリスト -->
                     </ul>
                 </div>
                 <div class="col-9 chat-container">
-                    <div class="messages" id="messages">
+                    <div class="messages Scrollbox" id="messages">
                         <!-- メッセージが表示される -->
                     </div>
                     <form id="message-form" class="message-input p-3">
