@@ -41,8 +41,8 @@
 
     .col-txt{
         white-space: nowrap;
-	    overflow: hidden;
-	    text-overflow: ellipsis;
+        overflow: hidden;
+        text-overflow: ellipsis;
         color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
     }
     </style>

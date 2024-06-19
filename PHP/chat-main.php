@@ -63,6 +63,10 @@
             overflow-y: auto;
             max-height: 100vh;
         }
+        .chat-room{
+            display:flex;
+            align-items: center;
+        }
     </style>
 </head>
 <body>
@@ -81,7 +85,9 @@
                 </div>
                 <div class="col-9 chat-container">
                     <div class="messages Scrollbox" id="messages">
+                        <div id="scroll-inner">
                         <!-- メッセージが表示される -->
+                        </div>
                     </div>
                     <form id="message-form" class="message-input p-3">
                         <textarea id="message" class="form-control" rows="1" placeholder="メッセージを入力..."></textarea>
