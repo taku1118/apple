@@ -30,9 +30,6 @@
         .report-table{
         font-size: 1.4vw;
         }
-      .rowTable{
-
-      }
     }
     </style>
 
