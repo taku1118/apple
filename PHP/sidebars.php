@@ -50,7 +50,7 @@
     </li>
     <!-- 受験報告 -->
     <li class="nav-item">
-        <a href="zyukenhoukokukanryo.php" class="nav-link text-white">
+        <a href="zyukenhoukokusakusei" class="nav-link text-white">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
         受験報告
         </a>
@@ -113,7 +113,7 @@
             </li>
             <!-- 受験報告 -->
             <li class="nav-item">
-                <a href="zyukenhoukokukanryo.php" class="nav-link text-white">
+                <a href="zyukenhoukokusakusei" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
                 受験報告
                 </a>
