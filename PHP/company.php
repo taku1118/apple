@@ -49,8 +49,8 @@
 <?php
 $company_ids = [];
 // 名前検索
-if (isset($_POST['company-name'])) {
-    $company_name=$_POST['company-name'];
+if (isset($_GET['company-name'])) {
+    $company_name=$_GET['company-name'];
     if($company_name==''){
         $company_ids = $pdo->query('SELECT company_id FROM Companies');
     }else{
@@ -74,7 +74,7 @@ $company_ids = $company_ids->fetchAll(PDO::FETCH_COLUMN);
 ?>
             <!-- 企業名検索フォーム -->
             <div class="d-flex align-items-center search-box">
-                <form id="company-name-search-form" action = "company.php" method="post" class="d-flex" role="search">
+                <form id="company-name-search-form" action = "company.php" method="get" class="d-flex" role="search">
                     <input class="form-control me-2" type="search" name="company-name" placeholder="企業名を入力" aria-label="Search" >
                     <button class="btn btn-success text-nowrap" type="submit">検索</button>
                 </form>
