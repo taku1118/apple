@@ -1,17 +1,26 @@
-function pushHideButton() {
-    var txtPass = document.getElementById("formGroupExampleInput");
-    var btnEye = document.getElementById("buttonEye");
-    var btnEye2 = document.getElementById("buttonEye2");
-    if (txtPass.type === "text") {
-      txtPass.type = "password";
-      btnEye.className = "fa fa-eye";
-      btnEye2.className = "fa fa-eye";
-    } else {
-      txtPass.type = "text";
-      btnEye.className = "fa fa-eye-slash";
-      btnEye2.className = "fa fa-eye-slash";
+// eyeIconのclickクリックイベント
+$("#eyeIcon").on("click", () => {
+    // eyeIconのclass切り替え
+    $("#eyeIcon").toggleClass("bi-eye-slash bi-eye");
+
+    // inputのtype切り替え
+    if($("#formGroupExampleInput").attr("type") == "password"){
+        $("#formGroupExampleInput").attr("type", "text");
+    }else {
+      $("#formGroupExampleInput").attr("type", "password");
     }
-}
+});
+$("#eyeIcon2").on("click", () => {
+    // eyeIconのclass切り替え
+    $("#eyeIcon2").toggleClass("bi-eye-slash bi-eye");
+
+    // inputのtype切り替え
+    if ($("#formGroupExampleInput2").attr("type") == "password") {
+        $("#formGroupExampleInput2").attr("type", "text");
+    } else {
+        $("#formGroupExampleInput2").attr("type", "password");
+    }
+});
 $(function(){
     $("#change_confirm").click(function(){
         if($("#formGroupExampleInput").val() == '' || $("#formGroupExampleInput2").val() == ''){
