@@ -9,10 +9,10 @@ html {
 
 .wrapper {
   height: 100vh;
-  max-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: auto;
+  overflow-x: hidden;
   overflow-y: hidden;
 }
 

@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var currentChatRoomId = null;
-    var currentUser = '0000001'; // 現在のユーザー。セッションなどで管理することを推奨
+    var currentUser = '0000000'; // 現在のユーザー。セッションなどで管理することを推奨
 
     function fetchChatRooms() {
         $.ajax({
@@ -9,7 +9,7 @@ $(document).ready(function() {
             success: function(data) {
                 $('#chat-room-list').empty();
                 data.forEach(function(chatRoom) {
-                    $('#chat-room-list').append('<li class="list-group-item chat-room" data-id="' + chatRoom.chat_room_id + '">' + chatRoom.chat_room_title + '</li>');
+                    $('#chat-room-list').append('<li class="list-group-item list-group-item-action chat-room" data-id="' + chatRoom.chat_room_id + '" style="border-radius: 0;height:4rem;">' + chatRoom.chat_room_title + '</li>');
                 });
 
                 $('.chat-room').click(function() {
@@ -30,7 +30,8 @@ $(document).ready(function() {
                     $('#messages').empty();
                     data.forEach(function(message) {
                         var messageClass = (message.send_by === currentUser) ? 'message-sent' : 'message-received';
-                        $('#messages').append('<div class="message ' + messageClass + '"><strong>' + message.send_by + ':</strong> ' + message.message + '</div>');
+                        var messageimageClass = (message.send_by === currentUser) ? 'd-none' : '';
+                        $('#messages').append('<div><img src="../IMAGE/cat.jpg" alt="" width="32" height="32" class="rounded-circle me-2 '+messageimageClass+'">'+'<div class="message ' + messageClass + '">' + message.message + '</div></div>');
                     });
                 }
             });

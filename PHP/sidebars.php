@@ -22,7 +22,7 @@
 
 <!-- サイドバー -->
 <nav id="sidebar" class="d-none d-md-flex flex-column flex-shrink-0 p-3 text-bg-dark-custom" style="width: 280px;">
-    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <a href="https://asojuku.ac.jp" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
         <image src="../IMAGE/asologo.png" width="auto" height="34">
     </a>
     <hr>
@@ -50,7 +50,7 @@
     </li>
     <!-- 受験報告 -->
     <li class="nav-item">
-        <a href="zyukenhoukokukanryo.php" class="nav-link text-white">
+        <a href="zyukenhoukokusakusei" class="nav-link text-white">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
         受験報告
         </a>
@@ -113,7 +113,7 @@
             </li>
             <!-- 受験報告 -->
             <li class="nav-item">
-                <a href="zyukenhoukokukanryo.php" class="nav-link text-white">
+                <a href="zyukenhoukokusakusei" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#file-earmark-text"/></svg>
                 受験報告
                 </a>
