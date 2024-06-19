@@ -7,7 +7,7 @@
     <title>トップページ</title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    <link rel="stylesheet" href="../CSS/reset.css"/>
     
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,7 +26,7 @@
         background-image: url("../IMAGE/school.jpg");
         background-size: cover;
         height: 200px;
-        width:100%;
+        width: 100%;
     }
 
     #company-name-search-form{
@@ -66,7 +66,7 @@
                 <!-- 勤務地検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5>勤務地から企業を検索</h5>
+                        <h5 class="m-0">勤務地から企業を検索</h5>
                     </div>
                     <!-- 地域ごとのボタン -->
                     <div class="card-body">
@@ -83,7 +83,8 @@
                         echo '<div class="btn-group" role="group" style="display: flex;flex-wrap: wrap;">';
                         foreach($sql2 as $row2){
                             
-                            echo '<a class="me-2 mb-2 text-nowrap" href="company.php?prefecture_id=',$row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
+                            echo '<a class="me-2 mb-2 text-nowrap" href="company.php?prefecture_id=',
+                            $row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
                         }
                         echo '</div>';
                         echo '</div>';
@@ -95,7 +96,7 @@
                 <!-- 職種検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5>職種から企業を検索</h5>
+                        <h5 class="m-0">職種から企業を検索</h5>
                     </div>
                     <!-- 職種ごとのボタン -->
                     <div class="card-body">
@@ -103,7 +104,8 @@
                 <?php
                 $sql = $pdo->query('SELECT * FROM JobTypes');
                 foreach ($sql as $row) {
-                    echo '<a class="btn btn-primary me-2 mb-2" href="company.php?job_id=' ,$row['job_id'], '">' ,$row['job_name'],'</a>';
+                    echo '<a class="btn btn-primary me-2 mb-2" href="company.php?job_id=' ,$row['job_id'], '">' ,
+                    $row['job_name'],'</a>';
                 }
                 ?>
                         </div>
@@ -112,7 +114,7 @@
                 <!-- 業界検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5>業界から企業を検索</h5>
+                        <h5 class="m-0">業界から企業を検索</h5>
                     </div>
                     <!-- 業界検索ボタン -->
                     <div class="card-body">
@@ -126,10 +128,8 @@
                 $industry=$sql->fetchAll();
                 echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 row-cols-lg-2 row-cols-xxl-3">';
                 foreach ($industry as $i=>$row) {
-                    
-                    echo '<div class="col mx-auto mb-2 col-txt"><a href="company.php?industry_id=' ,$row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
-                    
-
+                    echo '<div class="col mx-auto mb-2 col-txt"><a href="company.php?industry_id=' ,
+                    $row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
                 }
                 echo '</div>';
                 ?>    
@@ -140,6 +140,7 @@
             </div>
             </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
             <div class="d-md-none copyright">
                 @ 2024 AppleChupachups
             </div>

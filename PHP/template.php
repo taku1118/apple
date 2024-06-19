@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title></title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    <link rel="stylesheet" href="../CSS/reset.css"/>
     
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -15,11 +15,11 @@
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
-    <!-- common.CSS -->
-    <link href="../CSS/common.css" rel="stylesheet">
-
     <!-- DB接続 -->
     <?php require 'db-connect.php'; ?>
+
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
     
@@ -29,7 +29,7 @@
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
-        <?php require 'sidebars.php'; ?>
+      <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
