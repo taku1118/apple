@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>テンプレート</title>
-    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
@@ -37,16 +40,16 @@
         <div style="margin-top: 10%;">
             <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
-                <form action="my_page_screen.php" method="post" style="display: inline-block;">
-                    <div class="mb-3" style="width:100%;">
-                        <label for="formGroupExampleInput" class="form-label">パスワード</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput" maxlength="224" placeholder="パスワード">
-                        <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
+                <form action="my_page_screen.php" method="post">
+                <label for="formGroupExampleInput" class="form-label">パスワード</label>
+                    <div class="mb-3 position-relative">
+                        <input type="password" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
+                        <i id="eyeIcon" class="bi bi-eye-slash translate-middle position-absolute top-50 end-0"></i>
                     </div>
-                    <div class="mb-3" style="width:100%;">
-                        <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
-                        <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" maxlength="224" placeholder="パスワード確認">
-                        <span id="buttonEye2" class="fa fa-eye" onclick="pushHideButton()"></span>
+                <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
+                    <div class="mb-3 position-relative">
+                        <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
+                        <i id="eyeIcon2" class="bi bi-eye-slash translate-middle position-absolute top-50 end-0"></i>  
                     </div>
                     <div class="ms-auto">
                         <button class="btn btn-secondary" type="button" onclick="history.back()">キャンセル</button>　
