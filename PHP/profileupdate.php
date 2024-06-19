@@ -34,14 +34,21 @@
 <body style="background-color: #E6ECF0;">
     <div class="container-fluid">
         <div class="row">
-            <main class="col-md-10 mx-auto" style="padding: 20px;">
+            <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
                 <?php
                 $sql=$pdo->prepare("update users SET nickname=? , my_comment=? where student_number='0000000'");
                 $sql->execute([$_POST["nickname"],$_POST["comment"]]);
 
-
-                // $res = $sql->fetch(PDO::FETCH_ASSOC);
+                    if (strlen($_POST["nickname"]) > 30) {
+                        echo '<font color="red">ニックネームは30文字以内で入力してください。</font>';
+                    } elseif (strlen($_POST["comment"]) > 500) {
+                        echo '<font color="red">コメントは500文字以内で入力してください。</font>';
+                    } else {
+                        $sql = $pdo->prepare("UPDATE users SET nickname=?, my_comment=? WHERE student_number='0000000'");
+                        $sql->execute([$_POST["nickname"], $_POST["comment"]]);
+                        $message = "変更が完了しました";
+                    }
                 ?>
 
 
@@ -58,12 +65,11 @@
                         </div>
                     </div>
 
-                    <h3>変更が完了しました</h3>
-                    
-                    <div class="d-flex"  style="margin-top:3%;">
-                    <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
-                    
+                    <div class="d-flex align-items-center" style="margin-top: 50px;">
+                    <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px;">戻る</button>
+                    <h2 class="text-primary mb-0" style="margin-left:280px">変更が完了しました</h2>
                     </div>
+                   
                     
                     
 
