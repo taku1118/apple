@@ -69,6 +69,7 @@
             <!-- ここからforeach -->
             <?php
                 foreach ($result as $row) {
+                    $profileimg = htmlspecialchars($row['profile_img']);
                     $nick_name = htmlspecialchars($row['nickname']);
                     $comment = htmlspecialchars($row['my_comment']);
                     $schoolname = htmlspecialchars($row['school_name']);
@@ -87,6 +88,7 @@
                             <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
                         </div>
                     </div>
+
                     <div class="form-group">
                         <label for="username" style="font-size:20px;margin-top:20px">ニックネーム</label>
                         <div class="d-flex align-items-center">
@@ -114,8 +116,6 @@
                             <input type="text" class="form-control" id="graduationYear" placeholder="<?php echo $graduate; ?>" style="flex-grow: 1;">
                         </div>
                         </div>
-                
-            <!-- ここまで -->
                     
             <?php
                 $student_num = "0000000";
