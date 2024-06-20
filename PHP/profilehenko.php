@@ -54,7 +54,7 @@
                             <input type="text" class="form-control" name="comment" value="<?php echo $res['my_comment']; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
-                    <input type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 40px; margin-left:440px;"
+                    <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px; margin-top: 40px; margin-left:440px;"
                         value="変 更">
                 </form>
 

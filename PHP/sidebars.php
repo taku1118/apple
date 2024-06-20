@@ -57,7 +57,7 @@
     </li>
     <!-- マイページ -->
     <li class="nav-item">
-        <a href="mypage.php" class="nav-link text-white">
+        <a href="my_page_screen.php" class="nav-link text-white">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
         マイページ
         </a>
@@ -130,7 +130,7 @@
             </li>
             <!-- マイページ -->
             <li class="nav-item">
-                <a href="mypage.php" class="nav-link text-white">
+                <a href="my_page_screen.php" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
                 マイページ
                 </a>

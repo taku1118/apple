@@ -29,9 +29,6 @@
 </head>
 
 <body>
-    <?php 
-    $_SESSION['student_number'] = "0000000";
-    ?>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
         <?php require 'sidebars.php'; ?>
@@ -43,7 +40,7 @@
                     <?php
                         $personal_items = ["性別","現住所","生年月日","卒業予定年月","学校名","学科","就活状況","内定有無"];
                         $personal_inform = $pdo->prepare('SELECT gender, prefecture_name, birthday, graduate_date, school_name, course_name, job_hunt, job_offer, student_number, user_name, profile_img FROM Personal_Inform where student_number = ?');
-                        $personal_inform->execute([$_SESSION['student_number']]);
+                        $personal_inform->execute([$_SESSION['user']['student_number']]);
                         $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($fetch_data);
                     ?>
@@ -72,7 +69,7 @@
                 <div class="col">
                     <?php
                         $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
-                        $Licence_Inform->execute([$_SESSION['student_number']]);
+                        $Licence_Inform->execute([$_SESSION['user']['student_number']]);
                         $fetch_data = $Licence_Inform->fetchAll();
                     ?>
                     <span class="fs-1 d-inline-block" style="width: 50%;">所有スキル</span>
@@ -93,7 +90,7 @@
                     <?php
                         $Desire_items = ["希望する勤務地","希望する業界","希望する職種"];
                         $Desire_Inform = $pdo->prepare('SELECT prefecture_name, industry_name, job_name FROM Desire_Inform where student_number = ?');
-                        $Desire_Inform->execute([$_SESSION['student_number']]);
+                        $Desire_Inform->execute([$_SESSION['user']['student_number']]);
                         $desire_fetch = $Desire_Inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($desire_fetch);
                     ?>
