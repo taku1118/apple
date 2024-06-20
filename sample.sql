@@ -254,8 +254,10 @@ VALUES
 -- ユーザーテーブル
 INSERT INTO Users (student_number, school_id, course_id, user_name, password)
 VALUES 
-('0000000', '01', '01-01', 'Admin', '00000000'),
-('0000001', '01', '01-02', '吾輩は猫', '12345678');
+-- パスワード:test
+('0000000', '01', '01-01', 'Admin', '$2y$10$pdBSRrydPYyZ2d1xU5V8VO0bYkJwOqyU3gswJ3omvykqPhN0ZByBS'),
+-- パスワード:1234
+('0000001', '01', '01-02', '吾輩は猫', '$2y$10$xibift4FWu/q3l7Kn0StI./TZUkx2iZfuDtJHLSGKartHK5/tYnpC');
 
 -- 企業テーブル
 INSERT INTO Companies (company_id, company_name, company_name_ruby, company_url, company_location, president_name, job_detail, build_date, capital, employee_number, revenue, logo_image)
@@ -456,7 +458,7 @@ INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
 VALUES 
 (
     1,
-    1,
+    NULL,
     '一次面接',
     '2024-05-16'
 );
@@ -493,7 +495,7 @@ VALUES
 ('0000000', '0001');
 
 -- 受験報告書テーブル
-INSERT INTO Exam_Reports (report_id, company_id, student_number, exam_date, apply_way, exam_way, question, opinion, other)
+INSERT INTO Exam_Reports (report_id, company_id, student_number, exam_date, apply_way, exam_step, exam_way, question, opinion, other)
 VALUES 
 (
     NULL,
@@ -501,7 +503,8 @@ VALUES
     '0000000',
     '2024-05-16',
     '学校求人',
-    '一次面接',
+    '一次',
+    '面接',
     '経歴・履歴書の内容について聞かれた。',
     '緊張しすぎてしどろもどろになってしまった。',
     '面接官がかわいかった'
@@ -512,7 +515,8 @@ VALUES
     '0000000',
     '2024-05-16',
     '学校求人',
-    '一次面接',
+    '一次',
+    '面接',
     '経歴・履歴書の内容について聞かれた。',
     '完璧だった',
     'オンライン面接'
@@ -523,7 +527,8 @@ VALUES
     '0000000',
     '2024-05-22',
     '学校求人',
-    '二次面接',
+    '二次',
+    '面接',
     '志望動機について勤務地の社員から聞かれた',
     '厳しそうな人だった',
     '特になし'
