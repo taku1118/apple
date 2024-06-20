@@ -34,21 +34,57 @@
             background-color: #f8f9fa;
         }
         .message {
-            padding: 10px;
+            position: relative;
+            padding: 10px 20px;
             margin: 5px 0;
             border-radius: 10px;
             max-width: 60%;
+            word-wrap: break-word;
         }
         .message-sent {
             margin-left: auto;
             background-color: #C3F69D;
             align-self: flex-end;
         }
+        .message-sent::after {
+            content: '';
+            position: absolute;
+            right: 10px;
+            width: 0;
+            height: 0;
+            top: 13px;
+            border: 10px solid transparent;
+            border-left-color: #C3F69D;
+            border-right: 0;
+            translate: 100% -50%;
+            border-width: 0 0 20px 20px;
+        }
         .message-received {
             margin-right: auto;
             background-color: #EFEFEF;
             align-self: flex-start;
+            position: relative;
+            padding: 10px 20px;
+            margin: 5px 0;
+            border-radius: 10px;
+            max-width: 60%;
+            word-wrap: break-word;
         }
+
+        .message-received::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            width: 0;
+            height: 0;
+            top: 13px;
+            border: 10px solid transparent;
+            border-right-color: #EFEFEF;
+            border-left: 0;
+            translate: -100% -50%;
+            border-width: 0 20px 20px 0;
+        }
+
         .message-input {
             display: flex;
         }
@@ -63,8 +99,8 @@
             overflow-y: auto;
             max-height: 100vh;
         }
-        .chat-room{
-            display:flex;
+        .chat-room {
+            display: flex;
             align-items: center;
         }
     </style>
@@ -112,6 +148,10 @@
     <script src="../SCRIPT/common.js"></script>
 
     <!-- Chat Script -->
+    <script>
+        // PHPのセッション情報をJavaScriptに渡す
+        var currentUser = <?php echo json_encode($_SESSION['user']['student_number']); ?>;
+    </script>
     <script src="../SCRIPT/chat.js"></script>
 
     <!-- DB切断 -->

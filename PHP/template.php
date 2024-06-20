@@ -1,4 +1,5 @@
 <?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
