@@ -57,7 +57,7 @@
     </li>
     <!-- マイページ -->
     <li class="nav-item">
-        <a href="mypage.php" class="nav-link text-white">
+        <a href="my_page_screen.php" class="nav-link text-white">
         <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
         マイページ
         </a>
@@ -67,14 +67,24 @@
     <!-- アイコン -->
     <div class="dropdown">
         <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../IMAGE/cat.jpg" alt="" width="32" height="32" class="rounded-circle me-2">
-            <strong>吾輩は猫</strong>
+            <?php
+            if(empty($_SESSION['user']['profile_img'])){
+                echo '<img src="../IMAGE/no_image.jpg" alt="no_image" width="32" height="32" class="rounded-circle me-2">';
+            }else{
+                echo '<img src="../IMAGE/PROFILE/',$_SESSION['user']['profile_img'],'" alt="no_image" width="32" height="32" class="rounded-circle me-2">';
+            }
+            if(empty($_SESSION['user']['nickname'])){
+                echo '<strong>',$_SESSION['user']['user_name'],'</strong>';
+            }else{
+                echo '<strong>',$_SESSION['user']['nickname'],'</strong>';
+            }
+            ?>
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">プロフィール変更</a></li>
             <li><a class="dropdown-item" href="#">パスワード変更</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">ログアウト</a></li>
+            <li><a class="dropdown-item" onclick="logout()">ログアウト</a></li>
         </ul>
     </div>
 </nav>
@@ -120,7 +130,7 @@
             </li>
             <!-- マイページ -->
             <li class="nav-item">
-                <a href="mypage.php" class="nav-link text-white">
+                <a href="my_page_screen.php" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"/></svg>
                 マイページ
                 </a>
@@ -130,7 +140,7 @@
                 <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">プロフィール変更</a></li>
                 <li><a class="dropdown-item" href="#">パスワード変更</a></li>
-                <li><a class="dropdown-item" href="#">ログアウト</a></li>
+                <li><a class="dropdown-item" onclick="logout()">ログアウト</a></li>
                 </ul>
             </li>
             </ul>

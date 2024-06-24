@@ -1,6 +1,12 @@
 $(document).ready(function() {
     var currentChatRoomId = null;
-    var currentUser = '0000000'; // 現在のユーザー。セッションなどで管理することを推奨
+    var autoScroll = true;  // 自動スクロールフラグ
+
+    // メッセージを最下部にスクロールする関数
+    function scrollToBottom() {
+        var messagesContainer = $('#messages');
+        messagesContainer.scrollTop(messagesContainer[0].scrollHeight);
+    }
 
     function fetchChatRooms() {
         $.ajax({
@@ -20,7 +26,7 @@ $(document).ready(function() {
         });
     }
 
-    function fetchMessages() {
+    function fetchMessages(autoScrollEnabled = true) {
         if (currentChatRoomId !== null) {
             $.ajax({
                 url: '../PHP/fetch_messages.php',
@@ -30,9 +36,12 @@ $(document).ready(function() {
                     $('#messages').empty();
                     data.forEach(function(message) {
                         var messageClass = (message.send_by === currentUser) ? 'message-sent' : 'message-received';
-                        var messageimageClass = (message.send_by === currentUser) ? 'd-none' : '';
-                        $('#messages').append('<div><img src="../IMAGE/cat.jpg" alt="" width="32" height="32" class="rounded-circle me-2 '+messageimageClass+'">'+'<div class="message ' + messageClass + '">' + message.message + '</div></div>');
+                        var profileImage = message.profile_img ? '../IMAGE/PROFILE/' + message.profile_img : '../IMAGE/no_image.jpg'; // デフォルト画像を指定
+                        $('#messages').append('<div class="d-flex ' + (message.send_by === currentUser ? 'justify-content-end' : '') + '"><img src="' + profileImage + '" alt="" width="32" height="32" class="rounded-circle me-2 ' + (message.send_by === currentUser ? 'd-none' : '') + '"><div class="message ' + messageClass + '">' + message.message + '</div></div>');
                     });
+                    if (autoScrollEnabled) {
+                        scrollToBottom();  // メッセージをフェッチした後にスクロール
+                    }
                 }
             });
         }
@@ -49,11 +58,21 @@ $(document).ready(function() {
                 success: function() {
                     $('#message').val('');
                     fetchMessages();
+                    scrollToBottom();  // メッセージ送信後にスクロール
                 }
             });
         }
     });
 
+    // メッセージコンテナのスクロールイベントを監視
+    $('#messages').on('scroll', function() {
+        var messagesContainer = $(this);
+        // スクロール位置が最下部かどうかを確認
+        autoScroll = (messagesContainer.scrollTop() + messagesContainer.innerHeight() >= messagesContainer[0].scrollHeight);
+    });
+
     fetchChatRooms();
-    setInterval(fetchMessages, 5000);  // 5秒ごとにメッセージを更新
+    setInterval(function() {
+        fetchMessages(autoScroll);  // 5秒ごとにメッセージを更新（自動スクロールが有効な場合）
+    }, 5000);
 });

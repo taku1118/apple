@@ -128,39 +128,44 @@
                                         <div class=" d-flex justify-content-end">
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                                         </div>
-                                        <div class="card-body" id="edit_area<?= $row['adopt_id'] ?>"><!-- こいつを使う予定 -->
+                                        <div class="card-body" id="edit_area<?= $row['adopt_id'] ?>">
                                             <h2 class="card-title my-5 text-center"><?= $row['company_name_txt'] ?></h2>
-
-                                            <!-- テキストと矢印のブロック -->
+                                            <!-- テキストと矢印のブロック、この二つDivを削除する -->
                                             <?php foreach ($select_detail_modal as $x => $detail_modal) : ?>
-                                                <div class="card-text" id="input_<?= $detail_modal['adopt_step_id'] ?>">
-                                                    <input type="text" class="form-control form-control-lg" id="step_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>" value="<?= $detail_modal['adopt_way'] ?>">
-                                                </div>
-                                                <?php if ($x + 1 != count($select_detail_modal)) : ?>
-                                                    <div class="text-center">
-                                                        <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                                <div id="adopt_area<?= $detail_modal['adopt_step_id'] ?>">
+                                                    <div class="car d-text position-relative" id="input_<?= $detail_modal['adopt_step_id'] ?>">
+                                                        <input type="text" class="form-control form-control-lg" id="step_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>" value="<?= $detail_modal['adopt_way'] ?>">
+                                                        <button onclick="delete_input(this)" class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5" id="delete_step_id<?= $detail_modal['adopt_step_id'] ?>">✕</button>
                                                     </div>
-                                                <?php endif; ?>
+                                                    <?php if ($x + 1 != count($select_detail_modal)) : ?>
+                                                        <div class="text-center">
+                                                            <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                                        </div>
+                                                    <?php endif; ?>
+                                                </div>
                                             <?php endforeach; ?>
-                                            <!-- ここまで -->
 
 
-                                            <!-- ここにパーツを追加 -->
+
 
                                         </div>
-                                        <!-- アイコンボタン -->
+
+                                        <!-- 追加ボタン -->
                                         <div class="mx-auto text-center">
-                                            <button type="button" id="add_input<?= $row['adopt_id'] ?>" class="btn d-none" onclick="add_input(this)"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
+                                            <button type="button" id="add_input<?= $row['adopt_id'] ?>" class="btn" onclick="add_input(this)"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
                                         </div>
-                                        <div class="mb-3">
+
+                                        <div class="mb-3" id="note_<?= $row['adopt_id'] ?>">
                                             <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
                                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"><?= $row['note'] ?></textarea>
                                         </div>
+
                                         <div class="mb-3">
                                             <button class="btn btn-primary" id="edit_btn<?= $row['adopt_id'] ?>" onclick="edit_sheet(this)" type="button">編集</button>
                                         </div>
+
                                         <div class="mb-3">
-                                            <button class="btn btn-primary d-none" id="save_btn<?= $row['adopt_id'] ?>" onclick="save_sheet(this)" type="button">保存</button>
+                                            <button class="btn btn-primary" id="save_btn<?= $row['adopt_id'] ?>" onclick="save_sheet(this)" type="button">保存</button>
                                         </div>
                                     </div>
                                 </div>

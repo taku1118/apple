@@ -29,9 +29,6 @@
 </head>
 
 <body>
-    <?php 
-    $_SESSION['student_number'] = "0000000";
-    ?>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
         <?php require 'sidebars.php'; ?>
@@ -72,7 +69,7 @@
                 <div class="col">
                     <?php
                         $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
-                        $Licence_Inform->execute([$_SESSION['student_number']]);
+                        $Licence_Inform->execute([$_SESSION['user']['student_number']]);
                         $fetch_data = $Licence_Inform->fetchAll();
                     ?>
                     <span class="fs-1 d-inline-block" style="width: 50%;">所有スキル</span>
@@ -93,7 +90,7 @@
                     <?php
                         $Desire_items = ["希望する勤務地","希望する業界","希望する職種"];
                         $Desire_Inform = $pdo->prepare('SELECT prefecture_name, industry_name, job_name FROM Desire_Inform where student_number = ?');
-                        $Desire_Inform->execute([$_SESSION['student_number']]);
+                        $Desire_Inform->execute([$_SESSION['user']['student_number']]);
                         $desire_fetch = $Desire_Inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($desire_fetch);
                     ?>

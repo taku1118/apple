@@ -7,7 +7,7 @@ $sql->execute([$_POST['student-number']]);
 foreach($sql as $row) {
     if(password_verify($_POST['password'],$row['password'])){
         $_SESSION['user']=[
-            'student_number'=>$row['student_number '],
+            'student_number'=>$row['student_number'],
             'user_name'=>$row['user_name'],
             'password'=>$_POST['password'],
             'nickname'=>$row['nickname'],
