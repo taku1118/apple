@@ -39,8 +39,9 @@
                 <div class="col">
                     <?php
                         $personal_items = ["性別","現住所","生年月日","卒業予定年月","学校名","学科","就活状況","内定有無"];
-                        $personal_inform = $pdo->prepare('SELECT gender, prefecture_id, birthday, graduate_date, school_name, course_name, job_hunt, job_offer, student_number, user_name FROM Personal_Inform where student_number = ?');
-                        $personal_inform->execute(["0000000"]);
+                        $address_check = 
+                        $personal_inform = $pdo->prepare('SELECT gender, COALESCE((select prefecture_name from Prefectures, Users where prefecture_id = address and student_number = ?),"----") as "prefecture_name", birthday, graduate_date, school_name, course_name, job_hunt, job_offer, student_number, user_name FROM Personal_Inform where student_number = ?');
+                        $personal_inform->execute(["0000002","0000002"]);
                         $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($fetch_data);
                     ?>
