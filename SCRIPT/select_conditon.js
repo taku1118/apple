@@ -1,5 +1,6 @@
 // インサートした回数
 let insert_count = 0;
+// 削除するinputのIDを入れる配列
 let delete_input_num = [];
 // シートの編集ボタンを押したときの動作
 function edit_sheet(target){
@@ -28,41 +29,46 @@ function open_sheet(target){
     save_btn.className = "btn btn-primary d-none";
 }
 
-// シートの保存ボタンを押したときの動作
+// シートの保存ボタンを押したときの動き
 function save_sheet(target){
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
     const formData = new FormData();
+    // 複数のinput要素を取得
     const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
+    // inputのValueを配列に格納
     let update_values = Array.from(ways).map((way) => way.value);
+    // inputのIDを配列に格納
     let update_ids = Array.from(ways).map((way) => way.id);
+    // adopt_wayをセット
     update_values.forEach((element)=>{
         formData.append("ways[]",element);
     });
-
+    // adopt_step_idをセット
     update_ids.forEach((element)=>{
-        formData.append("ids[]",element.substring(7));
+        formData.append("adopt_step_ids[]",element.substring(7));
     });
-    
-    // トップの選考IDをDB側に伝えるためにFormDataに追加
+    // adopt_idをセット
     formData.append("adopt_id",target.id.substring(8));
+    // deleteしたいinputのidをセット
+    formData.append("delete_input[]",delete_input_num);
+    // INSERTする回数をinsertsにセット
     formData.append("inserts",insert_count);
     // DB通信開始
-    // fetch("save_state.php",{
-    //     method: "POST",
-    //     body: formData
-    // }).then(response => response.json())
-    // .then(data => {
-    //     console.log("Success:", data["data"]);
-    // }).catch(error => {
-    //     console.log("Error:", error);
-    // });
+    fetch("save_state.php",{
+        method: "POST",
+        body: formData
+    }).then(response => response.json())
+    .then(data => {
+        console.log("Success:", data["data"]);
+    }).catch(error => {
+        console.log("Error:", error);
+    });
     target.className = "btn btn-primary d-none";
     let edit_btn = document.getElementById("edit_btn"+target.id.substring(8));
     let add_btn = document.getElementById("add_input"+target.id.substring(8));
     edit_btn.className = "btn btn-primary";
     edit_div.className = "card-body pe-none";
     add_btn.className = "btn d-none";
-    // console.log(insert_count,update_values.length);
     // 保存し終えたのインサート回数のリセット
     insert_count = 0;
 }
@@ -87,19 +93,45 @@ function add_input(target){
     let input_num = target.id.substring(9);
     let card_body = document.getElementById("edit_area"+input_num+"");
     let input_part = document.querySelectorAll("input[id^=step_"+input_num+"]");
-    
-    let count_input = input_part.length+1;
+    // inputのIDに割り当てる連番
+    let count_input = (input_part.length+1)+(delete_input_num.length);
     insert_count++;
-    const input_html = `<div id="adopt_area">
-                            <div class="text-center">
-                                <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
-                            </div>
-                            <div class="card-text position-relative" id="input_${count_input}">
-                                <input type="text" class="form-control form-control-lg" id="step_${input_num}_${count_input}" value="">
-                                <button class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5">✕</button>
-                            </div>
-                        </div>`;
-    card_body.insertAdjacentHTML("beforeend",input_html);
+    // 新しいinputフィールドを作成
+    const adopt_area_div = document.createElement("div");
+        adopt_area_div.id = "adopt_area"+count_input;
+    const icon_div = document.createElement("div");
+        icon_div.className = "text-center";
+    const icon_tag = document.createElement("i");
+        icon_tag.className = "bi bi-caret-down-fill";
+        icon_tag.style.fontSize = "3rem";
+    icon_div.appendChild(icon_tag);
+    const input_button_div = document.createElement("div");
+    input_button_div.className = "card-text position-relative";
+    input_button_div.id = "input_"+count_input;
+    const create_input = document.createElement("input");
+        create_input.type = "text";
+        create_input.className = "form-control form-control-lg";
+        create_input.id = "step_"+input_num+"_"+count_input;
+        create_input.value = "";
+    const remove_btn = document.createElement("button");
+        remove_btn.id = "delete_step_id"+count_input;
+        remove_btn.className = "btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5";
+        remove_btn.textContent = "✕";
+    input_button_div.appendChild(create_input);
+    input_button_div.appendChild(remove_btn);
+    adopt_area_div.appendChild(icon_div);
+    adopt_area_div.appendChild(input_button_div);
+    // const input_html = `<div id="adopt_area${count_input}">
+    //                         <div class="text-center">
+    //                             <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+    //                         </div>
+    //                         <div class="card-text position-relative" id="input_${count_input}">
+    //                             <input type="text" class="form-control form-control-lg" id="step_${input_num}_${count_input}" value="">
+    //                             <button onclick="delete_input(this)" class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5" id="delete_step_id${count_input}">✕</button>
+    //                         </div>
+    //                     </div>`;
+    // card_body.insertAdjacentHTML("beforeend",input_html);
+    card_body.appendChild(adopt_area_div);
 }
 
 
@@ -116,13 +148,12 @@ function add_input(target){
 // ここで矛盾が発生する
 
 // これを解決するには...
-// とその前に
+// と、その前に
 // このcount_inputがどんな役割をしているのか考えてみよう
 // count_inputはinputに連番を振るため
 // なぜ連番を振る必要があるの？
 // そもそもID属性には一意の連番を振ることが必要であるという記事を見たことがあるから振っているだけでその連番自体を何かに使う（例えば：直接データベースの値になるとか）わけではないのでは？
 // おそらく、一意のIDが振られたinputをメインに使うところがデータベースにFETCH APIで接続するタイミング
-// 話を戻すと
 // そもそも別にIDを一意に振る必要はないのでは？
 // データベースに格納するのは「選考ID（シートに持たせる）、選考ステップID（DBの状態から自動で生成）、選考内容（inputのvalue）、日付（自動生成）」4つ
 
