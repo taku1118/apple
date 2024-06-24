@@ -26,6 +26,7 @@
         max-width: 100%;
         font-size: 3vw;
       }
+      
       @media (min-width: 768px) {
         .report-table{
         font-size: 1.4vw;
