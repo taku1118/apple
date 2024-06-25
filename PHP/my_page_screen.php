@@ -39,8 +39,9 @@
                 <div class="col">
                     <?php
                         $personal_items = ["性別","現住所","生年月日","卒業予定年月","学校名","学科","就活状況","内定有無"];
-                        $personal_inform = $pdo->prepare('SELECT gender, prefecture_name, birthday, graduate_date, school_name, course_name, job_hunt, job_offer, student_number, user_name, profile_img FROM Personal_Inform where student_number = ?');
-                        $personal_inform->execute([$_SESSION['user']['student_number']]);
+                        $address_check = 
+                        $personal_inform = $pdo->prepare('SELECT gender, COALESCE((select prefecture_name from Prefectures, Users where prefecture_id = address and student_number = ?),"----") as "prefecture_name", birthday, graduate_date, school_name, course_name, job_hunt, job_offer, student_number, user_name FROM Personal_Inform where student_number = ?');
+                        $personal_inform->execute(["0000002","0000002"]);
                         $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
                         $display = array_values($fetch_data);
                     ?>
@@ -58,7 +59,7 @@
                                             <span class="fs-4"><?= $personal_items[$i] ?></span>
                                         </div>
                                         <div class="col">
-                                            <span class="fs-4"><?= $display[$i] ?></span>
+                                        <span class="fs-4"><?= $display[$i] ?></span>
                                         </div>
                                     </div>
                                 <?php endfor; ?>
@@ -69,7 +70,7 @@
                 <div class="col">
                     <?php
                         $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
-                        $Licence_Inform->execute([$_SESSION['user']['student_number']]);
+                        $Licence_Inform->execute(["0000001"]);
                         $fetch_data = $Licence_Inform->fetchAll();
                     ?>
                     <span class="fs-1 d-inline-block" style="width: 50%;">所有スキル</span>
@@ -80,9 +81,13 @@
                     <div class="card shadow-sm" style="width: 27rem;">
                         <div class="card-body">
                             <p class="card-text">
-                            <?php foreach($fetch_data as $row): ?>
-                                <p class="fs-4"><?= $row['licence_name'] ?></p>
-                            <?php endforeach; ?>
+                            <?php if(!empty($desire_fetch)): ?>
+                                <?php foreach($fetch_data as $row): ?>
+                                    <p class="fs-4"><?= $row['licence_name'] ?></p>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <p class="fs-4">--------------</p>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
@@ -90,9 +95,8 @@
                     <?php
                         $Desire_items = ["希望する勤務地","希望する業界","希望する職種"];
                         $Desire_Inform = $pdo->prepare('SELECT prefecture_name, industry_name, job_name FROM Desire_Inform where student_number = ?');
-                        $Desire_Inform->execute([$_SESSION['user']['student_number']]);
-                        $desire_fetch = $Desire_Inform->fetch(PDO::FETCH_ASSOC);
-                        $display = array_values($desire_fetch);
+                        $Desire_Inform->execute(["0000001"]);
+                        $desire_fetch = $Desire_Inform->fetch();
                     ?>
                     <span class="fs-1 d-inline-block">希望する条件</span>
                     <a href="./suggested_condition.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
@@ -102,20 +106,29 @@
                     <div class="card shadow-sm" style="width: 35rem;">
                         <div class="card-body">
                             <div class="card-text">
-                                <?php for($i = 0; $i<count($Desire_items); $i++): ?>
-                                    <div class="row"> <!-- ここでFor文を回す -->
-                                        <div class="col-5">
-                                            <span class="fs-4"><?= $Desire_items[$i] ?></span>
+                                <?php if(!empty($desire_fetch)): ?>
+                                    <?php for($i = 0; $i<count($Desire_items); $i++): ?>
+                                        <div class="row"> <!-- ここでFor文を回す -->
+                                            <div class="col-5">
+                                                <span class="fs-4"><?= $Desire_items[$i] ?></span>
+                                            </div>
+                                            <div class="col">
+                                                <span class="fs-4"><?= $desire_fetch[$i] ?></span>
+                                            </div>
                                         </div>
-                                        <div class="col">
-                                            <?php if(!empty($display[$i])): ?>
-                                                <span class="fs-4"><?= $display[$i] ?></span>
-                                            <?php else: ?>
-                                                <span class="fs-4">-----</span>
-                                            <?php endif; ?>
+                                    <?php endfor; ?>
+                                <?php else: ?>
+                                    <?php for($i = 0; $i<count($Desire_items); $i++): ?>
+                                        <div class="row">
+                                            <div class="col-5">
+                                                    <span class="fs-4"><?= $Desire_items[$i] ?></span>
+                                            </div>
+                                            <div class="col">
+                                                <span class="fs-4">------</span>
+                                            </div>
                                         </div>
-                                    </div>
-                                <?php endfor; ?>
+                                    <?php endfor; ?>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div><!-- Cardはここまで -->

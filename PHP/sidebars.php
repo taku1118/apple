@@ -116,7 +116,7 @@
             </li>
             <!-- 選考状況 -->
             <li class="nav-item">
-                <a href="senkou.php" class="nav-link text-white">
+                <a href="senkoukari.php" class="nav-link text-white">
                 <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"/></svg>
                 選考状況
                 </a>
