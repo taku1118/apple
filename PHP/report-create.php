@@ -24,7 +24,6 @@
 
     <style>
         #exam-report{
-            aspect-ratio: 210 / 297;
             width: 100%;
             max-width: 720px;
             font-size: 2vw;
@@ -67,18 +66,18 @@
             <div>
                 <h1 class="mb-3">受験報告作成</h1>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="companyName" class="form-label"><span class="fw-bold">企業名(検索)</span><br>・・・選択肢にない場合は担任に連絡してください。</label>
                 <input type="text" class="form-control" id="companyName" name="companyName" required autocomplete="off">
                 <input type="hidden" id="companyId" name="companyId">
                 <div id="companySuggestions" class="autocomplete-suggestions"></div>
                 <button id="enableCompanyNameBtn" class="btn btn-primary mt-2">企業名をクリア</button>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="examDate" class="form-label"><span class="fw-bold">受験日</span></label>
                 <input type="date" class="form-control" id="examDate" name="examDate" required>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="applicationMethod" class="form-label"><span class="fw-bold">応募方法</span></label>
                 <select class="form-select" id="applicationMethod" name="applicationMethod" required>
                     <option value="学校求人">学校求人</option>
@@ -87,7 +86,7 @@
                     <option value="その他">その他</option>
                 </select>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="examStep" class="form-label"><span class="fw-bold">試験次数</span></label>
                 <select class="form-select" id="examStep" name="examStep" required>
                     <option value="1次試験">1次試験</option>
@@ -98,7 +97,7 @@
                     <option value="その他">その他</option>
                 </select>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="examType" class="form-label"><span class="fw-bold">試験分類</span></label>
                 <select class="form-select" id="examType" name="examType" required>
                     <option value="個人面接">個人面接</option>
@@ -110,15 +109,15 @@
                     <option value="その他">その他</option>
                 </select>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="examContent" class="form-label"><span class="fw-bold">試験内容</span><br>・・・面接で質問された事項、試験で出た問題をできる限り書いてください。</label>
                 <textarea class="form-control" id="examContent" name="examContent" rows="5" required></textarea>
             </div>    
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="impression" class="form-label"><span class="fw-bold">受験後の感想(所感)</span><br>・・・感じたこと及び今後の受験者へのアドバイス</label>
                 <textarea class="form-control" id="impression" name="impression" rows="5" required></textarea>
             </div>
-            <div class="flex-grow-1">
+            <div class="mb-3">
                 <label for="remarks" class="form-label"><span class="fw-bold">備考</span></label>
                 <input type="text" class="form-control" id="remarks" name="remarks">
             </div>
