@@ -60,73 +60,73 @@
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 <div class="mt-3 mb-3 mx-3">
-<div class="card px-4 py-3 mx-auto" style="max-width: calc(720px + 2rem);">
-<div id="exam-report" class="container-fluid">
-        <form action="zyukenhoukokukanryo.php" method="post" class="d-flex flex-column" style="height:100%;">
-            <div>
-                <h1 class="mb-3">受験報告作成</h1>
-            </div>
-            <div class="mb-3">
-                <label for="companyName" class="form-label"><span class="fw-bold">企業名(検索)</span><br>・・・選択肢にない場合は担任に連絡してください。</label>
-                <input type="text" class="form-control" id="companyName" name="companyName" required autocomplete="off">
-                <input type="hidden" id="companyId" name="companyId">
-                <div id="companySuggestions" class="autocomplete-suggestions"></div>
-                <button id="enableCompanyNameBtn" class="btn btn-primary mt-2">企業名をクリア</button>
-            </div>
-            <div class="mb-3">
-                <label for="examDate" class="form-label"><span class="fw-bold">受験日</span></label>
-                <input type="date" class="form-control" id="examDate" name="examDate" required>
-            </div>
-            <div class="mb-3">
-                <label for="applicationMethod" class="form-label"><span class="fw-bold">応募方法</span></label>
-                <select class="form-select" id="applicationMethod" name="applicationMethod" required>
-                    <option value="学校求人">学校求人</option>
-                    <option value="縁故">縁故</option>
-                    <option value="自己開拓">自己開拓</option>
-                    <option value="その他">その他</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="examStep" class="form-label"><span class="fw-bold">試験次数</span></label>
-                <select class="form-select" id="examStep" name="examStep" required>
-                    <option value="1次試験">1次試験</option>
-                    <option value="2次試験">2次試験</option>
-                    <option value="3次試験">3次試験</option>
-                    <option value="最終試験">最終試験</option>
-                    <option value="適性検査">適性検査</option>
-                    <option value="その他">その他</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="examType" class="form-label"><span class="fw-bold">試験分類</span></label>
-                <select class="form-select" id="examType" name="examType" required>
-                    <option value="個人面接">個人面接</option>
-                    <option value="集団面接">集団面接</option>
-                    <option value="面談">面談</option>
-                    <option value="筆記試験">筆記試験</option>
-                    <option value="実技試験">実技試験</option>
-                    <option value="インターン">インターン</option>
-                    <option value="その他">その他</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="examContent" class="form-label"><span class="fw-bold">試験内容</span><br>・・・面接で質問された事項、試験で出た問題をできる限り書いてください。</label>
-                <textarea class="form-control" id="examContent" name="examContent" rows="5" required></textarea>
-            </div>    
-            <div class="mb-3">
-                <label for="impression" class="form-label"><span class="fw-bold">受験後の感想(所感)</span><br>・・・感じたこと及び今後の受験者へのアドバイス</label>
-                <textarea class="form-control" id="impression" name="impression" rows="5" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="remarks" class="form-label"><span class="fw-bold">備考</span></label>
-                <input type="text" class="form-control" id="remarks" name="remarks">
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="submit" class="btn btn-primary">送信</button>
-            </div>
-        </form>
-</div>
-</div>
+    <div class="card px-4 py-3 mx-auto" style="max-width: calc(720px + 2rem);">
+        <div id="exam-report" class="container-fluid">
+            <form action="zyukenhoukokukanryo.php" method="post" class="d-flex flex-column" style="height:100%;">
+                <div>
+                    <h1 class="mb-3">受験報告作成</h1>
+                </div>
+                <div class="mb-3">
+                    <label for="companyName" class="form-label"><span class="fw-bold">企業名(検索)</span><br>・・・選択肢にない場合は担任に連絡してください。</label>
+                    <input type="text" class="form-control" id="companyName" name="companyName" required autocomplete="off">
+                    <input type="hidden" id="companyId" name="companyId">
+                    <div id="companySuggestions" class="autocomplete-suggestions"></div>
+                    <button id="enableCompanyNameBtn" class="btn btn-primary mt-2">企業名をクリア</button>
+                </div>
+                <div class="mb-3">
+                    <label for="examDate" class="form-label"><span class="fw-bold">受験日</span></label>
+                    <input type="date" class="form-control" id="examDate" name="examDate" required>
+                </div>
+                <div class="mb-3">
+                    <label for="applicationMethod" class="form-label"><span class="fw-bold">応募方法</span></label>
+                    <select class="form-select" id="applicationMethod" name="applicationMethod" required>
+                        <option value="学校求人">学校求人</option>
+                        <option value="縁故">縁故</option>
+                        <option value="自己開拓">自己開拓</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="examStep" class="form-label"><span class="fw-bold">試験次数</span></label>
+                    <select class="form-select" id="examStep" name="examStep" required>
+                        <option value="1次試験">1次試験</option>
+                        <option value="2次試験">2次試験</option>
+                        <option value="3次試験">3次試験</option>
+                        <option value="最終試験">最終試験</option>
+                        <option value="適性検査">適性検査</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="examType" class="form-label"><span class="fw-bold">試験分類</span></label>
+                    <select class="form-select" id="examType" name="examType" required>
+                        <option value="個人面接">個人面接</option>
+                        <option value="集団面接">集団面接</option>
+                        <option value="面談">面談</option>
+                        <option value="筆記試験">筆記試験</option>
+                        <option value="実技試験">実技試験</option>
+                        <option value="インターン">インターン</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="examContent" class="form-label"><span class="fw-bold">試験内容</span><br>・・・面接で質問された事項、試験で出た問題をできる限り書いてください。</label>
+                    <textarea class="form-control" id="examContent" name="examContent" rows="5" required></textarea>
+                </div>    
+                <div class="mb-3">
+                    <label for="impression" class="form-label"><span class="fw-bold">受験後の感想(所感)</span><br>・・・感じたこと及び今後の受験者へのアドバイス</label>
+                    <textarea class="form-control" id="impression" name="impression" rows="5" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="remarks" class="form-label"><span class="fw-bold">備考</span></label>
+                    <input type="text" class="form-control" id="remarks" name="remarks">
+                </div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">送信</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
