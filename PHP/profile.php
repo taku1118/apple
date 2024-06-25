@@ -76,7 +76,7 @@
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="message">コメント</label>
                         <div class="d-flex align-items-center">
-                            <textarea class="form-control" id="comment" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;resize: none;" rows="3"><?php echo $comment; ?></textarea>
+                            <textarea class="form-control" id="comment" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;resize: none;" rows="1"><?php echo $comment; ?></textarea>
                         </div>
                     </div>
                     
