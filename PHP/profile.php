@@ -37,32 +37,9 @@
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
 
             ?>
-
-
-    <!-- <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        function previewImage(event) {
-            var input = event.target;
-            var reader = new FileReader();
-            reader.onload = function() {
-                var dataURL = reader.result;
-                var profilePicturePreview = document.getElementById('profilePicturePreview');
-                profilePicturePreview.src = dataURL;
-                profilePicturePreview.style.display = 'block';
-                document.getElementById('profilePicturePlaceholder').style.display = 'none';
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    </script> -->
     
-           
-
-
-<body style="background-color: #E6ECF0;">
-    <div class="container-fluid" style="margin-top:30px;">
+    <body style="background-color: #E6ECF0;">
+    <div class="container-fluid" style="margin-top:20px;">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
             <h1 class="title" style="margin-left:360px;">プロフィール</h1>
@@ -83,7 +60,7 @@
                         <div class="d-flex flex-column align-items-left">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
                                 <span id="profilePicturePlaceholder" class="text-white">画像</span>
-                                <img id="profilePicturePreview" style="width: 100%; height: 100%; object-fit: cover; display: none;">
+                                <img id="profilePicturePreview" src="<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; <?php echo $profileimg ? '' : 'display: none;'; ?>">
                             </div>
                             <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
                         </div>
@@ -99,34 +76,32 @@
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="message">コメント</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="message" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;">
+                            <textarea class="form-control" id="comment" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;resize: none;" rows="3"><?php echo $comment; ?></textarea>
                         </div>
                     </div>
                     
-                        <div class="form-group" style="font-size:20px; margin-top:20px">
+                    <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="school">所属学校</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="school" placeholder="<?php echo $schoolname; ?>" style="flex-grow: 1;">
                         </div>
-                        </div>
+                    </div>
 
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" id="graduationYear" placeholder="<?php echo $graduate; ?>" style="flex-grow: 1;">
                         </div>
-                        </div>
+                    </div>
                     
-            <?php
-                $student_num = "0000000";
-                $sql=$pdo->prepare("SELECT * FROM licence_inform where student_number=?");
-
-                $sql->execute([$student_num]);
-                $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-            
-                foreach ($result as $row) :
-                    $licencename = htmlspecialchars($row['licence_name']);
-                ?>
+                    <?php
+                    $sql=$pdo->prepare("SELECT * FROM licence_inform WHERE student_number=?");
+                    $sql->execute([$student_num]);
+                    $result = $sql->fetchAll(PDO::FETCH_ASSOC);
+                
+                    foreach ($result as $row) :
+                        $licencename = htmlspecialchars($row['licence_name']);
+                    ?>
 
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="qualifications">保有資格</label>
@@ -134,18 +109,44 @@
                             <input type="text" class="form-control" id="qualifications" placeholder="<?php echo $licencename; ?>" style="flex-grow: 1;">
                         </div>
                     </div>
-            
-                    <div class="d-flex"  style="margin-top:3%;">
-                    <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
                     
-                    </div>
-                <?php endforeach; ?>
-                
+                    <?php endforeach; ?>
 
+                    <div class="d-flex" style="margin-top:3%;">
+                        <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
+                    </div>
                 </form>
             </main>
         </div>
     </div>
+    <script>
+        function previewImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var profilePicturePreview = document.getElementById('profilePicturePreview');
+                profilePicturePreview.src = dataURL;
+                profilePicturePreview.style.display = 'block';
+                document.getElementById('profilePicturePlaceholder').style.display = 'none';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var textarea = document.getElementById('comment');
+
+            function resizeTextarea() {
+                textarea.style.height = 'auto';
+                textarea.style.height = (textarea.scrollHeight) + 'px';
+            }
+
+            textarea.addEventListener('input', resizeTextarea);
+
+            // Initial resize to fit existing content
+            resizeTextarea();
+        });
+    </script>
 
 
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
