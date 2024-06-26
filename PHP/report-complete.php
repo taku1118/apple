@@ -35,20 +35,48 @@
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 <?php
-echo $_POST['company_id'];
-echo $_POST['company_name'];
-echo $_POST['company_location'];
-echo $_POST['student_number'];
-echo $_POST['school_name'];
-echo $_POST['course_name'];
-echo $_POST['examDate'];
-echo $_POST['applicationMethod'];
-echo $_POST['examStep'];
-echo $_POST['examType'];
-echo $_POST['examContent'];
-echo $_POST['impression'];
-echo $_POST['remarks'];
+$report_sql = $pdo->prepare('
+INSERT INTO Exam_Reports (
+report_id,
+company_id,
+company_name,
+company_location,
+student_number,
+school_name,
+course_name,
+exam_date,
+application_method,
+exam_step,
+exam_type,
+exam_content,
+impression,
+remarks) 
+VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+');
+$report_sql->execute([
+    NULL,
+    $_POST['company_id'],
+    $_POST['company_name'],
+    $_POST['company_location'],
+    $_POST['student_number'],
+    $_POST['school_name'],
+    $_POST['course_name'],
+    $_POST['examDate'],
+    $_POST['applicationMethod'],
+    $_POST['examStep'],
+    $_POST['examType'],
+    $_POST['examContent'],
+    $_POST['impression'],
+    $_POST['remarks']
+]);
 ?>
+<div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 text-center">
+        <h1 class="mb-4">報告完了しました！</h1>
+        <h1 class="mb-4">ご協力ありがとうございます。</h1>
+        <form action="top.php" method="post">
+            <button type="submit" class="btn btn-primary">TOPに戻る</button>
+        </form>
+    </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
             <div class="d-md-none copyright">
