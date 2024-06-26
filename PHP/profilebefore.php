@@ -77,7 +77,7 @@
 
                 <form action="profileafter.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:20px;">ユーザーネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:20px;">ニックネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
                         </div>
