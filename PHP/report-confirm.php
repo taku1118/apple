@@ -1,13 +1,14 @@
 <?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>トップページ</title>
+    <title></title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    <link rel="stylesheet" href="../CSS/reset.css"/>
     
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -66,24 +67,15 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <div class="container-fluid">
-    <div class="navbar-brand">
-        <h3 class="mb-0 text-wrap">受験報告書</h3>
-    </div>
-    <div class="ms-auto d-flex">
-        <button class="btn btn-secondary text-nowrap" onclick="history.back()">戻る</button>
-    </div>
-  </div>
-</nav>
 <div class="mt-3 mb-3 mx-3">
 <?php
-if (isset($_GET['report_id'])) {
-    $report_datas = $pdo->prepare('SELECT * FROM Exam_Reports WHERE report_id = ?');
-    $report_datas->execute([$_GET['report_id']]);
-    $report_datas=$report_datas->fetch();
-    if(!empty($report_datas)){
-        echo '<div class="card p-3 mb-3 mx-auto" style="max-width: calc(720px + 2rem);">';
+$company_detail = $pdo->prepare('SELECT * FROM Companies WHERE company_id = ?');
+$company_detail->execute([$_POST['companyId']]);
+$company_detail = $company_detail->fetch();
+$user_detail = $pdo->prepare('SELECT * FROM Users AS A INNER JOIN Schools AS B ON A.school_id = A.school_id INNER JOIN Courses AS C ON A.course_id = C.course_id WHERE student_number = ?');
+$user_detail->execute([$_SESSION['user']['student_number']]);
+$user_detail = $user_detail->fetch();
+        echo '<form action="report-complete.php" class="card p-3 mb-3 mx-auto" style="max-width: calc(720px + 2rem);" method="post">';
         echo '<div id="exam-report" class="container-fluid">';
         // 社名と所在地
         echo '<div class="d-flex" style="height:15%">';
@@ -91,13 +83,13 @@ if (isset($_GET['report_id'])) {
         echo '<span class="fw-bold">会社<br>病院<br>施設<br>名</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center border py-3 px-2" style="width:50%">';
-        echo '<span class="C-name">',$report_datas['company_name'],'</span>';
+        echo '<span class="C-name">',$company_detail['company_name'],'</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center justify-content-center border" style="width:8%">';
         echo '<span class="fw-bold">所<br>在<br>地</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center border py-2 px-2" style="width:30%">';
-        echo '<span class="C-add">',$report_datas['company_location'],'</span>';
+        echo '<span class="C-add">',$company_detail['company_location'],'</span>';
         echo '</div>';
         echo '</div>';
         // 応募方法
@@ -106,7 +98,7 @@ if (isset($_GET['report_id'])) {
         echo '<span class="fw-bold">応募方法</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:85%">';
-        echo '<span>',$report_datas['application_method'],'</span>';
+        echo '<span>',$_POST['applicationMethod'],'</span>';
         echo '</div>';
         echo '</div>';
         // 試験次数
@@ -115,7 +107,7 @@ if (isset($_GET['report_id'])) {
         echo '<span class="fw-bold">試験次数</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:85%">';
-        echo '<span>',$report_datas['exam_step'],'</span>';
+        echo '<span>',$_POST['examStep'],'</span>';
         echo '</div>';
         echo '</div>';
         // 試験内容
@@ -124,7 +116,7 @@ if (isset($_GET['report_id'])) {
         echo '<span class="fw-bold">試験分類</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:85%">';
-        echo '<span>',$report_datas['exam_type'],'</span>';
+        echo '<span name="examType">',$_POST['examType'],'</span>';
         echo '</div>';
         echo '</div>';
         // 試験日
@@ -133,23 +125,25 @@ if (isset($_GET['report_id'])) {
         echo '<span class="fw-bold">試験日</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:88%">';
-        $date = new DateTimeImmutable($report_datas['exam_date']);
+        $date = new DateTimeImmutable($_POST['examDate']);
         echo '<span>',$date->format('Y年n月j日'),'</span>';
         echo '</div>';
+        echo '<input type="hidden"name="examDate" value="',$_POST['examDate'],'">';
         echo '</div>';
         // 所属
+        echo '<input type="hidden" id="student_number" value="',$_SESSION['user']['student_number'],'">';
         echo '<div class="d-flex" style="height:8%">';
         echo '<div class="d-flex align-items-center justify-content-center border" style="width:12%">';
         echo '<span class="fw-bold">学校名</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:38%">';
-        echo '<span>',$report_datas['school_name'],'</span>';
+        echo '<span name="school_name">',$user_detail['school_name'],'</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center justify-content-center border" style="width:12%">';
         echo '<span class="fw-bold">学科名</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="width:38%">';
-        echo '<span>',$report_datas['course_name'],'</span>';
+        echo '<span name="course_name">',$user_detail['course_name'],'</span>';
         echo '</div>';
         echo '</div>';
         // 質問内容・試験問題
@@ -157,32 +151,34 @@ if (isset($_GET['report_id'])) {
         echo '<span><b>試験内容</b><br>・・・面接で質問された事項、試験で出た問題をできる限り書いてください。</span>';
         echo '</div>';
         echo '<div class="d-flex py-2 px-2 border" style="height:28%; width:100%;">';
-        echo '<span class="Scrollbox">',$report_datas['exam_content'],'</span>';
+        echo '<span class="Scrollbox" name="examContent">',$_POST['examContent'],'</span>';
         echo '</div>';
         // 感想
         echo '<div class="d-flex align-items-center px-2 border" style="height:6%">';
         echo '<span><b>受験後の感想(所感)</b><br>・・・感じたこと及び今後の受験者へのアドバイス</span>';
         echo '</div>';
         echo '<div class="d-flex py-2 px-2 border" style="height:16%; width:100%;">';
-        echo '<span class="Scrollbox">',$report_datas['impression'],'</span>';
+        echo '<span class="Scrollbox" name="impression">',$_POST['impression'],'</span>';
         echo '</div>';
         // 備考
         echo '<div class="d-flex align-items-center px-2 border" style="height:3%">';
         echo '<span class="fw-bold">備考</span>';
         echo '</div>';
         echo '<div class="d-flex align-items-center px-2 border" style="height:6%; width:100%;">';
-        echo '<span class="txt-limit2">',$report_datas['remarks'],'</span>';
+        echo '<span class="txt-limit2" name="remarks">',$_POST['remarks'],'</span>';
         echo '</div>';
         echo '</div>';
-        
-        echo '</div>';
-    }else{
-        echo '<p>該当の受験報告書はありません。</p>';
-    }
-}else{
-    // echo '<p>該当の受験報告書はありません。</p>';
- }
-  ?>
+
+        echo '<input type="hidden" name="company_id" value="',$_POST['companyId'],'">';
+echo '<input type="hidden" name="company_name" value="',$_POST['companyId'],'">';
+echo '<input type="hidden" name="company_location" value="',$_POST['companyId'],'">';
+echo '<input type="hidden" name="applicationMethod" value="',$_POST['companyId'],'">';
+echo '<input type="hidden" name="examStep" value="',$_POST['companyId'],'">';
+echo '<input type="hidden" name="company_id" value="',$_POST['companyId'],'">';
+        echo '<button type="button" class="btn btn-primary" onclick="history.back();">戻る</button>';
+        echo '<button type="submit" class="btn btn-primary">送信</button>';
+        echo '</form>';
+?>
 </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->

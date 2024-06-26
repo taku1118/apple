@@ -62,7 +62,7 @@
 <div class="mt-3 mb-3 mx-3">
     <div class="card px-4 py-3 mx-auto" style="max-width: calc(720px + 2rem);">
         <div id="exam-report" class="container-fluid">
-            <form action="zyukenhoukokukanryo.php" method="post" class="d-flex flex-column" style="height:100%;">
+            <form action="report-confirm.php" method="post" class="d-flex flex-column" style="height:100%;">
                 <div>
                     <h1 class="mb-3">受験報告作成</h1>
                 </div>
@@ -122,7 +122,7 @@
                     <input type="text" class="form-control" id="remarks" name="remarks">
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary">送信</button>
+                    <button type="submit" class="btn btn-primary">確認画面へ</button>
                 </div>
             </form>
         </div>

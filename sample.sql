@@ -495,12 +495,16 @@ VALUES
 ('0000000', '0001');
 
 -- 受験報告書テーブル
-INSERT INTO Exam_Reports (report_id, company_id, student_number, exam_date, apply_way, exam_step, exam_way, question, opinion, other)
+INSERT INTO Exam_Reports (report_id, company_id, company_name, company_location, student_number, school_name, course_name,exam_date, application_method, exam_step, exam_type, exam_content, impression, remarks)
 VALUES 
 (
     NULL,
     1,
+    '学校法人麻生塾【麻生専門学校グループ】',
+    '福岡県飯塚市芳雄町3-83',
     '0000000',
+    '麻生情報ビジネス専門学校 福岡校',
+    '情報工学科',
     '2024-05-16',
     '学校求人',
     '一次',
@@ -512,7 +516,12 @@ VALUES
 (
     NULL,
     2,
+    '株式会社アウトソーシングテクノロジー',
+    '東京都千代田区丸の内1-8-3
+    丸の内トラストタワー本館16・17F（受付：17F）',
     '0000000',
+    '麻生情報ビジネス専門学校 福岡校',
+    '情報工学科',
     '2024-05-16',
     '学校求人',
     '一次',
@@ -524,7 +533,12 @@ VALUES
 (
     NULL,
     2,
+    '株式会社アウトソーシングテクノロジー',
+    '東京都千代田区丸の内1-8-3
+    丸の内トラストタワー本館16・17F（受付：17F）',
     '0000000',
+    '麻生情報ビジネス専門学校 福岡校',
+    '情報工学科',
     '2024-05-22',
     '学校求人',
     '二次',

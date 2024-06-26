@@ -56,7 +56,7 @@
 <?php
 if(isset($_GET['company_id'])){
   $company_id=$_GET['company_id'];
-  $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_step,A.exam_way,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
+  $reports = $pdo->prepare('SELECT A.report_id,A.exam_date,A.exam_step,A.exam_type,B.user_name FROM Exam_Reports AS A LEFT JOIN Users AS B ON A.student_number = B.student_number WHERE company_id = ?');
   $reports->execute([$company_id]);
   $reports = $reports->fetchAll();
   echo '<div>';
@@ -65,7 +65,7 @@ if(isset($_GET['company_id'])){
   echo '<tr>';
   echo '<th scope="col" class="txt-limit1" style="width:25%;">日付</th>';
   echo '<th scope="col" class="txt-limit1" style="width:25%;">試験次数</th>';
-  echo '<th scope="col" class="txt-limit1" style="width:25%;">試験内容</th>';
+  echo '<th scope="col" class="txt-limit1" style="width:25%;">試験分類</th>';
   echo '<th scope="col" class="txt-limit1" style="width:25%;">名前</th>';
   echo '</tr>';
   echo '</thead>';
@@ -75,7 +75,7 @@ if(isset($_GET['company_id'])){
       echo '<tr data-href="report-show.php?report_id=',$row['report_id'],'">';
       echo '<td scope="col" style="width:25%;"><div class="txt-limit1">',$row['exam_date'],'</div></td>';
       echo '<td style="width:25%;"><div class="txt-limit1">',$row['exam_step'],'</div></td>';
-      echo '<td style="width:25%;"><div class="txt-limit1">',$row['exam_way'],'</div></td>';
+      echo '<td style="width:25%;"><div class="txt-limit1">',$row['exam_type'],'</div></td>';
       echo '<td style="width:25%;"><div class="txt-limit1">',$row['user_name'],'</div></td>';
       echo '</tr>';
     }
