@@ -82,7 +82,7 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
             <li><a class="dropdown-item" href="#">プロフィール変更</a></li>
-            <li><a class="dropdown-item" href="#">パスワード変更</a></li>
+            <li><a class="dropdown-item" href="pass_change.php">パスワード変更</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" onclick="logout()">ログアウト</a></li>
         </ul>
@@ -139,7 +139,7 @@
                 <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">アカウントの設定</a>
                 <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#">プロフィール変更</a></li>
-                <li><a class="dropdown-item" href="#">パスワード変更</a></li>
+                <li><a class="dropdown-item" href="pass_change.php">パスワード変更</a></li>
                 <li><a class="dropdown-item" onclick="logout()">ログアウト</a></li>
                 </ul>
             </li>
