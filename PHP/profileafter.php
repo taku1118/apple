@@ -67,20 +67,21 @@
                 ?>
 
                 <form method="post" action="">
+                
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:20px;">ユーザーネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:20px;">ニックネーム</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control <?php echo $nicknameError ? 'is-invalid' : ''; ?>" name="nickname" style="flex-grow: 1;" placeholder="<?php echo $nicknameError ? $nicknameError : ''; ?>" value="<?php echo htmlspecialchars($nickname, ENT_QUOTES); ?>">
+                            <input type="text" readonly class="form-control <?php echo $nicknameError ? 'is-invalid' : ''; ?>" name="nickname" style="flex-grow: 1; background-color:white" placeholder="<?php echo $nicknameError ? $nicknameError : ''; ?>" value="<?php echo htmlspecialchars($nickname, ENT_QUOTES); ?>">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label for="comment" style="font-size:20px; margin-top:30px;">コメント</label>
                         <div class="d-flex align-items-center">
-                            <textarea class="form-control <?php echo $commentError ? 'is-invalid' : ''; ?>" name="comment" style="flex-grow: 1; resize: none;" placeholder="<?php echo $commentError ? $commentError : ''; ?>" rows="1"><?php echo htmlspecialchars($comment, ENT_QUOTES); ?></textarea>
+                            <textarea readonly class="form-control  <?php echo $commentError ? 'is-invalid' : ''; ?>" name="comment" style="flex-grow: 1; resize: none; background-color:white" placeholder="<?php echo $commentError ? $commentError : ''; ?>" rows="1"><?php echo htmlspecialchars($comment, ENT_QUOTES); ?></textarea>
                         </div>
                     </div>
-
+                    
                     <div class="d-flex align-items-center" style="margin-top: 50px;">
                         <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px;">戻る</button>
                         <div style="margin-left: 20px;">

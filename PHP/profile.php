@@ -54,7 +54,7 @@
                 }
                 ?>
                 
-
+               
                 <form>
                     <div class="form-group">
                         <div class="d-flex flex-column align-items-left">
@@ -69,28 +69,28 @@
                     <div class="form-group">
                         <label for="username" style="font-size:20px;margin-top:20px">ニックネーム</label>
                         <div class="d-flex align-items-center">
-                        <input type="text" class="form-control" id="username" placeholder="<?php echo $nick_name; ?>" style="flex-grow: 1;">
+                        <input type="text" readonly class="form-control"  id="username"  value="<?php echo $nick_name; ?>" style="flex-grow: 1; color:block; background-color:white">
                         </div>
                     </div>
 
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="message">コメント</label>
                         <div class="d-flex align-items-center">
-                            <textarea class="form-control" id="comment" placeholder="<?php echo $comment; ?>" style="flex-grow: 1;resize: none;" rows="1"><?php echo $comment; ?></textarea>
+                            <textarea class="form-control" readonly id="comment" value="<?php echo $comment; ?>" style="flex-grow: 1;resize: none; color:block;background-color:white" rows="1"><?php echo $comment; ?></textarea>
                         </div>
                     </div>
                     
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="school">所属学校</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="school" placeholder="<?php echo $schoolname; ?>" style="flex-grow: 1;">
+                            <input type="text" readonly class="form-control" id="school" value="<?php echo $schoolname; ?>" style="flex-grow: 1; color:block; background-color:white">
                         </div>
                     </div>
 
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="graduationYear" placeholder="<?php echo $graduate; ?>" style="flex-grow: 1;">
+                            <input type="text" readonly class="form-control" id="graduationYear" value="<?php echo $graduate; ?>" style="flex-grow: 1; color:block; background-color:white">
                         </div>
                     </div>
                     
@@ -98,23 +98,26 @@
                     $sql=$pdo->prepare("SELECT * FROM licence_inform WHERE student_number=?");
                     $sql->execute([$student_num]);
                     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
-                
-                    foreach ($result as $row) :
-                        $licencename = htmlspecialchars($row['licence_name']);
                     ?>
+                    
 
                     <div class="form-group" style="font-size:20px; margin-top:20px">
                         <label for="qualifications">保有資格</label>
+                        <?php foreach ($result as $row) :
+                            $licencename = htmlspecialchars($row['licence_name']);
+                        ?>
                         <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" id="qualifications" placeholder="<?php echo $licencename; ?>" style="flex-grow: 1;">
+                            <input type="text" readonly class="form-control" id="qualifications" value="<?php echo $licencename; ?>" style="flex-grow: 1; margin-bottom:1px; color:block; background-color:white">
                         </div>
+                        <?php endforeach; ?>
                     </div>
+                   
                     
-                    <?php endforeach; ?>
 
                     <div class="d-flex" style="margin-top:3%;">
                         <button type="button" onclick="history.back()" class="btn btn-primary" style="width: 6%; height: 3%; font-size: 15px; margin-right: 1rem;">戻る</button>
                     </div>
+                    
                 </form>
             </main>
         </div>
