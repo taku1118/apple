@@ -32,14 +32,14 @@ $(function(){
                 let password = $("#formGroupExampleInput2").val();
                 $.ajax({
                 type: 'POST',
-                url: 'pass-change-process.php',
+                url: 'pass_change_process.php',
                 data: {pass: password}
                 }).done(function(data){
                     let result = JSON.parse(data);
-                    alert(result.request[0]);
+                    alert("パスワードを変更しました。\nパスワード："+result.request[0]);
                     location.href="my_page_screen.php";
                 }).fail(function(){
-                    alert("fail");
+                    alert("パスワード変更に失敗しました。");
                 }); 
             }
         }
