@@ -76,7 +76,7 @@ $user_detail = $pdo->prepare('SELECT * FROM Users AS A INNER JOIN Schools AS B O
 $user_detail->execute([$_SESSION['user']['student_number']]);
 $user_detail = $user_detail->fetch();
         echo '<form action="report-complete.php" class="card p-3 mb-3 mx-auto" style="max-width: calc(720px + 2rem);" method="post">';
-        echo '<div id="exam-report" class="container-fluid">';
+        echo '<div id="exam-report" class="container-fluid mb-3">';
         // 社名と所在地
         echo '<div class="d-flex" style="height:15%">';
         echo '<div class="d-flex align-items-center justify-content-center text-center border" style="width:12%">';
@@ -180,9 +180,10 @@ $user_detail = $user_detail->fetch();
         echo '<input type="hidden" name="examContent" value="',$_POST['examContent'],'">';
         echo '<input type="hidden" name="impression" value="',$_POST['impression'],'">';
         echo '<input type="hidden" name="remarks" value="',$_POST['remarks'],'">';
-
-        echo '<button type="button" class="btn btn-primary" onclick="history.back();">戻る</button>';
-        echo '<button type="submit" class="btn btn-primary">送信</button>';
+        echo '<div class="d-flex justify-content-end">';
+        echo '<button type="button" class="btn btn-secondary me-3" onclick="history.back();" style="width:20%;">戻る</button>';
+        echo '<button type="submit" class="btn btn-primary" style="width:20%;">送信</button>';
+        echo '</div>';
         echo '</form>';
 ?>
 </div>

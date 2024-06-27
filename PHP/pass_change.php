@@ -1,16 +1,14 @@
+<?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
-    />
+    <title>パスワード変更画面</title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    <link rel="stylesheet" href="../CSS/reset.css"/>
     
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,18 +16,22 @@
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
+    <!-- DB接続 -->
+    <?php require 'db-connect.php'; ?>
+
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+
     <style>
         #textPassword {
             border: none; /* デフォルトの枠線を消す */
         }
     </style>
 
-    <!-- DB接続 -->
-    <?php require 'db-connect.php'; ?>
-    <?php session_start(); ?>
-    <?php $sql=$pdo->query("SELECT password FROM users where student_number = '0000000'"); ?>
-
-</head> 
+</head>
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
@@ -37,8 +39,8 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-        <div style="margin-top: 10%;">
-            <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
+        <div class="d-flex justify-content-center align-items-center" style="height:100%;width:100%;">
+            <div class="card p-5" style="width: 55%;min-width:320px;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
                 <form action="my_page_screen.php" method="post">
                 <label for="formGroupExampleInput" class="form-label">パスワード</label>
@@ -59,6 +61,10 @@
             </div>  
         </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 
@@ -70,6 +76,9 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- common.Script-->
+    <script src="../SCRIPT/common.js"></script>
 
     <!-- pass_change.js-->
     <script src="../SCRIPT/pass_change.js"></script>
