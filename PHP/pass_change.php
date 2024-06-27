@@ -36,8 +36,8 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-        <div style="margin-top: 10%;">
-            <div class="card p-5 m-auto" style="width: 55%;"><!--  カードの幅を調整したいときはwidthを編集 -->
+        <div class="d-flex justify-content-center align-items-center" style="height:100%;width:100%;">
+            <div class="card p-5" style="width: 55%;min-width:320px;"><!--  カードの幅を調整したいときはwidthを編集 -->
                 <h2>パスワード変更</h2>
                 <form action="my_page_screen.php" method="post">
                 <label for="formGroupExampleInput" class="form-label">パスワード</label>
