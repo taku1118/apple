@@ -43,7 +43,7 @@
     <div class="container-fluid" style="margin-top:20px; ">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-            <h1 class="title" style="margin-left:340px;">プロフィール</h1>
+            <h1 class="title" style="text-align:center;">プロフィール</h1>
             <!-- ここからforeach -->
             <?php
                 foreach ($result as $row) {

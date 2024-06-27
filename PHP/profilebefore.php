@@ -72,7 +72,7 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-                <h1 class="title" style="margin-left:360px; margin-top:20px;">プロフィール</h1>
+                <h1 class="title" style="text-align:center; margin-top:20px;">プロフィール</h1>
                 <?php
                 $sql = $pdo->query("SELECT * FROM users where student_number='0000000'");
                 $res = $sql->fetch(PDO::FETCH_ASSOC);
@@ -93,7 +93,7 @@
                         </div>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px; margin-top: 40px; margin-left:440px;" value="変 更">
+                    <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px; margin-top: 40px; margin-left:460px;" value="変 更">
                 </form>
             </main>
         </div>
