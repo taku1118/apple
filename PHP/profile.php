@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
@@ -39,15 +40,15 @@
             ?>
     
     <body style="background-color: #E6ECF0;">
-    <div class="container-fluid" style="margin-top:20px;">
+    <div class="container-fluid" style="margin-top:20px; ">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-            <h1 class="title" style="margin-left:360px;">プロフィール</h1>
+            <h1 class="title" style="margin-left:340px;">プロフィール</h1>
             <!-- ここからforeach -->
             <?php
                 foreach ($result as $row) {
-                    $profileimg = htmlspecialchars($row['profile_img']);
-                    $nick_name = htmlspecialchars($row['nickname']);
+                    $profileimg = $_SESSION['user']['profile_img'];
+                    $nick_name = $_SESSION['user']['nickname'];
                     $comment = htmlspecialchars($row['my_comment']);
                     $schoolname = htmlspecialchars($row['school_name']);
                     $graduate = htmlspecialchars($row['graduate_date']);
@@ -59,10 +60,11 @@
                     <div class="form-group">
                         <div class="d-flex flex-column align-items-left">
                             <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
-                                <span id="profilePicturePlaceholder" class="text-white">画像</span>
-                                <img id="profilePicturePreview" src="<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; <?php echo $profileimg ? '' : 'display: none;'; ?>">
+                                <!-- <span id="profilePicturePlaceholder" class="text-white">画像</span>-->
+                                <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
+                                <!-- <input type="file" readonly class="form-control-file d-none" id="profilePicture" value="<?php echo $profileimg; ?>"> -->
                             </div>
-                            <input type="file" class="form-control-file d-none" id="profilePicture" accept="image/*" onchange="previewImage(event)">
+                            
                         </div>
                     </div>
 
@@ -73,21 +75,21 @@
                         </div>
                     </div>
 
-                    <div class="form-group" style="font-size:20px; margin-top:20px">
+                    <div class="form-group" style="font-size:20px; margin-top:30px">
                         <label for="message">コメント</label>
                         <div class="d-flex align-items-center">
                             <textarea class="form-control" readonly id="comment" value="<?php echo $comment; ?>" style="flex-grow: 1;resize: none; color:block;background-color:white" rows="1"><?php echo $comment; ?></textarea>
                         </div>
                     </div>
                     
-                    <div class="form-group" style="font-size:20px; margin-top:20px">
+                    <div class="form-group" style="font-size:20px; margin-top:30px">
                         <label for="school">所属学校</label>
                         <div class="d-flex align-items-center">
                             <input type="text" readonly class="form-control" id="school" value="<?php echo $schoolname; ?>" style="flex-grow: 1; color:block; background-color:white">
                         </div>
                     </div>
 
-                    <div class="form-group" style="font-size:20px; margin-top:20px">
+                    <div class="form-group" style="font-size:20px; margin-top:30px">
                         <label for="graduationYear">卒業年度</label>
                         <div class="d-flex align-items-center">
                             <input type="text" readonly class="form-control" id="graduationYear" value="<?php echo $graduate; ?>" style="flex-grow: 1; color:block; background-color:white">
@@ -101,7 +103,7 @@
                     ?>
                     
 
-                    <div class="form-group" style="font-size:20px; margin-top:20px">
+                    <div class="form-group" style="font-size:20px; margin-top:30px">
                         <label for="qualifications">保有資格</label>
                         <?php foreach ($result as $row) :
                             $licencename = htmlspecialchars($row['licence_name']);

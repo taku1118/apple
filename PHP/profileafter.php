@@ -58,6 +58,7 @@
                     if (!$nicknameError && !$commentError) {
                         $sql = $pdo->prepare("UPDATE users SET nickname=?, my_comment=? WHERE student_number='0000000'");
                         if ($sql->execute([htmlspecialchars($nickname), htmlspecialchars($comment)])) {
+                            $_SESSION['user']['nickname']=htmlspecialchars($nickname);
                             $message = '<h2 class="text-primary mb-0" style="margin-left:265px">変更が完了しました</h2>';
                         } else {
                             $message = '<font color="red">更新に失敗しました。</font>';
