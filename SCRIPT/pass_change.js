@@ -32,7 +32,7 @@ $(function(){
                 let password = $("#formGroupExampleInput2").val();
                 $.ajax({
                 type: 'POST',
-                url: 'change-password.php',
+                url: 'pass-change-process.php',
                 data: {pass: password}
                 }).done(function(data){
                     let result = JSON.parse(data);

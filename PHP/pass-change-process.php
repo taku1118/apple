@@ -6,5 +6,6 @@ require ('db-connect.php');
     $sql->execute([$pass,$_SESSION['user']['student_number']]);
     echo json_encode(["request" => [$_POST['pass']]]);
 exit;
-// $test_query = $pdo->prepare("UPDATE users SET password = ? WHERE student_number = '0000000'");
-//     $test_query->execute([$_POST['pass']]);
+// $test_query = $pdo->prepare("UPDATE Users SET password = ? WHERE student_number = '0000000'");
+// $test_query->execute([$_POST['pass']]);
+?>
