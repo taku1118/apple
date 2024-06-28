@@ -41,7 +41,7 @@
     <div class="col">
         <?php
             $personal_items = ["性別","現住所","生年月日","卒業予定年月","学校名","学科名","就活状況","内定有無"];
-            $personal_inform = $pdo->prepare('SELECT * FROM Personal_Inform where student_number = ?');
+            $personal_inform = $pdo->prepare('SELECT gender,address,birthday,graduate_date,school_name,course_name,job_hunt,job_offer FROM Personal_Inform where student_number = ?');
             $personal_inform->execute([$_SESSION['user']['student_number']]);
             $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
             $display = array_values($fetch_data);
