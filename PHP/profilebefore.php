@@ -29,47 +29,13 @@
          <!-- メインコンテンツ -->
          <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    
-<body style="background-color: #E6ECF0;">
-    <div class="container-fluid">
-        <div class="row">
-            <main class="col-md-10 mx-auto" style="padding: 20px;">
-            <h1 class="title" style="margin-left:360px; margin-top:20px;">プロフィール</h1>
-                <?php
-                $sql=$pdo->query("SELECT * FROM users where student_number='0000000'");
-                $res = $sql->fetch(PDO::FETCH_ASSOC);
-                ?>
-
-                <form action="profileafter.php" method="post" enctype="multipart/foem-date">
-                    <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:20px;">ユーザーネーム</label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="nickname"  style="flex-grow: 1;" value="<?php echo $res['nickname']; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="message" style="font-size:20px; margin-top:30px;">コメント</label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="comment" value="<?php echo $res['my_comment']; ?>" style="flex-grow: 1;">
-                        </div>
-                    </div>
-                    <input type="submit" class="btn btn-primary" style="width: 8%; heigth:10%; font-size:20px; margin-top: 40px; margin-left:440px;"
-                        value="変 更">
-                </form>
-
-                
-            </main>
-        </div>
-    </div> -->
-
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
 <body style="background-color: #E6ECF0;">
     <div class="container-fluid">
         <div class="row">
-            <main class="col-md-10 mx-auto" style="padding: 20px;">
-                <h1 class="title" style="text-align:center; margin-top:20px;">プロフィール</h1>
+            <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px">
+                <h1 class="title" style="text-align:center;  background-color:#2A57A4;color:white;">プロフィール変更</h1>
                 <?php
                 $sql = $pdo->query("SELECT * FROM users where student_number='0000000'");
                 $res = $sql->fetch(PDO::FETCH_ASSOC);
@@ -77,14 +43,14 @@
 
                 <form action="profileafter.php" method="post" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:20px;">ニックネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" class="form-control" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="comment" style="font-size:20px; margin-top:30px;">コメント</label>
+                        <label for="comment" style="font-size:20px; margin-top:40px;">コメント</label>
                         <div class="d-flex align-items-center">
                             <textarea class="form-control" name="comment" style="flex-grow: 1; resize: none;" rows="1"><?php echo htmlspecialchars($res['my_comment'], ENT_QUOTES); ?></textarea>
                         </div>

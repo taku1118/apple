@@ -34,7 +34,7 @@
     <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px;">
-                <h1 class="title" style="text-align:center;">プロフィール</h1>
+                <h1 class="title" style="text-align:center; background-color:#2A57A4; color:white">プロフィール変更</h1>
                 <?php
                 $nickname = '';
                 $comment = '';
@@ -59,7 +59,7 @@
                         $sql = $pdo->prepare("UPDATE users SET nickname=?, my_comment=? WHERE student_number='0000000'");
                         if ($sql->execute([htmlspecialchars($nickname), htmlspecialchars($comment)])) {
                             $_SESSION['user']['nickname']=htmlspecialchars($nickname);
-                            $message = '<h2 class="text-primary mb-0" style="margin-left:300px">変更が完了しました</h2>';
+                            $message = '<h2 class="text-primary mb-0" style="margin-left:295px">変更が完了しました</h2>';
                         } else {
                             $message = '<font color="red">更新に失敗しました。</font>';
                         }
@@ -70,14 +70,14 @@
                 <form method="post" action="">
                 
                     <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:20px;">ニックネーム</label>
+                        <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
                         <div class="d-flex align-items-center">
                             <input type="text" readonly class="form-control <?php echo $nicknameError ? 'is-invalid' : ''; ?>" name="nickname" style="flex-grow: 1; background-color:white" placeholder="<?php echo $nicknameError ? $nicknameError : ''; ?>" value="<?php echo htmlspecialchars($nickname, ENT_QUOTES); ?>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="comment" style="font-size:20px; margin-top:30px;">コメント</label>
+                        <label for="comment" style="font-size:20px; margin-top:40px;">コメント</label>
                         <div class="d-flex align-items-center">
                             <textarea readonly class="form-control  <?php echo $commentError ? 'is-invalid' : ''; ?>" name="comment" style="flex-grow: 1; resize: none; background-color:white" placeholder="<?php echo $commentError ? $commentError : ''; ?>" rows="1"><?php echo htmlspecialchars($comment, ENT_QUOTES); ?></textarea>
                         </div>

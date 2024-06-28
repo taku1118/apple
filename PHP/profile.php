@@ -43,7 +43,7 @@
     <div class="container-fluid" style="margin-top:20px; ">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px;">
-            <h1 class="title" style="text-align:center;">プロフィール</h1>
+            <h1 class="title" style="text-align:center; margin-bottom: 30px; background-color:#2A57A4;color:white;">プロフィール</h1>
             <!-- ここからforeach -->
             <?php
                 foreach ($result as $row) {
@@ -58,8 +58,8 @@
                
                 <form>
                     <div class="form-group">
-                        <div class="d-flex flex-column align-items-left">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 100px; height: 100px; overflow: hidden;">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;">
                                 <!-- <span id="profilePicturePlaceholder" class="text-white">画像</span>-->
                                 <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
                                 <!-- <input type="file" readonly class="form-control-file d-none" id="profilePicture" value="<?php echo $profileimg; ?>"> -->
