@@ -76,10 +76,10 @@ $res = $sql->fetchAll(PDO::FETCH_ASSOC);
             <div class="navbar-brand">
                 <h3 class="mb-0 text-wrap"><?php echo $res[0]['thread_name']; ?></h3>
             </div>
-            <div class="ms-auto d-flex">
-                <button class="btn btn-secondary text-nowrap me-3" onclick="history.back()">戻る</button>
+            <form class="ms-auto d-flex">
+                <button class="btn btn-secondary text-nowrap me-3" type="button" onclick="history.back()">戻る</button>
                 <button class="btn btn-warning text-nowrap" type="submit">参加する</button>
-            </div>
+            </form>
         </div>
     </nav>
 <?php foreach($res as $row): ?>
