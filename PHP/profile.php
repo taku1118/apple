@@ -31,7 +31,7 @@
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <?php
-    $student_num = "0000000";
+    $student_num = $_SESSION['user']['student_number'];
                 $sql=$pdo->prepare("SELECT * FROM personal_inform where student_number=?");
 
                 $sql->execute([$student_num]);

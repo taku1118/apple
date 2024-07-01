@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
@@ -15,7 +16,7 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-    <?php session_start();?>
+   
     <?php require 'db-connect.php'; ?>
     <style>
     
@@ -36,6 +37,7 @@
             <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px;">
                 <h1 class="title" style="text-align:center; background-color:#2A57A4; color:white">プロフィール変更</h1>
                 <?php
+                $number=$_SESSION['user']['student_number'];
                 $nickname = '';
                 $comment = '';
 
@@ -56,7 +58,7 @@
                     } 
 
                     if (!$nicknameError && !$commentError) {
-                        $sql = $pdo->prepare("UPDATE users SET nickname=?, my_comment=? WHERE student_number='0000000'");
+                        $sql = $pdo->prepare("UPDATE users SET nickname=?, my_comment=? WHERE student_number=$number");
                         if ($sql->execute([htmlspecialchars($nickname), htmlspecialchars($comment)])) {
                             $_SESSION['user']['nickname']=htmlspecialchars($nickname);
                             $message = '<h2 class="text-primary mb-0" style="margin-left:295px">変更が完了しました</h2>';
