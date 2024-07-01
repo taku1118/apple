@@ -1,5 +1,7 @@
 // インサートした回数
 let insert_count = 0;
+// インサートしたinputの番号
+let insert_num = [];
 // 削除するinputのIDを入れる配列
 let delete_input_num = [];
 // シートの編集ボタンを押したときの動作
@@ -31,6 +33,7 @@ function open_sheet(target){
 
 // シートの保存ボタンを押したときの動き
 function save_sheet(target){
+    
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
     const formData = new FormData();
     // 複数のinput要素を取得
@@ -47,10 +50,18 @@ function save_sheet(target){
     update_ids.forEach((element)=>{
         formData.append("adopt_step_ids[]",element.substring(7));
     });
+    
+    for(var delete_target of delete_input_num){
+        // deleteしたいinputのidをセット
+        formData.append("delete_input[]", delete_target);
+    }
+    for(var insert_target of insert_num){
+        // insertしたいinputのidをセット
+        formData.append("insert_input[]", insert_target);
+    }
     // adopt_idをセット
     formData.append("adopt_id",target.id.substring(8));
-    // deleteしたいinputのidをセット
-    formData.append("delete_input[]",delete_input_num);
+    
     // INSERTする回数をinsertsにセット
     formData.append("inserts",insert_count);
     // DB通信開始
@@ -71,6 +82,8 @@ function save_sheet(target){
     add_btn.className = "btn d-none";
     // 保存し終えたのインサート回数のリセット
     insert_count = 0;
+    delete_input_num = [];
+    insert_num = [];
 }
 
 // インサートの仕様
@@ -90,10 +103,11 @@ function save_sheet(target){
 
 // シートのinput追加ボタンを押したとき
 function add_input(target){
-    let input_num = target.id.substring(9);
-    let card_body = document.getElementById("edit_area"+input_num+"");
-    let input_part = document.querySelectorAll("input[id^=step_"+input_num+"]");
-    // inputのIDに割り当てる連番
+    // シートの番号
+    let adopt_id = target.id.substring(9);
+    let card_body = document.getElementById("edit_area"+adopt_id+"");
+    let input_part = document.querySelectorAll("input[id^=step_"+adopt_id+"]");
+    // inputのIDに割り当てる連番、どのみちここが正しく振れていないことが課題である
     let count_input = (input_part.length+1)+(delete_input_num.length);
     insert_count++;
     // 新しいinputフィールドを作成
@@ -111,70 +125,36 @@ function add_input(target){
     const create_input = document.createElement("input");
         create_input.type = "text";
         create_input.className = "form-control form-control-lg";
-        create_input.id = "step_"+input_num+"_"+count_input;
+        create_input.id = "step_"+adopt_id+"_"+count_input;
         create_input.value = "";
     const remove_btn = document.createElement("button");
         remove_btn.id = "delete_step_id"+count_input;
         remove_btn.className = "btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5";
         remove_btn.textContent = "✕";
     input_button_div.appendChild(create_input);
+    // remove_btnにイベント(クリックした時)を付与
+    // こっちは追加した分のinputを削除するときの処理
+    remove_btn.addEventListener('click',()=>{
+        delete_input_num.push(count_input);
+        adopt_area_div.remove();
+        const index = insert_num.indexOf(count_input);
+        insert_num.splice(index,1);
+        console.log(insert_num);
+    })
     input_button_div.appendChild(remove_btn);
     adopt_area_div.appendChild(icon_div);
     adopt_area_div.appendChild(input_button_div);
-    // const input_html = `<div id="adopt_area${count_input}">
-    //                         <div class="text-center">
-    //                             <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
-    //                         </div>
-    //                         <div class="card-text position-relative" id="input_${count_input}">
-    //                             <input type="text" class="form-control form-control-lg" id="step_${input_num}_${count_input}" value="">
-    //                             <button onclick="delete_input(this)" class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5" id="delete_step_id${count_input}">✕</button>
-    //                         </div>
-    //                     </div>`;
-    // card_body.insertAdjacentHTML("beforeend",input_html);
     card_body.appendChild(adopt_area_div);
+    insert_num.push(count_input);
+    
 }
 
+// 削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なためそっちを採用する
 
-// 削除の仕様
-// 今まで作成したUPDATEやINSERTだと実装できない可能性がある
-// その理由として連番が問題になっている
-// 変数「insert_count」にインサートした回数、「count_input」にシート内のinputの総数を管理している
-// count_inputはinputに連番を振るためにある
-// しかしcount_inputは追加ボタンを押したときのinputの総数からとってきている
-// もしもともと連番を振っていたinputが4つ「1，2，3、4」と並んでいた場合...
-// 2番目を削除する
-// すると連番は「1，3，4」となる
-// こうなるとcount_inputの値は3であるが次に振られるべき番号は5となる
-// ここで矛盾が発生する
-
-// これを解決するには...
-// と、その前に
-// このcount_inputがどんな役割をしているのか考えてみよう
-// count_inputはinputに連番を振るため
-// なぜ連番を振る必要があるの？
-// そもそもID属性には一意の連番を振ることが必要であるという記事を見たことがあるから振っているだけでその連番自体を何かに使う（例えば：直接データベースの値になるとか）わけではないのでは？
-// おそらく、一意のIDが振られたinputをメインに使うところがデータベースにFETCH APIで接続するタイミング
-// そもそも別にIDを一意に振る必要はないのでは？
-// データベースに格納するのは「選考ID（シートに持たせる）、選考ステップID（DBの状態から自動で生成）、選考内容（inputのvalue）、日付（自動生成）」4つ
-
-// 次はDB側の話
-// DB側ではAUTO_INCREMENTは使用していない
-// 理由は単純な連番ではなく、選考IDごとの連番だから
-// 今の連番の振り方は選考IDごとの選考ステップIDの総数を数えて、それに1プラスすることで連番を振っている
-// これだと削除した場合、連番の振り直しが必須となる
-// なぜならば例えば選考ステップID「1，2，3，4」があったとする
-// そのうちの2番目が削除されると「1，3，4」となる
-// 次にインサートされるときは「3」となり、重複エラーが出てしまう
-// これはDBなのでHTMLのように無視はできない
-
-// 解決するには....
-// 連番を振り直すのがいいのか？
-// この場合、削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なためそっちを採用する
-
-
+// 既存の（データベースから取得してきた）分の削除処理
 function delete_input(target){
     let target_id = target.id.substring(14);
-    let adopt_area = document.getElementById("adopt_area"+target_id+"");
+    let adopt_area = document.getElementById("adopt_area"+target_id);
     delete_input_num.push(target_id);
     adopt_area.remove();
 }
