@@ -5,7 +5,7 @@
 -- 
 
 -- 受験報告書用
-    CREATE VIEW Report_Inform AS SELECT report_id, company_id, student_number, Courses.school_id, course_id, school_name, course_name, graduate_date, company_name, company_location, exam_date, apply_way, exam_way, question, opinion, other FROM Exam_Reports JOIN Companies USING (company_id) JOIN Users USING (student_number) JOIN Courses USING (course_id) JOIN Schools ON schools.school_id = courses.school_id;
+    CREATE VIEW Report_Inform AS SELECT report_id, company_id, student_number, Courses.school_id, course_id, schools.school_name, course_name, graduate_date, company_name, company_location, exam_date, apply_way, exam_way, question, opinion, other FROM Exam_Reports JOIN Companies USING (company_id) JOIN Users USING (student_number) JOIN Courses USING (course_id) JOIN Schools ON schools.school_id = courses.school_id;
 -- 
 
 -- 掲示板用
