@@ -1,10 +1,10 @@
 <?php
 require('db-connect.php');
 $post_delete = $_POST['delete_input'] ?? [];
-$insert_step_ids = $_POST['insert_input'] ?? [];
 $delete_datas = array_values($post_delete);
 
 // インサート処理
+$insert_step_ids = $_POST['insert_input'] ?? [];
 $insert_sql = [];
 if($insert_step_ids!=[]){
     
