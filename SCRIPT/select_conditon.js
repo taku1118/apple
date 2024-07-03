@@ -63,7 +63,7 @@ function save_sheet(target){
     formData.append("adopt_id",target.id.substring(8));
     
     // INSERTする回数をinsertsにセット
-    formData.append("inserts",insert_count);
+    // formData.append("inserts",insert_count);
     // DB通信開始
     fetch("save_state.php",{
         method: "POST",
@@ -82,8 +82,8 @@ function save_sheet(target){
     add_btn.className = "btn d-none";
     // 保存し終えたのインサート回数のリセット
     insert_count = 0;
-    delete_input_num = [];
-    insert_num = [];
+    // delete_input_num = [];
+    // insert_num = [];
 }
 
 // インサートの仕様

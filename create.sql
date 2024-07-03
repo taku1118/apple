@@ -129,11 +129,11 @@ CREATE TABLE Adopt_State(
 
 -- 戦況状況詳細テーブル
 CREATE TABLE Adopt_State_Details(
-    adopt_step_id INT auto_increment,
     adopt_id INT,
+    adopt_step_id INT,
     adopt_way VARCHAR(30) NOT NULL,
     adopt_date DATE,
-    PRIMARY KEY(adopt_step_id,adopt_id),
+    PRIMARY KEY(adopt_id,adopt_step_id),
     FOREIGN KEY(adopt_id) REFERENCES Adopt_State(adopt_id)
 );
 
