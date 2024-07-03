@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
@@ -40,7 +41,8 @@
             <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px">
                 <h1 class="title" style="text-align:center;  background-color:#2A57A4;color:white;">プロフィール変更</h1>
                 <?php
-                $sql = $pdo->query("SELECT * FROM users where student_number='0000000'");
+                $number=$_SESSION['user']['student_number'];
+                $sql = $pdo->query("SELECT * FROM users where student_number=$number");
                 $res = $sql->fetch(PDO::FETCH_ASSOC);
                 ?>
 
