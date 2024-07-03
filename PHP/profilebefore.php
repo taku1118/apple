@@ -61,7 +61,10 @@
                         </div>
                     </div>
 
-                    <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px; margin-top: 40px; margin-left:460px;" value="変 更">
+                    <div style="text-align:center; margin-top: 40px;">
+                        <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px;" value="変 更">
+                    </div>
+
                 </form>
             </main>
         </div>
