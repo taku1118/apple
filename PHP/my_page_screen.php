@@ -159,7 +159,7 @@
                 <h5 class="card-header fontTitle">個人設定</h5>
                 <div class="card-body p-0">
                     <div class="card-text list-group list-group-flush">
-                        <a href="./profilehenko.php" class="text-decoration-none list-group-item">
+                        <a href="./profilebefore.php" class="text-decoration-none list-group-item">
                             <span class="fontNormal">プロフィール変更</span>
                         </a>
                         <a href="./pass_change.php" class="text-decoration-none list-group-item">
