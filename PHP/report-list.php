@@ -52,7 +52,8 @@
     </div>
   </div>
 </nav>
-<div class="card px-3 py-3 mx-4 my-4" style="overflow: hidden;">
+<div class="px-4 py-4" style="min-height: calc(100% - 100px);">
+<div class="card px-3 py-3" style="overflow: hidden;">
 <?php
 if(isset($_GET['company_id'])){
   $company_id=$_GET['company_id'];
@@ -89,6 +90,7 @@ if(isset($_GET['company_id'])){
   echo '<h3>該当する企業が見つかりませんでした。</h3>';
 }
 ?>
+</div>
 </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
