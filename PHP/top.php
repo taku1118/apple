@@ -46,6 +46,22 @@
         text-overflow: ellipsis;
         color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
     }
+
+    .industry-link-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .industry-link {
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
     </style>
 
 </head>
@@ -67,7 +83,7 @@
                 <!-- 勤務地検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5 class="m-0">勤務地から企業を検索</h5>
+                        <h5 class="m-0" style="font-weight: bold;color: rgb(45, 55, 64);">勤務地から企業を検索</h5>
                     </div>
                     <!-- 地域ごとのボタン -->
                     <div class="card-body">
@@ -75,17 +91,16 @@
                     $sql1=$pdo->query('SELECT * FROM Regions');
                     foreach($sql1 as $row1){
                         echo '<div class="row">';
-                        echo '<div class="col-3">';
-                        echo '<h6>',$row1['region_name'],'</h6>';
+                        echo '<div class="col-3 d-flex align-items-center">';
+                        echo '<h6 class="m-0">',$row1['region_name'],'</h6>';
                         echo '</div>';
                         $sql2=$pdo->prepare('SELECT * FROM Prefectures where region_id = ?');
                         $sql2->execute([$row1['region_id']]);
-                        echo '<div class="col mb-2">';
+                        echo '<div class="col">';
                         echo '<div class="btn-group" role="group" style="display: flex;flex-wrap: wrap;">';
                         foreach($sql2 as $row2){
-                            
-                            echo '<a class="me-2 mb-2 text-nowrap" href="company.php?prefecture_id=',
-                            $row2['prefecture_id'],'">',$row2['prefecture_name'],'</a>';
+                            echo '<a class="m-1 text-nowrap" href="company.php?prefecture_id=',
+                            $row2['prefecture_id'],'" style="text-decoration: none;">',$row2['prefecture_name'],'</a>';
                         }
                         echo '</div>';
                         echo '</div>';
@@ -97,7 +112,7 @@
                 <!-- 職種検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5 class="m-0">職種から企業を検索</h5>
+                        <h5 class="m-0" style="font-weight: bold;color: rgb(45, 55, 64);">職種から企業を検索</h5>
                     </div>
                     <!-- 職種ごとのボタン -->
                     <div class="card-body">
@@ -105,7 +120,7 @@
                 <?php
                 $sql = $pdo->query('SELECT * FROM JobTypes');
                 foreach ($sql as $row) {
-                    echo '<a class="btn btn-primary me-2 mb-2" href="company.php?job_id=' ,$row['job_id'], '">' ,
+                    echo '<a class="btn btn-outline-primary me-2 mb-2" href="company.php?job_id=' ,$row['job_id'], '">' ,
                     $row['job_name'],'</a>';
                 }
                 ?>
@@ -115,7 +130,7 @@
                 <!-- 業界検索フォーム -->
                 <div class="card mb-4" style="margin: 0 5vw;">
                     <div class="card-header">
-                        <h5 class="m-0">業界から企業を検索</h5>
+                        <h5 class="m-0" style="font-weight: bold;color: rgb(45, 55, 64);">業界から企業を検索</h5>
                     </div>
                     <!-- 業界検索ボタン -->
                     <div class="card-body">
@@ -123,22 +138,19 @@
                                 業界を選択
                         </button>
                         <div id="industry-buttons" class="collapse mt-3">
-                            <div class="mb-2" role="group">
-                <?php
-                $sql = $pdo->query('SELECT * FROM Industries');
-                $industry=$sql->fetchAll();
-                echo '<div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 row-cols-lg-2 row-cols-xxl-3">';
-                foreach ($industry as $i=>$row) {
-                    echo '<div class="col mx-auto mb-2 col-txt"><a href="company.php?industry_id=' ,
-                    $row['industry_id'], '">・' ,$row['industry_name'], '</a></div>';
-                }
-                echo '</div>';
-                ?>    
+                            <div class="industry-link-container">
+                            <?php
+                            $sql = $pdo->query('SELECT * FROM Industries');
+                            $industry=$sql->fetchAll();
+                            foreach ($industry as $i=>$row) {
+                                echo '<a href="company.php?industry_id=' ,
+                                $row['industry_id'], '" class="industry-link"><span class="d-none d-sm-inline-block">　　</span>・' ,$row['industry_name'], '</a>';
+                            }
+                            ?>    
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
