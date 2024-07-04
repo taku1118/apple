@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 
@@ -151,13 +152,13 @@
                         <h5 class="card-header fs-1">個人設定</h5>
                         <div class="card-body">
                             <div class="card-text">
-                                <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                                <a href="profilebefore.php" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                                     <span class="fs-4">プロフィール変更</span>
                                 </a>
-                                <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                                <a href="pass_change.php" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                                     <span class="fs-4">パスワード変更</span>
                                 </a>
-                                <a href="#" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                                <a onclick="logout()" class="icon-link icon-link-hover fs-5 text-decoration-none d-block" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                                     <span class="fs-4">ログアウト</span>
                                 </a>
                             </div>
