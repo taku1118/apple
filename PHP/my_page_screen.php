@@ -41,7 +41,7 @@
             <div class="row w-100 m-5">
                 <div class="col">
                     <span class="fs-1 d-inline-block" style="width: 68%;">あなたの情報</span>
-                    <a href="./personal_information_change_screen.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./personal_information_change_screen.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
@@ -94,7 +94,7 @@
                 </div>
                 <div class="col">
                     <span class="fs-1 d-inline-block" style="width: 50%;">所有スキル</span>
-                    <a href="./ownership_skill.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./ownership_skill.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
@@ -111,7 +111,7 @@
                 </div>
                 <div class="col my-4">
                     <span class="fs-1 d-inline-block w-50">希望する条件</span>
-                    <a href="./suggested_condition.html" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
+                    <a href="./suggested_condition.php" class="icon-link icon-link-hover fs-5 text-decoration-none" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);">
                         <i class="bi bi-pencil-square mb-1"></i>
                         編集
                     </a>
