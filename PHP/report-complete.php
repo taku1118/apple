@@ -70,13 +70,13 @@ $report_sql->execute([
     $_POST['remarks']
 ]);
 ?>
-<div class="container d-flex flex-column justify-content-center align-items-center min-vh-100 text-center">
+<div class="d-flex flex-column justify-content-center align-items-center text-center" style="height: calc(100% - 65px);width:100%;">
         <h1 class="mb-4">報告完了しました！</h1>
         <h1 class="mb-4">ご協力ありがとうございます。</h1>
         <form action="top.php" method="post">
             <button type="submit" class="btn btn-primary">TOPに戻る</button>
         </form>
-    </div>
+</div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
             <div class="d-md-none copyright">
