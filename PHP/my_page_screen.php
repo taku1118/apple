@@ -156,7 +156,7 @@
         <!-- 個人設定 -->
         <div class="p-4">
             <div class="card shadow overflow-hidden">
-                <h5 class="card-header fontTitle">個人設定</h5>
+                <h5 class="card-header fontTitle mb-0">個人設定</h5>
                 <div class="card-body p-0">
                     <div class="card-text list-group list-group-flush">
                         <a href="./profilebefore.php" class="text-decoration-none list-group-item">
