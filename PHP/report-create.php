@@ -122,7 +122,7 @@
                     <input type="text" class="form-control" id="remarks" name="remarks">
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-primary" style="width:20%;">確認画面へ</button>
+                    <button type="submit" class="btn btn-primary" style="width:20%;min-width: 7rem;">確認画面へ</button>
                 </div>
             </form>
         </div>
