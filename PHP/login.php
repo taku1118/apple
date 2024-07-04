@@ -36,7 +36,7 @@
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
     <?php unset($_SESSION['user']); ?>
     <div class="wrapper">
-        <form action="login-process.php" method="post" class="d-flex flex-column" style="height:50vh;width:50vw;">
+        <form action="login-process.php" method="post" class="d-flex flex-column" style="height:50vh;width:50vw;min-width:240px;">
             <h1 class="mb-0">麻生就職サポート</h1>
             <!-- ログインしていない場合 -->
             <div class="flex-grow-1 align-content-center">

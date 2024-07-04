@@ -1,10 +1,11 @@
 <?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>企業検索結果</title>
+    <title></title>
 
     <!-- リセットCSS -->
     <link rel="stylesheet" href="../CSS/reset.css"/>
@@ -22,20 +23,38 @@
     <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
-        .search-box{
+    .search-box{
         height: 100px;
         width:100%;
-        }
+    }
 
-        #company-name-search-form{
-        padding: 0 3rem;
+    #company-name-search-form{
+        padding: 0 1rem;
         width: 100%;
         height: 3rem;
-        }
+    }
 
-        #company-name-search-form button{   
-        padding: 0 1.3rem;
+    @media (min-width: 1200px) {
+        #company-name-search-form {
+            padding: 0 2rem;
         }
+    }
+
+    #company-name-search-form button{   
+        padding: 0 1.3rem;
+    }
+
+    @media (min-width: 1200px) {
+        .rowwrap {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+
+    a:not([class]) {
+        text-decoration-skip-ink: auto;
+        color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    }
     </style>
 
 </head>
@@ -79,7 +98,7 @@ $company_ids = $company_ids->fetchAll(PDO::FETCH_COLUMN);
                     <button class="btn btn-success text-nowrap" type="submit">検索</button>
                 </form>
             </div>
-            <div class="row px-4">
+            <div class="row m-0 rowwrap">
 <?php
 if (empty($company_ids)) {
     echo '該当する企業が見つかりませんでした。';
@@ -88,10 +107,10 @@ if (empty($company_ids)) {
         $company_detail = $pdo->prepare('SELECT * FROM Companies WHERE company_id = ?');
         $company_detail->execute([$company_id]);
         foreach ($company_detail as $row) {
-            echo '<div class="col-xl-6">';
+            echo '<div class="col-xl-6 px-3">';
               echo '<div class="card mb-3">';
                 echo '<div class="card-body d-flex">';
-                  echo '<figure class="figure me-3 align-self-center d-none d-sm-block">';
+                  echo '<figure class="figure mb-0 me-3 align-self-center d-none d-sm-block">';
             if (empty($row['logo_image'])) {
                 echo '<img src="../IMAGE/no_image.jpg" alt="..." width="100" height="auto">';
             } else {
@@ -100,7 +119,7 @@ if (empty($company_ids)) {
                   echo '</figure>';
                   echo '<div>';
                     echo '<h4 class="card-title">',$row['company_name'],'</h4>';
-                    echo '<p class="card-text mb-2">会社ホームページ : <a href="',$row['company_url'],'" target="_blank">',$row['company_url'],'</a></p>';
+                    echo '<p class="card-text mb-2">会社ホームページ : <a href="',$row['company_url'],'">',$row['company_url'],'</a></p>';
                     echo '<p class="card-text mb-2">本社所在地 : ',$row['company_location'],'</p>';
                     echo '<a class="btn btn-primary me-2" href="keijiban.php?company_id=',$row['company_id'],'">掲示板</a>';
                     echo '<a class="btn btn-primary" href="report-list.php?company_id=',$row['company_id'],'">受験報告書一覧</a>';
@@ -112,7 +131,6 @@ if (empty($company_ids)) {
     }
 }
 ?>
-                </div>
             </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
