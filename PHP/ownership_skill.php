@@ -34,8 +34,8 @@
 
         </div>
         <div class="mt-4" style="margin-left: 56%;">
-            <button type="button" onclick="location.href='./my_page_screen.html'" class="btn btn-success btn-lg">変更する</button>
-            <button type="button" onclick="location.href='./my_page_screen.html'"
+            <button type="button" onclick="location.href='./my_page_screen.php'" class="btn btn-success btn-lg">変更する</button>
+            <button type="button" onclick="location.href='./my_page_screen.php'"
                 class="btn btn-secondary btn-lg">キャンセル</button>
         </div>
         <!-- </form> -->
