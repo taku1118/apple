@@ -53,7 +53,7 @@
                         <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
                         <i id="eyeIcon2" class="bi bi-eye-slash translate-middle position-absolute top-50 end-0"></i>  
                     </div>
-                    <div class="ms-auto">
+                    <div class="d-flex justify-content-end">
                         <button class="btn btn-secondary" type="button" onclick="history.back()">キャンセル</button>　
                         <button class="btn btn-primary" id="change_confirm" type="button">確定</button>
                     </div>
