@@ -26,7 +26,7 @@
 <body class="bg-primary-subtle">
     <div class="w-100">
         <div class="fs-1 mb-3 d-flex justify-content-end w-25" style="margin-left: 130px; margin-top: 5%;">希望する条件</div>
-        <form action="suggested_condtion_process.php?id=<?=$id?>" method="post" class="gap-3 mt-3 form-inline">
+        <form action="suggested_condition_process.php?id=<?=$id?>" method="post" class="gap-3 mt-3 form-inline">
         <div class="card shadow-sm p-5 m-auto" style="width: 40rem;"><!-- ここからCard -->
             <div class="card-body p-3">
                 <p class="card-text">
