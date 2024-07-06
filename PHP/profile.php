@@ -1,13 +1,14 @@
 <?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title>トップページ</title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css"/>
+    <link rel="stylesheet" href="../CSS/reset.css"/>
     
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -16,9 +17,51 @@
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-    <?php require 'db-connect.php' ?>
+    <?php require 'db-connect.php'; ?>
+
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
+
     <style>
-    
+    .background-image{
+        background-image: url("../IMAGE/school.jpg");
+        background-size: cover;
+        height: 200px;
+        width: 100%;
+    }
+
+    #company-name-search-form{
+        padding: 0 3rem;
+        width: 100%;
+        height: 3rem;
+    }
+
+    #company-name-search-form button{   
+        padding: 0 1.3rem;
+    }
+
+    .col-txt{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    }
+
+    .industry-link-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .industry-link {
+        text-align: left;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        box-sizing: border-box;
+        text-decoration: none;
+    }
     </style>
 
 </head>
@@ -26,10 +69,10 @@
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
       <?php require 'sidebars.php'; ?>
-         <!-- メインコンテンツ -->
-         <main class="container-fluid main-content" style="padding: 0;">
+        <!-- メインコンテンツ -->
+        <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <?php
     $student_num = $_SESSION['user']['student_number'];
                 $sql=$pdo->prepare("SELECT * FROM personal_inform where student_number=?");
@@ -152,9 +195,13 @@
             resizeTextarea();
         });
     </script>
-
-
+ 
+          
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 
@@ -166,6 +213,9 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- common.Script-->
+    <script src="../SCRIPT/common.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
