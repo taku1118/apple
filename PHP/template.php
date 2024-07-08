@@ -13,6 +13,9 @@
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
+
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
