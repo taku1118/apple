@@ -37,9 +37,9 @@
                     
                     <div class="col">
                         <select class="form-select form-select-lg" id="exampleFormSelect1" name="prefecture">                          
-                            <option selected>未定</option>
+                            <option value="null" selected>未定</option>
                             <?php foreach($res as $row): ?>
-                            <option value="<?= $row['prefecture_id'] ?>"><?= $row['prefecture_name'] ?></option>
+                            <option value="'<?= $row['prefecture_id'] ?>'"><?= $row['prefecture_name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -51,9 +51,9 @@
                     </div>
                     <div class="col">
                         <select class="form-select form-select-lg" id="exampleFormSelect1" name="industry">
-                            <option selected>未定</option>
+                            <option value="null" selected>未定</option>
                             <?php foreach($res2 as $row): ?>
-                            <option value="<?= $row['industry_id'] ?>"><?= $row['industry_name'] ?></option>
+                            <option value="'<?= $row['industry_id'] ?>'"><?= $row['industry_name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -64,9 +64,9 @@
                     </div>
                     <div class="col">
                         <select class="form-select form-select-lg" id="exampleFormSelect1" name="jobtype">
-                            <option selected>未定</option>
+                            <option value="null" selected>未定</option>
                             <?php foreach($res3 as $row): ?>
-                            <option value="<?= $row['job_id'] ?>"><?= $row['job_name'] ?></option>
+                            <option value="'<?= $row['job_id'] ?>'"><?= $row['job_name'] ?></option>
                             <?php endforeach; ?>
                         </select>
                     </div>

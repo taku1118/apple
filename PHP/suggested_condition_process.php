@@ -14,14 +14,9 @@
 <?php require 'db-connect.php'; ?>
 <!-- joinを使ったviewを作るとupdataできない -->
 <?php
-    $id = $_GET['id'];
-    if(empty($_POST["prefecture"])){
-        $sql=$pdo->prepare('update Users set desire_state_prefecture=null, desire_state_industry=?, desire_state_jobtype=? where student_number = ?');
-        $sql->execute([$_POST["industry"], $_POST["jobtype"], $id]);
-    }else{
-        $sql=$pdo->prepare('update Users set desire_state_prefecture=?, desire_state_industry=?, desire_state_jobtype=? where student_number = ?');
-        $sql->execute([$_POST["prefecture"], $_POST["industry"], $_POST["jobtype"], $id]);
-    }
+    $id = $_SESSION['user']['student_number'];
+    $sql_txt='update Users set desire_state_prefecture='.$_POST["prefecture"].', desire_state_industry='.$_POST["industry"].', desire_state_jobtype='.$_POST["jobtype"].' where student_number = '.$id;
+    $sql=$pdo->query($sql_txt);
     
 ?>
 
