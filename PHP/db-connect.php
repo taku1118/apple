@@ -15,5 +15,5 @@ try {
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die('データベース接続失敗: ' . $e->getMessage());
-}i
+}
 ?>
