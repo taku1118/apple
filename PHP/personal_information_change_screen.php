@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -10,6 +12,14 @@
 </head>
 
 <body class="bg-primary-subtle">
+      <?php
+                
+                $personal_inform = $pdo->prepare('SELECT gender,address,birthday,graduate_date,school_name,course_name,job_hunt,job_offer FROM Personal_Inform where student_number = ?');
+                $personal_inform->execute([$_SESSION['user']['student_number']]);
+                $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
+                
+            ?>
+
 
     <div class="">
         <div class="fs-1 mb-3" style="margin-left: 140px;">あなたの情報</div>
@@ -39,7 +49,7 @@
                         </div>
                         <div class="col-auto">
                             <select class="form-select" id="exampleFormSelect1">
-                                <option selected>福岡</option>
+                                <option selected><? $fetch_data[['address']] ?>   </option>
                                 <option value="1">その1</option>
                                 <option value="2">その2</option>
                                 <option value="3">その3</option>
