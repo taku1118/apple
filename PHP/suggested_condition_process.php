@@ -16,7 +16,7 @@
 <?php
     $id = $_GET['id'];
     if(empty($_POST["prefecture"])){
-        $sql=$pdo->prepare('update Users set desire_state_industry=?, desire_state_jobtype=? where student_number = ?');
+        $sql=$pdo->prepare('update Users set desire_state_prefecture=null, desire_state_industry=?, desire_state_jobtype=? where student_number = ?');
         $sql->execute([$_POST["industry"], $_POST["jobtype"], $id]);
     }else{
         $sql=$pdo->prepare('update Users set desire_state_prefecture=?, desire_state_industry=?, desire_state_jobtype=? where student_number = ?');
