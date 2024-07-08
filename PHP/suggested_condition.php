@@ -14,11 +14,11 @@
 <?php require 'db-connect.php'; ?>
 
 <?php
-    $sql = $pdo->query('SELECT * FROM prefectures');
+    $sql = $pdo->query('SELECT * FROM Prefectures');
     $res = $sql->fetchAll(PDO::FETCH_ASSOC);
-    $sql2 = $pdo->query('SELECT * FROM industries');
+    $sql2 = $pdo->query('SELECT * FROM Industries');
     $res2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
-    $sql3 = $pdo->query('SELECT * FROM jobtypes');
+    $sql3 = $pdo->query('SELECT * FROM JobTypes');
     $res3 = $sql3->fetchAll(PDO::FETCH_ASSOC);
     $id = $_SESSION['user']['student_number'];
 ?>
