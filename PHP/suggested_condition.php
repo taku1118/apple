@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="mt-4" style="margin-left: 59%;">
-            <button type="button" class="btn btn-success btn-lg">変更する</button>
+            <button type="submit" class="btn btn-success btn-lg">変更する</button>
             <button type="button" onclick="history.back();"
                 class="btn btn-secondary btn-lg">キャンセル</button>
         </div>
