@@ -157,6 +157,7 @@
                     <div class="row my-3">
                         <div class="col-5">
                             <span class="fs-4">学校名</span>
+                            
                         </div>
                         <div class="col-auto">
                             <select class="form-select" id="exampleFormSelect1">
