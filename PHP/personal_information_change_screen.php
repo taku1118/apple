@@ -79,6 +79,7 @@
                                         while($num != 2007){
                                             $num++;
                                             $strnum = strval($num);
+            
                                             echo '<option value=',$strnum,'>',$strnum,'</option>';
                                         }
                                         ?>
@@ -102,6 +103,10 @@
                                         while($num2 != 12){
                                             $num2++;
                                             $strnum2 = strval($num2);
+                                            if($strnum2.length() == 1){
+                                                $strnum2 = "0"+$strnum2;
+                                            }
+                                                
                                             echo '<option value=',$strnum2,'>',$strnum2,'</option>';
                                         }
                                         ?>
