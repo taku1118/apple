@@ -14,10 +14,12 @@
 
 <body class="bg-primary-subtle">
       <?php
-                
+                 
                 $personal_inform = $pdo->prepare('SELECT gender,address,birthday,graduate_date,school_name,course_name,job_hunt,job_offer FROM Personal_Inform where student_number = ?');
                 $personal_inform->execute([$_SESSION['user']['student_number']]);
                 $fetch_data = $personal_inform->fetch(PDO::FETCH_ASSOC);
+                $sql = $pdo->query('SELECT * FROM prefectures');
+                $res = $sql->fetchAll(PDO::FETCH_ASSOC);
                 
             ?>
 
@@ -50,10 +52,10 @@
                         </div>
                         <div class="col-auto">
                             <select class="form-select" id="exampleFormSelect1">
-                                <option selected><? $fetch_data[['address']] ?>   </option>
-                                <option value="1">その1</option>
-                                <option value="2">その2</option>
-                                <option value="3">その3</option>
+                                <option selected><?php echo htmlspecialchars($fetch_data['address']); ?>  </option>
+                                <?php foreach($res as $row): ?>
+                                <option value="<?= $row['prefecture_id'] ?>"><?= $row['prefecture_name'] ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                     </div>
@@ -64,18 +66,45 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-auto gx-2">
+                                    <?php
+                                    $year = substr($fetch_data['birthday'], 0, 4);
+
+                                    ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value="">----</option>
-                                        <option>2000</option>
+                                        <option value=<?php $year?>><?php echo $year;?></option>
+                                        <?php
+                                        $num = 1990;
+                                        $strnum = strval($num);
+                                        echo '<option value=',$strnum,'>',$strnum,'</option>';
+                                        while($num != 2007){
+                                            $num++;
+                                            $strnum = strval($num);
+                                            echo '<option value=',$strnum,'>',$strnum,'</option>';
+                                        }
+                                        ?>
+
                                     </select>
                                 </div>
                                 <div class="col-auto gx-2 my-auto">
                                     <span>年</span>
                                 </div>
                                 <div class="col-auto gx-2">
+                                <?php
+                                    $month = substr($fetch_data['birthday'], 5, 2);
+
+                                    ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value="">--</option>
-                                        <option>11</option>
+                                        <option value=<?php $month?>><?php echo $month;?></option>
+                                         <?php
+                                        $num2 = 01;
+                                        $strnum2 = strval($num2);
+                                        echo '<option value=',$strnum2,'>',$strnum2,'</option>';
+                                        while($num2 != 12){
+                                            $num2++;
+                                            $strnum2 = strval($num2);
+                                            echo '<option value=',$strnum2,'>',$strnum2,'</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-auto gx-2 my-auto">
