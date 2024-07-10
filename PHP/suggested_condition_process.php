@@ -23,7 +23,7 @@
 <body class="bg-primary-subtle">
     <div class="w-100">
         <div class="fs-1 mb-3 d-flex justify-content-end w-50" style="margin-left: 130px; margin-top: 5%;">希望する条件の入力が完了しました。</div>
-        <button type="button" class="btn btn-success btn-lg" onclick="location.href='./my_page_screen.php'">マイページに戻る</button>
+        <button type="button" class="btn btn-success btn-lg mt-5" style="margin-left: 50%;" onclick="location.href='./my_page_screen.php'">マイページに戻る</button>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

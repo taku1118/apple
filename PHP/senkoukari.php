@@ -132,10 +132,10 @@
                                             <h2 class="card-title my-5 text-center"><?= $row['company_name_txt'] ?></h2>
                                             <!-- テキストと矢印のブロック、この二つDivを削除する -->
                                             <?php foreach ($select_detail_modal as $x => $detail_modal) : ?>
-                                                <div id="adopt_area<?= $detail_modal['adopt_step_id'] ?>">
+                                                <div id="adopt_area<?= $row['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>">
                                                     <div class="car d-text position-relative" id="input_<?= $detail_modal['adopt_step_id'] ?>">
                                                         <input type="text" class="form-control form-control-lg" id="step_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>" value="<?= $detail_modal['adopt_way'] ?>">
-                                                        <button onclick="delete_input(this)" class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5" id="delete_step_id<?= $detail_modal['adopt_step_id'] ?>">✕</button>
+                                                        <button onclick="delete_input(this,<?= $detail_modal['adopt_id'] ?>)" class="btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5" id="delete_step_id<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>">✕</button>
                                                     </div>
                                                     <?php if ($x + 1 != count($select_detail_modal)) : ?>
                                                         <div class="text-center">

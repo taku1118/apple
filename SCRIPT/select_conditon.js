@@ -1,9 +1,11 @@
-// インサートした回数
-let insert_count = 0;
 // インサートしたinputの番号
 let insert_num = [];
 // 削除するinputのIDを入れる配列
 let delete_input_num = [];
+// すべてのinput要素を入れる
+let All_Inputs = "";
+// すべてのinput要素のIDを入れる配列
+let All_Inputs_Array = [];
 // シートの編集ボタンを押したときの動作
 function edit_sheet(target){
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
@@ -29,11 +31,16 @@ function open_sheet(target){
     edit_btn.className = "btn btn-primary";
     let save_btn = document.querySelector("button[id^=save_btn"+target.id.substring(12)+"]");
     save_btn.className = "btn btn-primary d-none";
+    // すべてのinputのIDを取得
+    All_Inputs = document.querySelectorAll("input[id^=step_"+target.id.substring(12)+"]");
+    // そのinputのIDから数字部分だけを切り取って配列に格納
+    All_Inputs_Array = Array.from(All_Inputs).map((Input) => Number(Input.id.substring(7)));
+
+    console.log(All_Inputs_Array);
 }
 
 // シートの保存ボタンを押したときの動き
 function save_sheet(target){
-    
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
     const formData = new FormData();
     // 複数のinput要素を取得
@@ -50,20 +57,17 @@ function save_sheet(target){
     update_ids.forEach((element)=>{
         formData.append("adopt_step_ids[]",element.substring(7));
     });
-    
+    // deleteしたいinputのidをセット
     for(var delete_target of delete_input_num){
-        // deleteしたいinputのidをセット
         formData.append("delete_input[]", delete_target);
     }
+    // insertしたいinputのidをセット
     for(var insert_target of insert_num){
-        // insertしたいinputのidをセット
         formData.append("insert_input[]", insert_target);
     }
     // adopt_idをセット
     formData.append("adopt_id",target.id.substring(8));
     
-    // INSERTする回数をinsertsにセット
-    // formData.append("inserts",insert_count);
     // DB通信開始
     fetch("save_state.php",{
         method: "POST",
@@ -80,10 +84,13 @@ function save_sheet(target){
     edit_btn.className = "btn btn-primary";
     edit_div.className = "card-body pe-none";
     add_btn.className = "btn d-none";
-    // 保存し終えたのインサート回数のリセット
-    insert_count = 0;
-    // delete_input_num = [];
-    // insert_num = [];
+    // 削除したinputを反映させる、ここで正しく反映されていないのでは？（疑惑）
+    // All_Inputs_Array = All_Inputs_Array.filter((v) => {return ! delete_input_num.includes(v)});
+    // すべてのinputのIDを取得
+    All_Inputs = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
+    All_Inputs_Array = Array.from(All_Inputs).map((Input) => Number(Input.id.substring(7)));
+    delete_input_num = [];
+    insert_num = [];
 }
 
 // インサートの仕様
@@ -98,7 +105,7 @@ function save_sheet(target){
 
 
 // どちらにせよ追加した要素の個数把握が必須となる
-// また、必要な情報として「その1」の方はadopt_way、adopt_dateが必要となるが、「その2」は2つのデータ（adopt_way、adopt_date）がいらない（Updateでまとめて一気に更新するから）
+// また、必要な情報として「その2」は2つのデータ（adopt_way、adopt_date）がいらない（Updateでまとめて一気に更新するから）
 
 
 // シートのinput追加ボタンを押したとき
@@ -108,11 +115,11 @@ function add_input(target){
     let card_body = document.getElementById("edit_area"+adopt_id+"");
     let input_part = document.querySelectorAll("input[id^=step_"+adopt_id+"]");
     // inputのIDに割り当てる連番、どのみちここが正しく振れていないことが課題である
-    let count_input = (input_part.length+1)+(delete_input_num.length);
-    insert_count++;
+    let count_input = Math.max(...All_Inputs_Array)+1;
+    
     // 新しいinputフィールドを作成
     const adopt_area_div = document.createElement("div");
-        adopt_area_div.id = "adopt_area"+count_input;
+        adopt_area_div.id = "adopt_area"+adopt_id+"_"+count_input;
     const icon_div = document.createElement("div");
         icon_div.className = "text-center";
     const icon_tag = document.createElement("i");
@@ -128,33 +135,59 @@ function add_input(target){
         create_input.id = "step_"+adopt_id+"_"+count_input;
         create_input.value = "";
     const remove_btn = document.createElement("button");
-        remove_btn.id = "delete_step_id"+count_input;
+        remove_btn.id = "delete_step_id"+adopt_id+"_"+count_input;
         remove_btn.className = "btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5";
         remove_btn.textContent = "✕";
     input_button_div.appendChild(create_input);
     // remove_btnにイベント(クリックした時)を付与
     // こっちは追加した分のinputを削除するときの処理
-    remove_btn.addEventListener('click',()=>{
-        delete_input_num.push(count_input);
-        adopt_area_div.remove();
-        const index = insert_num.indexOf(count_input);
-        insert_num.splice(index,1);
-        console.log(insert_num);
-    })
+        remove_btn.addEventListener('click',()=>{
+            
+            // 削除したいinputのIDと「All_Inputs_Array」のIDが一致する部分の要素番号を「delete_input_num」に格納
+            delete_input_num.push(All_Inputs_Array.findIndex((value)=>{return value == count_input})+1);
+            // input要素を削除
+            console.log(adopt_area_div);
+            adopt_area_div.remove();
+            // 追加した分のものを削除する場合、「insert_num」（insert候補）のものを削除する
+            // そのために削除したものがinsert候補のものかを確認する
+            // もし、候補に含まれていたらその部分の要素番号を取得
+            // console.log("削除したinputの番号："+count_input);
+            // console.log(All_Inputs_Array);
+            // const insert_num_index = insert_num.indexOf(count_input);
+            // もし、追加候補を削除する場合、insert_numからその部分を消す
+            // if(insert_num_index!=-1){
+            //     insert_num.splice(insert_num_index,1);
+            // }
+
+            // console.log("追加候補に含まれていた削除対象の要素番号："+insert_num_index);
+            // console.log("インサート予定のinput："+insert_num);
+            // console.log("削除予定のinput："+delete_input_num);
+        })
     input_button_div.appendChild(remove_btn);
     adopt_area_div.appendChild(icon_div);
     adopt_area_div.appendChild(input_button_div);
     card_body.appendChild(adopt_area_div);
+    // DBでinsertするためにinputのIDを格納する
     insert_num.push(count_input);
-    
+    // input全体を管理する「All_Inputs_Array」に追加分を格納する
+    All_Inputs_Array.push(count_input);
+
+    console.log(All_Inputs_Array);
 }
 
-// 削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なためそっちを採用する
+// 削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なため「毎回連番を振り直す方法」を採用する
 
 // 既存の（データベースから取得してきた）分の削除処理
-function delete_input(target){
+function delete_input(target, adopt_id){
+    console.log(adopt_id);
+    // 削除したいinput要素を取得
     let target_id = target.id.substring(14);
     let adopt_area = document.getElementById("adopt_area"+target_id);
-    delete_input_num.push(target_id);
+    // 「All_Inputs_Array」のIDと削除するinputのIDを照合、一致した部分の要素番号を「delete_input_num」に格納
+    delete_input_num.push(All_Inputs_Array.findIndex((value)=>{return Number(value) == target_id.substring(2)})+1);
+    console.log(adopt_area);
+    // input要素を削除
     adopt_area.remove();
+
+    console.log(delete_input_num);
 }
