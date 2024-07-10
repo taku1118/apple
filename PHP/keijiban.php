@@ -68,7 +68,7 @@
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 <?php
 $id = $_GET['company_id'];
-$sql=$pdo->query("SELECT * FROM post_content where company_id = $id");
+$sql=$pdo->query("SELECT * FROM Post_Content where company_id = $id");
 $res = $sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">

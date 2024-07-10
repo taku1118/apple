@@ -16,6 +16,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 2;
 	-webkit-line-clamp: 2; /* 任意の行数を指定 */
 }
 
@@ -24,6 +25,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 3;
 	-webkit-line-clamp: 3; /* 任意の行数を指定 */
 }
 
@@ -32,6 +34,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 4;
 	-webkit-line-clamp: 4; /* 任意の行数を指定 */
 }
 
@@ -40,6 +43,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 5;
 	-webkit-line-clamp: 5; /* 任意の行数を指定 */
 }
 
@@ -48,6 +52,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 6;
 	-webkit-line-clamp: 6; /* 任意の行数を指定 */
 }
 
@@ -56,6 +61,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 7;
 	-webkit-line-clamp: 7; /* 任意の行数を指定 */
 }
 
@@ -64,6 +70,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 8;
 	-webkit-line-clamp: 8; /* 任意の行数を指定 */
 }
 
@@ -72,6 +79,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 9;
 	-webkit-line-clamp: 9; /* 任意の行数を指定 */
 }
 
@@ -80,6 +88,7 @@ body{
 	overflow: hidden;/* はみ出た部分を非表示 */
 	display: -webkit-box; /* 必須 */
 	-webkit-box-orient: vertical; /* 必須 */
+	line-clamp: 10;
 	-webkit-line-clamp: 10; /* 任意の行数を指定 */
 }
 

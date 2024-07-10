@@ -138,18 +138,11 @@ CREATE TABLE Adopt_State_Details(
 );
 
 -- 資格管理テーブル
-CREATE TABLE Licences(
-    licence_id CHAR(4),
-    licence_name VARCHAR(50),
-    PRIMARY KEY(licence_id)
-);
-
--- 資格管理テーブル
-CREATE TABLE Licence_Manage(
+CREATE TABLE Skill_Manage (
+    skill_id INT AUTO_INCREMENT,
     student_number CHAR(7),
-    licence_id CHAR(4),
-    PRIMARY KEY(student_number,licence_id),
-    FOREIGN KEY(licence_id) REFERENCES Licences(licence_id),
+    skill_name VARCHAR(300),
+    PRIMARY KEY(skill_id),
     FOREIGN KEY(student_number) REFERENCES Users(student_number)
 );
 

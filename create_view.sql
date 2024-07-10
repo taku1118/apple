@@ -4,10 +4,6 @@
     CREATE VIEW Licence_Inform AS SELECT student_number, licence_name FROM Licence_Manage LEFT JOIN Licences ON Licence_Manage.licence_id = Licences.licence_id;
 -- 
 
--- 受験報告書用
-    CREATE VIEW Report_Inform AS SELECT report_id, company_id, student_number, Courses.school_id, course_id, schools.school_name, course_name, graduate_date, company_name, company_location, exam_date, apply_way, exam_way, question, opinion, other FROM Exam_Reports JOIN Companies USING (company_id) JOIN Users USING (student_number) JOIN Courses USING (course_id) JOIN Schools ON schools.school_id = courses.school_id;
--- 
-
 -- 掲示板用
     CREATE VIEW Post_Content AS SELECT post_id, company_id, student_number, thread_id, thread_name, thread_date, is_active, post_date, post_content FROM Thread JOIN Post USING (thread_id) JOIN Users USING (student_number);
 -- 

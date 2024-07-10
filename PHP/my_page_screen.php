@@ -139,6 +139,8 @@
                 $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
                 $Licence_Inform->execute([$_SESSION['user']['student_number']]);
                 $fetch_data = $Licence_Inform->fetchAll();
+                $personal_skill = $pdo->prepare('SELECT * FROM Skill_Manage where student_number = ?');
+                $personal_skill->execute([$_SESSION['user']['student_number']]);
             ?>
             <span class="d-inline-block fontTitle">所有スキル</span>
             <a class="icon-link icon-link-hover text-decoration-none fs-5" style="--bs-icon-link-transform: translate3d(0, -.150rem, 0);" href="./ownership_skill.php">
@@ -150,8 +152,8 @@
                     <p class="card-text">
                     <ul>
                         <?php if(!empty($desire_fetch)): ?>
-                            <?php foreach($fetch_data as $row): ?>
-                                <li class="fontNormal"><?= $row['licence_name'] ?></li>
+                            <?php foreach($personal_skill as $row): ?>
+                                <li class="fontNormal"><?= $row['skill_name'] ?></li>
                             <?php endforeach; ?>
                         <?php else: ?>
                             <li class="fontNormal">--------------</li>

@@ -29,6 +29,10 @@
         #textPassword {
             border: none; /* デフォルトの枠線を消す */
         }
+        .font{
+        color: rgb(45, 55, 64);
+        font-weight: bold;
+        }
     </style>
 
 </head>
@@ -40,22 +44,22 @@
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
         <div class="d-flex justify-content-center align-items-center" style="height:100%;width:100%;">
-            <div class="card p-5" style="width: 55%;min-width:320px;"><!--  カードの幅を調整したいときはwidthを編集 -->
-                <h2>パスワード変更</h2>
+            <div class="card shadow p-5" style="width: 90%;min-width:320px;max-width:640px;"><!--  カードの幅を調整したいときはwidthを編集 -->
+                <h2 class="font">パスワード変更</h2>
                 <form action="my_page_screen.php" method="post">
-                <label for="formGroupExampleInput" class="form-label">パスワード</label>
+                    <label for="formGroupExampleInput" class="form-label">新しいパスワード</label>
                     <div class="mb-3 position-relative">
                         <input type="password" class="form-control" id="formGroupExampleInput" placeholder="パスワード">
                         <i id="eyeIcon" class="bi bi-eye-slash translate-middle position-absolute top-50 end-0"></i>
                     </div>
-                <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
+                    <label for="formGroupExampleInput2" class="form-label">パスワード確認</label>
                     <div class="mb-3 position-relative">
                         <input type="password" class="form-control" id="formGroupExampleInput2" name="confirm_password" placeholder="パスワード確認">
                         <i id="eyeIcon2" class="bi bi-eye-slash translate-middle position-absolute top-50 end-0"></i>  
                     </div>
                     <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary" type="button" onclick="history.back()">キャンセル</button>　
-                        <button class="btn btn-primary" id="change_confirm" type="button">確定</button>
+                        <a class="btn btn-secondary" href="my_page_screen.php">キャンセル</a>
+                        <button class="btn btn-primary ms-3" id="change_confirm" type="button">確定</button>
                     </div>
                 </form>
             </div>  
