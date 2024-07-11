@@ -75,7 +75,7 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <?php
     $student_num = $_SESSION['user']['student_number'];
-                $sql=$pdo->prepare("SELECT * FROM personal_inform where student_number=?");
+                $sql=$pdo->prepare("SELECT * FROM Personal_Inform where student_number=?");
 
                 $sql->execute([$student_num]);
     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
@@ -140,16 +140,16 @@
                     </div>
                     
                     <?php
-                    $sql=$pdo->prepare("SELECT * FROM licence_inform WHERE student_number=?");
+                    $sql=$pdo->prepare("SELECT * FROM Skill_Manage WHERE student_number=?");
                     $sql->execute([$student_num]);
                     $result = $sql->fetchAll(PDO::FETCH_ASSOC);
                     ?>
                     
 
                     <div class="form-group" style="font-size:20px; margin-top:30px">
-                        <label for="qualifications">保有資格</label>
+                        <label for="qualifications">保有スキル</label>
                         <?php foreach ($result as $row) :
-                            $licencename = htmlspecialchars($row['licence_name']);
+                            $licencename = htmlspecialchars($row['skill_name']);
                         ?>
                         <div class="d-flex align-items-center">
                             <input type="text" readonly class="form-control" id="qualifications" value="<?php echo $licencename; ?>" style="flex-grow: 1; margin-bottom:1px; color:block; background-color:white">

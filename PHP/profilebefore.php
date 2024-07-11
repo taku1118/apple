@@ -62,6 +62,11 @@
         box-sizing: border-box;
         text-decoration: none;
     }
+    .form-control {
+            overflow: hidden;
+            word-wrap: break-word;
+    }
+
     </style>
 
 </head>
@@ -72,16 +77,12 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-<body style="background-color: #E6ECF0;">
-    <div class="container-fluid">
         <div class="row">
             <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px">
                 <h1 class="title" style="text-align:center;  background-color:#2A57A4;color:white;">プロフィール変更</h1>
                 <?php
                 $number=$_SESSION['user']['student_number'];
-                $sql = $pdo->query("SELECT * FROM users where student_number=$number");
+                $sql = $pdo->query("SELECT * FROM Users where student_number=$number");
                 $res = $sql->fetch(PDO::FETCH_ASSOC);
                 ?>
 
@@ -101,38 +102,12 @@
                     </div>
 
                     <div style="text-align:center; margin-top: 40px;">
-                        <input type="submit" class="btn btn-primary" style="width: 8%; height:10%; font-size:20px;" value="変 更">
+                        <input type="submit" class="btn btn-primary" style="font-size:20px;" value="変 更">
                     </div>
 
                 </form>
             </main>
         </div>
-    </div>
-
-    <style>
-        .form-control {
-            overflow: hidden;
-            word-wrap: break-word;
-        }
-    </style>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var textarea = document.querySelector('textarea[name="comment"]');
-
-            function resizeTextarea() {
-                textarea.style.height = 'auto';
-                textarea.style.height = (textarea.scrollHeight) + 'px';
-            }
-
-            textarea.addEventListener('input', resizeTextarea);
-
-            // Initial resize to fit existing content
-            resizeTextarea();
-        });
-    </script>
-</body>
-
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
             <div class="d-md-none copyright">
@@ -152,6 +127,22 @@
 
     <!-- common.Script-->
     <script src="../SCRIPT/common.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var textarea = document.querySelector('textarea[name="comment"]');
+
+            function resizeTextarea() {
+                textarea.style.height = 'auto';
+                textarea.style.height = (textarea.scrollHeight) + 'px';
+            }
+
+            textarea.addEventListener('input', resizeTextarea);
+
+            // Initial resize to fit existing content
+            resizeTextarea();
+        });
+    </script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
