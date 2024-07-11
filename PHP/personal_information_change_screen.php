@@ -97,15 +97,16 @@
                                     <select class="form-select" id="exampleFormSelect1">
                                         <option value=<?php $month?>><?php echo $month;?></option>
                                          <?php
-                                        $num2 = 01;
-                                        $strnum2 = strval($num2);
+                                        $num2 = 1;
+                                        $strnum2 = "0".strval($num2);
                                         echo '<option value=',$strnum2,'>',$strnum2,'</option>';
                                         while($num2 != 12){
                                             $num2++;
                                             $strnum2 = strval($num2);
-                                            if($strnum2.length() == 1){
-                                                $strnum2 = "0"+$strnum2;
+                                            if(mb_strlen($strnum2) == 1){
+                                                $strnum2 ="0".$strnum2;
                                             }
+                                            
                                                 
                                             echo '<option value=',$strnum2,'>',$strnum2,'</option>';
                                         }
@@ -115,10 +116,28 @@
                                 <div class="col-auto gx-2 my-auto">
                                     <span>月</span>
                                 </div>
-                                <div class="col-auto gx-2">
+                                <div class="col-auto gx-2"><?php
+                                    $day = substr($fetch_data['birthday'], 8, 2);
+
+                                    ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value="">--</option>
-                                        <option>11</option>
+                                        <option value=<?php $day?>><?php echo $day?></option>
+                                        <?php
+                                        $num3 = 1;
+                                        $strnum3 = "0".strval($num3);
+                                        echo '<option value=',$strnum3,'>',$strnum3,'</option>';
+                                        while($num3 != 31){
+                                            $num3++;
+                                            $strnum3 = strval($num3);
+                                            if(mb_strlen($strnum3) == 1){
+                                                $strnum3 ="0".$strnum3;
+                                            }
+                                            
+                                                
+                                            echo '<option value=',$strnum3,'>',$strnum3,'</option>';
+                                        }
+                                        ?>
+                                        
                                     </select>
                                 </div>
                                 <div class="col-auto gx-2 my-auto">
@@ -134,9 +153,22 @@
                         <div class="col">
                             <div class="row">
                                 <div class="col-auto gx-2">
+                                <?php
+                                    $gyaer = substr($fetch_data['graduate_date'], 0, 4);
+
+                                    ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value="">----</option>
-                                        <option>2000</option>
+                                        <option value=<?php $gyaer ?>><?php echo $gyaer ;?></option>
+                                        <?php
+                                        $gnum = 2025;
+                                        $gstrnum = strval($gnum);
+                                        echo '<option value=',$gstrnum,'>',$gstrnum,'</option>';
+                                        while($gnum != 2028){
+                                            $gnum++;
+                                            $gstrnum = strval($gnum);
+                                            echo '<option value=',$gstrnum,'>',$gstrnum,'</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                                 <div class="col-auto gx-2 my-auto">
