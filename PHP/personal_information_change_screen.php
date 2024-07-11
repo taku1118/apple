@@ -21,6 +21,7 @@
                 $sql = $pdo->query('SELECT * FROM prefectures');
                 $res = $sql->fetchAll(PDO::FETCH_ASSOC);
                 
+                
             ?>
 
 
@@ -54,7 +55,9 @@
                             <select class="form-select" id="exampleFormSelect1">
                                 <option selected><?php echo htmlspecialchars($fetch_data['address']); ?>  </option>
                                 <?php foreach($res as $row): ?>
-                                <option value="<?= $row['prefecture_id'] ?>"><?= $row['prefecture_name'] ?></option>
+                                    <?php if($row['prefecture_name'] != $fetch_data['address']):?>
+                                    <option value="<?= $row['prefecture_id'] ?>"><?= $row['prefecture_name'] ?></option>
+                                    <?php endif ?>
                                 <?php endforeach; ?>
                             </select>
                         </div>
@@ -71,7 +74,7 @@
 
                                     ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value=<?php $year?>><?php echo $year;?></option>
+                                        <option value=<?php $year?>selected><?php echo $year;?></option>
                                         <?php
                                         $num = 1990;
                                         $strnum = strval($num);
@@ -79,7 +82,7 @@
                                         while($num != 2007){
                                             $num++;
                                             $strnum = strval($num);
-            
+                                            
                                             echo '<option value=',$strnum,'>',$strnum,'</option>';
                                         }
                                         ?>
@@ -95,7 +98,7 @@
 
                                     ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value=<?php $month?>><?php echo $month;?></option>
+                                        <option value=<?php $month?>selected><?php echo $month;?></option>
                                          <?php
                                         $num2 = 1;
                                         $strnum2 = "0".strval($num2);
@@ -121,7 +124,7 @@
 
                                     ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value=<?php $day?>><?php echo $day?></option>
+                                        <option value=<?php $day?>selected><?php echo $day?></option>
                                         <?php
                                         $num3 = 1;
                                         $strnum3 = "0".strval($num3);
@@ -148,17 +151,18 @@
                     </div>
                     <div class="row my-3">
                         <div class="col-5">
-                            <span class="fs-4">卒業予定年月</span>
+                            <span class="fs-4">卒業予定年</span>
                         </div>
                         <div class="col">
                             <div class="row">
                                 <div class="col-auto gx-2">
                                 <?php
+                                    
                                     $gyaer = substr($fetch_data['graduate_date'], 0, 4);
 
                                     ?>
                                     <select class="form-select" id="exampleFormSelect1">
-                                        <option value=<?php $gyaer ?>><?php echo $gyaer ;?></option>
+                                        <option value=<?php $gyaer ?> selected><?php echo $gyaer ;?></option>
                                         <?php
                                         $gnum = 2025;
                                         $gstrnum = strval($gnum);
@@ -174,29 +178,44 @@
                                 <div class="col-auto gx-2 my-auto">
                                     <span>年</span>
                                 </div>
-                                <div class="col-auto gx-2">
-                                    <select class="form-select" id="exampleFormSelect1">
-                                        <option value="">--</option>
-                                        <option>11</option>
-                                    </select>
-                                </div>
-                                <div class="col-auto gx-2 my-auto">
-                                    <span>月</span>
-                                </div>
+                             
                             </div>
                         </div>
                     </div>
                     <div class="row my-3">
                         <div class="col-5">
                             <span class="fs-4">学校名</span>
+
                             
                         </div>
                         <div class="col-auto">
+                        <?php
+                                $sname = $fetch_data['school_name'];
+
+                                $school = $pdo->prepare('SELECT school_id FROM schools WHERE school_name = :sname');
+                                $school->execute([':sname' => $sname]);
+                                
+                             
+                                $sid = $school->fetch(PDO::FETCH_ASSOC);
+                                if ($sid !== false) {
+                                    $sid = $sid['school_id']; 
+                                
+                                    $sql2 = $pdo->prepare('SELECT * FROM schools WHERE school_id <> :sid');
+                                    $sql2->execute([':sid' => $sid]);
+                                
+                                    $res2 = $sql2->fetchAll(PDO::FETCH_ASSOC);
+                                } else {
+                                   
+                                    echo '学校が見つかりませんでした。';
+                                }
+                            ?>
+                        
                             <select class="form-select" id="exampleFormSelect1">
-                                <option selected>麻生情報ビジネス専門学校</option>
-                                <option value="1">その1</option>
-                                <option value="2">その2</option>
-                                <option value="3">その3</option>
+                            <option value=<?php $sid ?>selected><?php echo htmlspecialchars($fetch_data['school_name']); ?>  </option>
+                            <?php foreach($res2 as $row2): ?>
+                                <option value="<?= $row2['school_id'] ?>"><?= $row2['school_name'] ?></option>
+                                <?php endforeach; ?>
+                          
                             </select>
                         </div>
                     </div>
