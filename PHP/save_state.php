@@ -55,7 +55,6 @@ if($delete_datas!=[]){
             $new_id = 1;
             foreach($old_ids as $old_id){
                 $renumber_sequence = $pdo->prepare("UPDATE adopt_state_details SET adopt_step_id = ? WHERE adopt_id = ? AND adopt_step_id = ?");
-
                 $renumber_sequence->execute([$new_id,$_POST['adopt_id'],$old_id['adopt_step_id']]);
                 $new_id++;
             }
@@ -68,42 +67,62 @@ if($delete_datas!=[]){
 
 
 
-
 // DB更新処理
     // ここのdatasのデータ数が削除数を考慮したものなら良い
     $datas = $_POST['ways'] ?? [];
-    $case = [];
+    $adopt_way_case = [];
     $ids = [];
-    $exe_value = [];
+    $adopt_way_exe = [];
     for($i = 0; $i<count($datas); $i++){
-        $case[] = "WHEN adopt_step_id = ? THEN ?";
+        $adopt_way_case[] = "WHEN adopt_step_id = ? THEN ?";
         // INの中のプレースホルダ用
         $ids[] = $i+1;
         // ここはadopt_step_id用
-        $exe_value[] = $i+1;
+        $adopt_way_exe[] = $i+1;
         // こっちはinputに入力したもの用
-        $exe_value[] = $_POST['ways'][$i];
+        $adopt_way_exe[] = $_POST['ways'][$i];
+
+        // adopt_date用のCASE文を作成
+        $adopt_date_case[] = "WHEN adopt_step_id = ? THEN ?";
+
+        // ここはadopt_step_id用
+        $date_exe[] = $i+1;
+
+        // こっちはdateに入力したもの用
+        $date_exe[] = $_POST['dates'][$i];
     }
-    // CASE文の中身を生成
-    $increment_case = implode(" ", $case);
+    // adopt_wayのCASE文の中身を生成
+    $adopt_way_increment = implode(" ", $adopt_way_case);
+
+    // adopt_wayのCASE文の中身を生成
+    $adopt_date_increment = implode(" ", $adopt_date_case);
+
 
     // adopt_step_idのリストをプレースホルダとして生成
     $placeholders = implode(',', array_fill(0, count($ids), '?'));
 
     // プレースホルダを含めた全体のSQL文を生成
-    $sql = 'UPDATE adopt_state_details SET adopt_way = CASE ' . $increment_case . ' END WHERE adopt_step_id IN (' . $placeholders . ') AND adopt_id = ?';
+    $sql = 'UPDATE adopt_state_details SET adopt_way = CASE ' . $adopt_way_increment . ' END, adopt_date = CASE '.$adopt_date_increment.' END WHERE adopt_step_id IN (' . $placeholders . ') AND adopt_id = ?';
 
-    // 全てのパラメータを結合
-    $exe_value = array_merge($exe_value, $ids);
+    // adopt_way用のパラメータを結合
+    $exe_value = array_merge($adopt_way_exe, $date_exe, $ids);
+
     $exe_value[] = $_POST['adopt_id'];
+
+
+    // メモ内容のupdateSQLを発行
+    $note_update_sql = "UPDATE adopt_state SET note = ? WHERE adopt_id = ?";
 
     try {
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $update_select_state = $pdo->prepare($sql);
         $update_select_state->execute($exe_value);
-        echo json_encode(['status' => 'success', 'data' => $delete_datas]);
+        $update_note = $pdo->prepare($note_update_sql);
+        $update_note->execute([$_POST['note_content'],$_POST['adopt_id']]);
+        echo json_encode(['status' => 'success', 'data' => "test"]);
     } catch (PDOException $e) {
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
-    // echo json_encode(['status' => 'success', 'data' => "success"]);
+
+    // echo json_encode(['status' => 'success', 'data' => $exe_value]);
 exit;

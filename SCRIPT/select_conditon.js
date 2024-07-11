@@ -42,13 +42,23 @@ function open_sheet(target){
 // シートの保存ボタンを押したときの動き
 function save_sheet(target){
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
+    let note_num = document.getElementById("note_"+target.id.substring(8));
+
     const formData = new FormData();
     // 複数のinput要素を取得
     const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
+
+    // 複数のdate要素を取得
+    const dates = document.querySelectorAll("input[id^=date_"+target.id.substring(8)+"]");
+
     // inputのValueを配列に格納
     let update_values = Array.from(ways).map((way) => way.value);
     // inputのIDを配列に格納
     let update_ids = Array.from(ways).map((way) => way.id);
+    // dateの日付を配列に格納
+    let update_date = Array.from(dates).map((date) => date.value);
+    
+    formData.append("note_content",note_num.lastElementChild.value);
     // adopt_wayをセット
     update_values.forEach((element)=>{
         formData.append("ways[]",element);
@@ -56,6 +66,9 @@ function save_sheet(target){
     // adopt_step_idをセット
     update_ids.forEach((element)=>{
         formData.append("adopt_step_ids[]",element.substring(7));
+    });
+    update_date.forEach((element)=>{
+        formData.append("dates[]",element);
     });
     // deleteしたいinputのidをセット
     for(var delete_target of delete_input_num){
@@ -84,6 +97,7 @@ function save_sheet(target){
     edit_btn.className = "btn btn-primary";
     edit_div.className = "card-body pe-none";
     add_btn.className = "btn d-none";
+    note_num.className = "mb-3 pe-none";
     // 削除したinputを反映させる、ここで正しく反映されていないのでは？（疑惑）
     // All_Inputs_Array = All_Inputs_Array.filter((v) => {return ! delete_input_num.includes(v)});
     // すべてのinputのIDを取得
@@ -112,8 +126,10 @@ function save_sheet(target){
 function add_input(target){
     // シートの番号
     let adopt_id = target.id.substring(9);
-    let card_body = document.getElementById("edit_area"+adopt_id+"");
-    let input_part = document.querySelectorAll("input[id^=step_"+adopt_id+"]");
+    // シートの部分のcard_body
+    let sheet_body = document.getElementById("card_area"+adopt_id); 
+    // モーダルの部分のcard_body
+    let card_body = document.getElementById("edit_area"+adopt_id);
     // inputのIDに割り当てる連番、どのみちここが正しく振れていないことが課題である
     let count_input = Math.max(...All_Inputs_Array)+1;
     
@@ -134,11 +150,18 @@ function add_input(target){
         create_input.className = "form-control form-control-lg";
         create_input.id = "step_"+adopt_id+"_"+count_input;
         create_input.value = "";
+    const create_date = document.createElement("input");
+        create_date.type = "date";
+        create_date.className = "form-control";
+        create_date.id = "date_"+adopt_id+"_"+count_input;
+        create_date.style = "width: 30%; margin-left: 69%;";
     const remove_btn = document.createElement("button");
         remove_btn.id = "delete_step_id"+adopt_id+"_"+count_input;
-        remove_btn.className = "btn btn-danger position-absolute top-0 start-100 translate-middle btn-sm rounded-5";
+        remove_btn.className = "btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5";
         remove_btn.textContent = "✕";
-    input_button_div.appendChild(create_input);
+        input_button_div.appendChild(create_date);
+        input_button_div.appendChild(create_input);
+
     // remove_btnにイベント(クリックした時)を付与
     // こっちは追加した分のinputを削除するときの処理
         remove_btn.addEventListener('click',()=>{
@@ -167,12 +190,12 @@ function add_input(target){
     adopt_area_div.appendChild(icon_div);
     adopt_area_div.appendChild(input_button_div);
     card_body.appendChild(adopt_area_div);
+    sheet_body.appendChild(adopt_area_div);
     // DBでinsertするためにinputのIDを格納する
     insert_num.push(count_input);
     // input全体を管理する「All_Inputs_Array」に追加分を格納する
     All_Inputs_Array.push(count_input);
 
-    console.log(All_Inputs_Array);
 }
 
 // 削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なため「毎回連番を振り直す方法」を採用する
