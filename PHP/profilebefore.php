@@ -77,36 +77,39 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-        <div class="row">
-            <main class="col-md-10 mx-auto" style="padding: 20px; margin-top:20px">
-                <h1 class="title" style="text-align:center;  background-color:#2A57A4;color:white;">プロフィール変更</h1>
-                <?php
-                $number=$_SESSION['user']['student_number'];
-                $sql = $pdo->query("SELECT * FROM Users where student_number=$number");
-                $res = $sql->fetch(PDO::FETCH_ASSOC);
-                ?>
+        <div style="height:100%;width:100%;">
+            <div class="w-100 d-flex justify-content-center align-items-center px-5 pt-5" style="height:15%;">
+                <h1 class="title d-block mt-5" style="text-align:center;background-color:#2A57A4;color:white;width: 100%;min-width:320px;max-width:640px;">プロフィール変更</h1>
+           </div>
+            <div class="d-flex justify-content-center align-items-center mx-5" style="height:85%;">
+                <div style="width: 100%;min-width:320px;max-width:640px;"><!--  カードの幅を調整したいときはwidthを編集 -->
+                    <?php
+                    $number=$_SESSION['user']['student_number'];
+                    $sql = $pdo->query("SELECT * FROM Users where student_number=$number");
+                    $res = $sql->fetch(PDO::FETCH_ASSOC);
+                    ?>
 
-                <form action="profileafter.php" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
-                        <div class="d-flex align-items-center">
-                            <input type="text" class="form-control" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
+                    <form action="profileafter.php" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
+                            <div class="d-flex align-items-center">
+                                <input type="text" class="form-control" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-group">
-                        <label for="comment" style="font-size:20px; margin-top:40px;">コメント</label>
-                        <div class="d-flex align-items-center">
-                            <textarea class="form-control" name="comment" style="flex-grow: 1; resize: none;" rows="1"><?php echo htmlspecialchars($res['my_comment'], ENT_QUOTES); ?></textarea>
+                        <div class="form-group">
+                            <label for="comment" style="font-size:20px; margin-top:40px;">コメント</label>
+                            <div class="d-flex align-items-center">
+                                <textarea class="form-control" name="comment" style="flex-grow: 1; resize: none;" rows="1"><?php echo htmlspecialchars($res['my_comment'], ENT_QUOTES); ?></textarea>
+                            </div>
                         </div>
-                    </div>
 
-                    <div style="text-align:center; margin-top: 40px;">
-                        <input type="submit" class="btn btn-primary" style="font-size:20px;" value="変 更">
-                    </div>
-
-                </form>
-            </main>
+                        <div style="text-align:center; margin-top: 40px;">
+                            <input type="submit" class="btn btn-primary" style="font-size:20px;" value="変 更">
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
