@@ -490,9 +490,9 @@ VALUES
 ('0022','マンション管理士');
 
 -- 資格管理テーブル
-INSERT INTO Licence_Manage (student_number, licence_id)
+INSERT INTO skill_Manage (skill_id,student_number, skill_name)
 VALUES 
-('0000000', '0001');
+(null,'0000000', '基本情報技術者');
 
 -- 受験報告書テーブル
 INSERT INTO Exam_Reports (report_id, company_id, company_name, company_location, student_number, school_name, course_name,exam_date, application_method, exam_step, exam_type, exam_content, impression, remarks)
