@@ -9,11 +9,11 @@ INSERT INTO Thread VALUES
 
 -- 掲示板テーブル
 INSERT INTO Post VALUES 
-(1, (SELECT COALESCE(MAX(post_id)+1,1) FROM post AS fetch_post WHERE thread_id = 1), "0000000", CURRENT_DATE(), "学校法人麻生塾【麻生専門学校グループ】投稿内容を格納する"),
-(2, (SELECT COALESCE(MAX(post_id)+1,1) FROM post AS fetch_post WHERE thread_id = 2), "0000000", CURRENT_DATE(), "株式会社アウトソーシングテクノロジー 投稿内容を格納する"),
-(3, (SELECT COALESCE(MAX(post_id)+1,1) FROM post AS fetch_post WHERE thread_id = 3), "0000000", CURRENT_DATE(), "株式会社フルアウト 投稿内容を格納する"),
-(4, (SELECT COALESCE(MAX(post_id)+1,1) FROM post AS fetch_post WHERE thread_id = 4), "0000000", CURRENT_DATE(), "株式会社フリークアウト・ホールディングス 投稿内容を格納する"),
-(5, (SELECT COALESCE(MAX(post_id)+1,1) FROM post AS fetch_post WHERE thread_id = 5), "0000000", CURRENT_DATE(), "株式会社スペースアウト 投稿内容を格納する");
+(1, (SELECT COALESCE(MAX(post_id)+1,1) FROM Post AS fetch_post WHERE thread_id = 1), "0000000", CURRENT_DATE(), "学校法人麻生塾【麻生専門学校グループ】投稿内容を格納する"),
+(2, (SELECT COALESCE(MAX(post_id)+1,1) FROM Post AS fetch_post WHERE thread_id = 2), "0000000", CURRENT_DATE(), "株式会社アウトソーシングテクノロジー 投稿内容を格納する"),
+(3, (SELECT COALESCE(MAX(post_id)+1,1) FROM Post AS fetch_post WHERE thread_id = 3), "0000000", CURRENT_DATE(), "株式会社フルアウト 投稿内容を格納する"),
+(4, (SELECT COALESCE(MAX(post_id)+1,1) FROM Post AS fetch_post WHERE thread_id = 4), "0000000", CURRENT_DATE(), "株式会社フリークアウト・ホールディングス 投稿内容を格納する"),
+(5, (SELECT COALESCE(MAX(post_id)+1,1) FROM Post AS fetch_post WHERE thread_id = 5), "0000000", CURRENT_DATE(), "株式会社スペースアウト 投稿内容を格納する");
 
 -- INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
 -- VALUES 

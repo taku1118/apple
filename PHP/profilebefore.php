@@ -77,19 +77,33 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-        <div style="height:100%;width:100%;">
-            <div class="w-100 d-flex justify-content-center align-items-center px-5 pt-5" style="height:15%;">
-                <h1 class="title d-block mt-5" style="text-align:center;background-color:#2A57A4;color:white;width: 100%;min-width:320px;max-width:640px;">プロフィール変更</h1>
+        <div style="height:100%;width:100%;overflow:auto;">
+            <div class="w-100 d-flex justify-content-center align-items-center px-5 mt-3" style="height:15%;">
+                <h1 class="title d-block w-100 mb-0" style="text-align:center;background-color:#2A57A4;color:white;min-width:320px;max-width:640px;">プロフィール変更</h1>
            </div>
-            <div class="d-flex justify-content-center align-items-center mx-5" style="height:85%;">
+            <div class="d-flex justify-content-center align-items-center mx-5 mb-3" style="height:85%;">
                 <div style="width: 100%;min-width:320px;max-width:640px;"><!--  カードの幅を調整したいときはwidthを編集 -->
                     <?php
                     $number=$_SESSION['user']['student_number'];
                     $sql = $pdo->query("SELECT * FROM Users where student_number=$number");
                     $res = $sql->fetch(PDO::FETCH_ASSOC);
+                    $profileimg = $res['profile_img'];
                     ?>
 
                     <form action="profileafter.php" method="post" enctype="multipart/form-data">
+                        <div class="d-flex flex-column align-items-center">
+                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;">
+                                <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="profileimage" style="font-size:20px; margin-top:40px;">プロフィール画像</label>
+                            <div class="d-flex align-items-center">
+                                <input class="form-control" type="file" name="profileimage" accept="image/*">
+                            </div>
+                        </div>
+                    
                         <div class="form-group">
                             <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
                             <div class="d-flex align-items-center">
