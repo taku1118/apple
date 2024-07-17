@@ -35,16 +35,36 @@
                             <span class="fs-4">性別</span>
                         </div>
                         <div class="col">
+                        <?php
+// デバッグのためにエラー表示を有効にする
+                            error_reporting(E_ALL);
+                            ini_set('display_errors', 1);
+
+                            // データベースからgender情報を取得
+                            $gender_inform = $pdo->prepare('SELECT gender ,job_hunt, job_offer FROM users WHERE student_number = ?');
+                            $gender_inform->execute([$_SESSION['user']['student_number']]);
+                            $fetch_data2 = $gender_inform->fetch(PDO::FETCH_ASSOC);
+
+                            // genderの値をデバッグ表示
+                            // echo 'Gender value: ' . htmlspecialchars($fetch_data2['gender']);
+                            
+                            ?>
+
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="male"
-                                    value="option1">
+                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="male" value="option1"
+                                    <?php if ($fetch_data2['gender'] == "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="male" class="form-check-label">男性</label>
                             </div>
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="female"
-                                    value="option2">
+                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="female" value="option2"
+                                    <?php if ($fetch_data2['gender'] == "1") echo 'checked'; ?>>
                                 <label for="female" class="form-check-label">女性</label>
                             </div>
+
+                   
+
                         </div>
                     </div>
                     <div class="row my-3">
@@ -166,11 +186,13 @@
                                         <?php
                                         $gnum = 2025;
                                         $gstrnum = strval($gnum);
-                                        echo '<option value=',$gstrnum,'>',$gstrnum,'</option>';
+                                        
                                         while($gnum != 2028){
                                             $gnum++;
                                             $gstrnum = strval($gnum);
+                                            if($gyear != $gstrnum){
                                             echo '<option value=',$gstrnum,'>',$gstrnum,'</option>';
+                                           }
                                         }
                                         ?>
                                     </select>
@@ -224,12 +246,31 @@
                             <span class="fs-4">学科</span>
                         </div>
                         <div class="col-auto">
+                        <?php
+                            $cname = $fetch_data['course_name'];
+
+                            $course = $pdo->prepare('SELECT course_id FROM courses WHERE course_name = :cname');
+                            $course->execute([':cname' => $cname]);
+
+                            $cid = $course->fetch(PDO::FETCH_ASSOC);
+                            if ($cid !== false) {
+                                $cid = $cid['course_id']; 
+
+                                $sql3 = $pdo->prepare('SELECT * FROM courses WHERE course_id <> :cid');
+                                $sql3->execute([':cid' => $cid]);
+
+                                $res3 = $sql3->fetchAll(PDO::FETCH_ASSOC);
+                            } else {
+                                echo '学校が見つかりませんでした。';
+                            }
+                            ?>
                             <select class="form-select" id="exampleFormSelect1">
-                                <option selected>情報システム専攻科</option>
-                                <option value="1">その1</option>
-                                <option value="2">その2</option>
-                                <option value="3">その3</option>
+                                <option value="<?php echo htmlspecialchars($cid); ?>" selected><?php echo htmlspecialchars($fetch_data['course_name']); ?></option>
+                                <?php foreach($res3 as $row3): ?>
+                                    <option value="<?= htmlspecialchars($row3['course_id']) ?>"><?= htmlspecialchars($row3['course_name']) ?></option>
+                                <?php endforeach; ?>
                             </select>
+
                         </div>
                     </div>
                     <div class="row my-3">
@@ -238,13 +279,19 @@
                         </div>
                         <div class="col">
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="hut_job"
-                                    value="option1">
+                                <input type="radio" class="form-check-input" name="syuRadioOptions" id="hut_job"
+                                    value="1"
+                                    <?php if ($fetch_data2['job_hunt'] != "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="hut_job" class="form-check-label">就職活動中</label>
                             </div>
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="none_job"
-                                    value="option2">
+                                <input type="radio" class="form-check-input" name="syuRadioOptions" id="none_job"
+                                    value="2"
+                                    <?php if ($fetch_data2['job_hunt'] == "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="none_job" class="form-check-label">就職活動中ではない</label>
                             </div>
                         </div>
@@ -255,13 +302,19 @@
                         </div>
                         <div class="col">
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="hold_scout"
-                                    value="option1">
+                                <input type="radio" class="form-check-input" name="naiRadioOptions" id="hold_scout"
+                                    value="1"  
+                                    <?php if ($fetch_data2['job_offer'] != "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="hold_scout" class="form-check-label">内定あり</label>
                             </div>
                             <div class="form-check form-check-inline mt-2">
-                                <input type="radio" class="form-check-input" name="inlineRadioOptions" id="none_scout"
-                                    value="option2">
+                                <input type="radio" class="form-check-input" name="naiRadioOptions" id="none_scout"
+                                    value="2"
+                                    <?php if ($fetch_data2['job_offer'] == "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="none_scout" class="form-check-label">内定なし</label>
                             </div>
                         </div>

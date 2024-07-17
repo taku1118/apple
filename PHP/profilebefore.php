@@ -77,22 +77,22 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-        <div style="height:100%;width:100%;overflow:auto;">
+        <div class="Scrollbox" style="height:100%;width:100%;overflow:auto;">
             <div class="w-100 d-flex justify-content-center align-items-center px-5 mt-3" style="height:15%;">
-                <h1 class="title d-block w-100 mb-0" style="text-align:center;background-color:#2A57A4;color:white;min-width:320px;max-width:640px;">プロフィール変更</h1>
+                <h1 class="title d-block w-100 mb-0" style="text-align:center;background-color:#2A57A4;color:white;max-width:640px;">プロフィール変更</h1>
            </div>
-            <div class="d-flex justify-content-center align-items-center mx-5 mb-3" style="height:85%;">
+            <div class="d-flex justify-content-center mx-5 mb-3" style="min-height:85%;">
                 <div style="width: 100%;min-width:320px;max-width:640px;"><!--  カードの幅を調整したいときはwidthを編集 -->
                     <?php
                     $number=$_SESSION['user']['student_number'];
-                    $sql = $pdo->query("SELECT * FROM Users where student_number=$number");
+                    $sql = $pdo->query("SELECT * FROM Personal_Inform where student_number=$number");
                     $res = $sql->fetch(PDO::FETCH_ASSOC);
                     $profileimg = $res['profile_img'];
                     ?>
 
-                    <form action="profileafter.php" method="post" enctype="multipart/form-data">
+                    <form class="mb-3" action="profileafter.php" method="post" enctype="multipart/form-data">
                         <div class="d-flex flex-column align-items-center">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;background-color:aliceblue">
                                 <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
                             </div>
                         </div>
@@ -100,26 +100,27 @@
                         <div class="form-group">
                             <label for="profileimage" style="font-size:20px; margin-top:40px;">プロフィール画像</label>
                             <div class="d-flex align-items-center">
-                                <input class="form-control" type="file" name="profileimage" accept="image/*">
+                                <input class="form-control" type="file" id="profileimage" name="profileimage" accept="image/*" onchange="previewProfileImage(event)">
                             </div>
                         </div>
                     
                         <div class="form-group">
                             <label for="nickname" style="font-size:20px; margin-top:40px;">ニックネーム</label>
                             <div class="d-flex align-items-center">
-                                <input type="text" class="form-control" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
+                                <input type="text" class="form-control" id="nickname" name="nickname" style="flex-grow: 1;" value="<?php echo htmlspecialchars($res['nickname'], ENT_QUOTES); ?>">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label for="comment" style="font-size:20px; margin-top:40px;">コメント</label>
                             <div class="d-flex align-items-center">
-                                <textarea class="form-control" name="comment" style="flex-grow: 1; resize: none;" rows="1"><?php echo htmlspecialchars($res['my_comment'], ENT_QUOTES); ?></textarea>
+                                <textarea class="form-control" id="comment" name="comment" style="flex-grow: 1; resize: none;" rows="1"><?php echo htmlspecialchars($res['my_comment'], ENT_QUOTES); ?></textarea>
                             </div>
                         </div>
 
                         <div style="text-align:center; margin-top: 40px;">
-                            <input type="submit" class="btn btn-primary" style="font-size:20px;" value="変 更">
+                            <a class="btn btn-secondary" href="my_page_screen.php">キャンセル</a>
+                            <input type="submit" class="btn btn-primary  ms-3" style="font-size:20px;" value="変 更">
                         </div>
                     </form>
                 </div>
@@ -159,6 +160,17 @@
             // Initial resize to fit existing content
             resizeTextarea();
         });
+
+        function previewProfileImage(event) {
+            var input = event.target;
+            var reader = new FileReader();
+            reader.onload = function() {
+                var dataURL = reader.result;
+                var output = document.getElementById('profilePicturePreview');
+                output.src = dataURL;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
     </script>
 
     <!-- DB切断 -->
