@@ -41,7 +41,7 @@
                             ini_set('display_errors', 1);
 
                             // データベースからgender情報を取得
-                            $gender_inform = $pdo->prepare('SELECT gender FROM users WHERE student_number = ?');
+                            $gender_inform = $pdo->prepare('SELECT gender ,job_hunt, job_offer FROM users WHERE student_number = ?');
                             $gender_inform->execute([$_SESSION['user']['student_number']]);
                             $fetch_data2 = $gender_inform->fetch(PDO::FETCH_ASSOC);
 
@@ -280,12 +280,18 @@
                         <div class="col">
                             <div class="form-check form-check-inline mt-2">
                                 <input type="radio" class="form-check-input" name="syuRadioOptions" id="hut_job"
-                                    value="option1">
+                                    value="1"
+                                    <?php if ($fetch_data2['job_hunt'] != "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="hut_job" class="form-check-label">就職活動中</label>
                             </div>
                             <div class="form-check form-check-inline mt-2">
                                 <input type="radio" class="form-check-input" name="syuRadioOptions" id="none_job"
-                                    value="option2">
+                                    value="2"
+                                    <?php if ($fetch_data2['job_hunt'] == "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="none_job" class="form-check-label">就職活動中ではない</label>
                             </div>
                         </div>
@@ -297,12 +303,18 @@
                         <div class="col">
                             <div class="form-check form-check-inline mt-2">
                                 <input type="radio" class="form-check-input" name="naiRadioOptions" id="hold_scout"
-                                    value="option1">
+                                    value="1"  
+                                    <?php if ($fetch_data2['job_offer'] != "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="hold_scout" class="form-check-label">内定あり</label>
                             </div>
                             <div class="form-check form-check-inline mt-2">
                                 <input type="radio" class="form-check-input" name="naiRadioOptions" id="none_scout"
-                                    value="option2">
+                                    value="2"
+                                    <?php if ($fetch_data2['job_offer'] == "0") : ?>
+                                        checked
+                                    <?php endif; ?>>
                                 <label for="none_scout" class="form-check-label">内定なし</label>
                             </div>
                         </div>
