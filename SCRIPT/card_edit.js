@@ -6,6 +6,7 @@ let delete_input_num = [];
 let All_Inputs = "";
 // すべてのinput要素のIDを入れる配列
 let All_Inputs_Array = [];
+
 // シートの編集ボタンを押したときの動作
 function edit_sheet(target){
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
@@ -41,45 +42,11 @@ function open_sheet(target){
 
 // シートの保存ボタンを押したときの動き
 function save_sheet(target){
+
     let edit_div = document.getElementById("edit_area"+target.id.substring(8));
     let note_num = document.getElementById("note_"+target.id.substring(8));
 
-    const formData = new FormData();
-    // 複数のinput要素を取得
-    const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
-
-    // 複数のdate要素を取得
-    const dates = document.querySelectorAll("input[id^=date_"+target.id.substring(8)+"]");
-
-    // inputのValueを配列に格納
-    let update_values = Array.from(ways).map((way) => way.value);
-    // inputのIDを配列に格納
-    let update_ids = Array.from(ways).map((way) => way.id);
-    // dateの日付を配列に格納
-    let update_date = Array.from(dates).map((date) => date.value);
-    
-    formData.append("note_content",note_num.lastElementChild.value);
-    // adopt_wayをセット
-    update_values.forEach((element)=>{
-        formData.append("ways[]",element);
-    });
-    // adopt_step_idをセット
-    update_ids.forEach((element)=>{
-        formData.append("adopt_step_ids[]",element.substring(7));
-    });
-    update_date.forEach((element)=>{
-        formData.append("dates[]",element);
-    });
-    // deleteしたいinputのidをセット
-    for(var delete_target of delete_input_num){
-        formData.append("delete_input[]", delete_target);
-    }
-    // insertしたいinputのidをセット
-    for(var insert_target of insert_num){
-        formData.append("insert_input[]", insert_target);
-    }
-    // adopt_idをセット
-    formData.append("adopt_id",target.id.substring(8));
+    const formData = setFormData(target,note_num);
     
     // DB通信開始
     fetch("save_state.php",{
@@ -107,6 +74,49 @@ function save_sheet(target){
     insert_num = [];
 }
 
+// PHP側に引き渡す値をセットする部分を関数化
+function setFormData(target,note_num){
+    const prepareData = new FormData();
+
+    // 複数のinput要素を取得
+    const ways = document.querySelectorAll("input[id^=step_"+target.id.substring(8)+"]");
+
+    // 複数のdate要素を取得
+    const dates = document.querySelectorAll("input[id^=date_"+target.id.substring(8)+"]");
+
+    // inputのValueを配列に格納
+    let update_values = Array.from(ways).map((way) => way.value);
+    // inputのIDを配列に格納
+    let update_ids = Array.from(ways).map((way) => way.id);
+    // dateの日付を配列に格納
+    let update_date = Array.from(dates).map((date) => date.value);
+    
+    prepareData.append("note_content",note_num.lastElementChild.value);
+    // adopt_wayをセット
+    update_values.forEach((element)=>{
+        prepareData.append("ways[]",element);
+    });
+    // adopt_step_idをセット
+    update_ids.forEach((element)=>{
+        prepareData.append("adopt_step_ids[]",element.substring(7));
+    });
+    update_date.forEach((element)=>{
+        prepareData.append("dates[]",element);
+    });
+    // deleteしたいinputのidをセット
+    for(var delete_target of delete_input_num){
+        prepareData.append("delete_input[]", delete_target);
+    }
+    // insertしたいinputのidをセット
+    for(var insert_target of insert_num){
+        prepareData.append("insert_input[]", insert_target);
+    }
+    // adopt_idをセット
+    prepareData.append("adopt_id",target.id.substring(8));
+
+    return prepareData;
+}
+
 // インサートの仕様
 // その1
 // まずインサートを実行する、その後アップデートが走る
@@ -130,9 +140,17 @@ function add_input(target){
     let sheet_body = document.getElementById("card_area"+adopt_id); 
     // モーダルの部分のcard_body
     let card_body = document.getElementById("edit_area"+adopt_id);
+    
+    let create_adopt_area_div = createElement(adopt_id);
+    
+    card_body.appendChild(create_adopt_area_div);
+
+}
+
+// 要素をcreateする部分を関数化
+function createElement(adopt_id){
     // inputのIDに割り当てる連番、どのみちここが正しく振れていないことが課題である
     let count_input = Math.max(...All_Inputs_Array)+1;
-    
     // 新しいinputフィールドを作成
     const adopt_area_div = document.createElement("div");
         adopt_area_div.id = "adopt_area"+adopt_id+"_"+count_input;
@@ -156,7 +174,7 @@ function add_input(target){
         create_date.id = "date_"+adopt_id+"_"+count_input;
         create_date.style = "width: 30%; margin-left: 69%;";
     const remove_btn = document.createElement("button");
-        remove_btn.id = "delete_step_id"+adopt_id+"_"+count_input;
+        remove_btn.id = "delete_"+adopt_id+"_"+count_input;
         remove_btn.className = "btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5";
         remove_btn.textContent = "✕";
         input_button_div.appendChild(create_date);
@@ -189,22 +207,23 @@ function add_input(target){
     input_button_div.appendChild(remove_btn);
     adopt_area_div.appendChild(icon_div);
     adopt_area_div.appendChild(input_button_div);
-    card_body.appendChild(adopt_area_div);
-    sheet_body.appendChild(adopt_area_div);
+    
+    // なぜかここでエラーがでる？
+    // sheet_body.appendChild(create_adopt_area_div);
+
     // DBでinsertするためにinputのIDを格納する
     insert_num.push(count_input);
     // input全体を管理する「All_Inputs_Array」に追加分を格納する
     All_Inputs_Array.push(count_input);
-
+    return adopt_area_div;
 }
 
 // 削除したらいちいち連番を振り直す処理を行わなければいけないがそっちの方が確実なため「毎回連番を振り直す方法」を採用する
 
 // 既存の（データベースから取得してきた）分の削除処理
-function delete_input(target, adopt_id){
-    console.log(adopt_id);
+function delete_input(target){
     // 削除したいinput要素を取得
-    let target_id = target.id.substring(14);
+    let target_id = target.id.substring(7);
     let adopt_area = document.getElementById("adopt_area"+target_id);
     // 「All_Inputs_Array」のIDと削除するinputのIDを照合、一致した部分の要素番号を「delete_input_num」に格納
     delete_input_num.push(All_Inputs_Array.findIndex((value)=>{return Number(value) == target_id.substring(2)})+1);
@@ -214,3 +233,4 @@ function delete_input(target, adopt_id){
 
     console.log(delete_input_num);
 }
+

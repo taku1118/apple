@@ -43,6 +43,9 @@
             /* Firefox 対応 */
             scrollbar-width: none;
         }
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -67,7 +70,7 @@
                     </form>
 
                     <div class="d-flex justify-content-start w-75 mb-4">
-                        <button class="btn shadow btn-primary" data-bs-toggle="modal" data-bs-target="#company_id">+ 追加</button>
+                        <button type="button" class="btn shadow btn-primary" data-bs-toggle="modal" id="newsheet" data-bs-target="#modal_num">+ 追加</button>
                     </div>
 
 
@@ -80,7 +83,7 @@
                     $select_state_modal = $select_state;
                     ?>
 
-                    <div class="row row-cols-1 row-cols-md-2">
+                    <div class="row row-cols-1 row-cols-md-2" id="sheet_display_area">
                         <?php foreach ($select_state as $row) : ?>
                             <?php
                             $select_detail = $pdo->prepare('SELECT * FROM adopt_state_details WHERE adopt_id= ?');
@@ -133,10 +136,10 @@
                                             <!-- テキストと矢印のブロック、この二つDivを削除する -->
                                             <?php foreach ($select_detail_modal as $x => $detail_modal) : ?>
                                                 <div id="adopt_area<?= $row['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>">
-                                                    <div class="car d-text position-relative" id="input_<?= $detail_modal['adopt_step_id'] ?>">
+                                                    <div class="card-text position-relative" id="input_<?= $detail_modal['adopt_step_id'] ?>">
                                                         <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>" value="<?= $detail_modal['adopt_date'] ?>">
                                                         <input type="text" class="form-control form-control-lg" id="step_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>" value="<?= $detail_modal['adopt_way'] ?>">
-                                                        <button onclick="delete_input(this,<?= $detail_modal['adopt_id'] ?>)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_step_id<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>">✕</button>
+                                                        <button onclick="delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_<?= $detail_modal['adopt_id'] ?>_<?= $detail_modal['adopt_step_id'] ?>">✕</button>
                                                     </div>
                                                     <?php if ($x + 1 != count($select_detail_modal)) : ?>
                                                         <div class="text-center">
@@ -169,9 +172,77 @@
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
                     <?php endforeach; ?>
-                    <!-- </div> -->
                 </div>
 
+
+                <!-- 新規シート用 -->
+                <div class="template_sheet">
+                    <div class="col d-none">
+                        <div class="card w-75 mx-auto" data-bs-toggle="modal" data-bs-target="#modal_num" onclick="new_open_sheet()" id="sheet_number adopt_id">
+                            <div class="card-body" id="card_area adopt_id">
+                                <h2 class="card-title my-5 text-center">company_name_txt</h2>
+                                <div class="element">
+                                    <div class="card-text pe-none">
+                                        <input type="text" class="form-control form-control-lg" id="Input" value="">
+                                    </div>
+                                </div>
+                                <div class="mb-3 pe-none">
+                                    <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">note</textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- 新規モーダル用 -->
+                <div class="template_modal">
+                    <div class="modal fade" id="modal_num" tabindex="-1" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog modal-dialog-centered" id="modal_dialog">
+                            <div class="modal-content" id="modal_content">
+                                <div class="card w-100" id="card">
+                                    <div class=" d-flex justify-content-end">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
+                                    </div>
+                                    <div class="card-body" id="edit_area">
+                                        <h2 class="card-title my-5 text-center">company_name</h2>
+
+                                        <div id="adopt_area_1">
+                                            <div class="card-text position-relative" id="input_adopt_step_id">
+                                                <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" value="adopt_date">
+                                                <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way">
+                                                <button onclick="new_delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_adopt_id_1">✕</button>
+                                            </div>
+                                            <div class="text-center">
+                                                <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 追加ボタン -->
+                                    <div class="mx-auto text-center">
+                                        <button type="button" id="add_input_adopt_id" class="btn" onclick="new_add_input(this)"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
+                                    </div>
+
+                                    <div class="mb-3" id="note_adopt_id">
+                                        <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">note</textarea>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button">編集</button>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-primary" id="save_btn_adopt_id" onclick="new_save_sheet(this)" type="button">保存</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -183,11 +254,10 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
-
-    <script src="../SCRIPT/select_conditon.js"></script>
-
-
-    <script src=""></script>
+    <!-- シート内編集用のJS -->
+    <script src="../SCRIPT/card_edit.js"></script>
+    <!-- シート追加用のJS -->
+    <script src="../SCRIPT/sheet_add.js"></script>
 
     <!-- DB切断 -->
     <?php $pdo = null; ?>

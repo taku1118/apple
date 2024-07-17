@@ -3,8 +3,11 @@ require('db-connect.php');
 $post_delete = $_POST['delete_input'] ?? [];
 $delete_datas = array_values($post_delete);
 
+$create_sheet = $_POST['create_sheet'] ?? [];
 $insert_step_ids = $_POST['insert_input'] ?? [];
 $insert_sql = [];
+
+// 追加されたかの判別
 if($insert_step_ids!=[]){
     
     try{
@@ -29,6 +32,7 @@ if($insert_step_ids!=[]){
     
 }
 
+// 削除されたかの判別
 if($delete_datas!=[]){
 
     try{
