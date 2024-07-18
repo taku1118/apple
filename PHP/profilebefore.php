@@ -120,7 +120,7 @@
 
                         <div style="text-align:center; margin-top: 40px;">
                             <a class="btn btn-secondary" href="my_page_screen.php">キャンセル</a>
-                            <input type="submit" class="btn btn-primary  ms-3" style="font-size:20px;" value="変 更">
+                            <input type="submit" class="btn btn-primary  ms-3"  value="変 更">
                         </div>
                     </form>
                 </div>
