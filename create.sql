@@ -170,7 +170,7 @@ CREATE TABLE Exam_Reports(
 -- チャットルームテーブル
 CREATE TABLE Chat_Rooms(
     chat_room_id INT auto_increment,
-    chat_room_title VARCHAR(30),
+    chat_room_title VARCHAR(40),
     room_created_date DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
     PRIMARY KEY(chat_room_id)
 );

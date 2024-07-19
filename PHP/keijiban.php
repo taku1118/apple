@@ -89,9 +89,13 @@ $res = $sql->fetchAll(PDO::FETCH_ASSOC);
                 <?= $row['post_id'] ?>
             </span> 
             名前：
-            <a href="#" class="username">
+            <a href="#" class="username dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                 <?= $row['student_number'] ?>
-            </a> 
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+            <li><a class="dropdown-item" href="profile.php?student_number=<?= $row['student_number'] ?>">プロフィール</a></li>
+            <li><a class="dropdown-item" href="javascript:void(0);" onclick="chat_rooms_create('<?= $row['student_number'] ?>');">トーク</a></li>
+            </ul> 
             投稿日：
             <span class="date">
                 <?= $row['post_date'] ?>
@@ -114,6 +118,23 @@ $res = $sql->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <script>
+    function chat_rooms_create(student_number) {
+    $.ajax({
+        type: "POST",
+        url: "chat_rooms_create.php",
+        data: { other_student_number: student_number },
+        success: function() {
+            // チャットルームにリダイレクトする
+            window.location.href = "chat-main.php";
+        },
+        error: function() {
+            alert("チャットルームの作成に失敗しました。");
+        }
+    });
+}
+    </script>
 
     <!-- DB切断 -->
     <?php $pdo = null;?>
