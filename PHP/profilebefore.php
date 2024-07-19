@@ -92,7 +92,7 @@
 
                     <form class="mb-3" action="profileafter.php" method="post" enctype="multipart/form-data">
                         <div class="d-flex flex-column align-items-center">
-                            <div class="rounded-circle d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;background-color:aliceblue">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;background-color:aliceblue;">
                                 <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $profileimg; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
                             </div>
                         </div>

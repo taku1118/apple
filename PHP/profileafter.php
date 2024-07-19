@@ -158,7 +158,7 @@
                 <div style="width: 100%;min-width:320px;max-width:640px;"><!--  カードの幅を調整したいときはwidthを編集 -->
                     <div class="mb-3">
                         <div class="d-flex flex-column align-items-center">
-                            <div class="rounded-circle bg-dark d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;">
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" id="profilePictureDisplay" style="width: 150px; height: 150px; overflow: hidden;background-color:aliceblue;">
                                 <img id="profilePicturePreview" src="../IMAGE/PROFILE/<?php echo $image_name; ?>" style="width: 100%; height: 100%; object-fit: cover; ">
                             </div>
                         </div>
