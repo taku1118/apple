@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_post_id = $stmt->fetchColumn();
 
     // 新しい投稿を挿入
-    $stmt = $pdo->prepare("INSERT INTO Post (thread_id, post_id, student_number, post_date, post_content) VALUES (?, ?, ?, CURRENT_DATE(), ?)");
+    $stmt = $pdo->prepare("INSERT INTO Post (thread_id, post_id, student_number, post_date, post_content) VALUES (?, ?, ?, CURRENT_TIMESTAMP(), ?)");
     $stmt->execute([$thread_id, $new_post_id, $student_number, $post_content]);
 
     echo "success";
