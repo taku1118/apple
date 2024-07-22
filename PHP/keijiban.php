@@ -67,22 +67,48 @@
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
 <?php
-$id = $_GET['company_id'];
-$sql=$pdo->query("SELECT * FROM Post_Content where company_id = $id");
-$res = $sql->fetchAll(PDO::FETCH_ASSOC);
+    $id = $_GET['company_id'];
+    // スレッド情報を取得
+    $thread_sql = $pdo->prepare("SELECT * FROM Thread WHERE company_id = ? AND is_active = 1");
+    $thread_sql->execute([$id]);
+    $thread = $thread_sql->fetch(PDO::FETCH_ASSOC);
+
+    $post_sql = $pdo->prepare("SELECT * FROM Post WHERE thread_id = ? ORDER BY post_date ASC");
+    $post_sql->execute([$thread['thread_id']]);
+    $posts = $post_sql->fetchAll(PDO::FETCH_ASSOC);
 ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
         <div class="container-fluid">
             <div class="navbar-brand">
-                <h3 class="mb-0 text-wrap"><?php echo $res[0]['thread_name']; ?></h3>
+                <h3 class="mb-0 text-wrap"><?php echo $thread['thread_name']; ?></h3>
             </div>
-            <form class="ms-auto d-flex">
+            <div class="ms-auto d-flex">
                 <button class="btn btn-secondary text-nowrap me-3" type="button" onclick="history.back()">戻る</button>
-                <button class="btn btn-warning text-nowrap" type="submit">参加する</button>
-            </form>
+                <button class="btn btn-warning text-nowrap" type="button" data-bs-toggle="modal" data-bs-target="#postModal">参加する</button>
+    </div>
         </div>
     </nav>
-<?php foreach($res as $row): ?>
+    <!-- 投稿モーダル -->
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="postModalLabel">新しい投稿</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="postForm">
+                        <div class="mb-3">
+                            <label for="postContent" class="form-label">投稿内容</label>
+                            <textarea class="form-control" id="postContent" name="postContent" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">投稿する</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php foreach($posts as $row): ?>
     <div class="thread">
         <div class="post">
             <span class="post-number">
@@ -138,6 +164,28 @@ $res = $sql->fetchAll(PDO::FETCH_ASSOC);
                 alert("自分です。");
         } 
     }
+    // 投稿フォームの送信処理
+    $(document).ready(function() {
+        $('#postForm').on('submit', function(event) {
+            event.preventDefault();
+            const postContent = $('#postContent').val();
+
+            $.ajax({
+                type: "POST",
+                url: "insert_post.php",
+                data: {
+                    thread_id: <?= $thread['thread_id'] ?>,
+                    postContent: postContent
+                },
+                success: function() {
+                    location.reload();
+                },
+                error: function() {
+                    alert("投稿に失敗しました。");
+                }
+            });
+        });
+    });
     </script>
 
     <!-- DB切断 -->
