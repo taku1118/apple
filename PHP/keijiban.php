@@ -84,7 +84,7 @@
             </div>
             <div class="ms-auto d-flex">
                 <button class="btn btn-secondary text-nowrap me-3" type="button" onclick="history.back()">戻る</button>
-                <button class="btn btn-warning text-nowrap" type="button" data-bs-toggle="modal" data-bs-target="#postModal">参加する</button>
+                <button class="btn btn-warning text-nowrap" type="button" data-bs-toggle="modal" data-bs-target="#postModal">コメントする</button>
     </div>
         </div>
     </nav>
