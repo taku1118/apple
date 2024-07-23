@@ -1,11 +1,33 @@
 <?php
+session_start();
 require('db-connect.php');
 $post_delete = $_POST['delete_input'] ?? [];
 $delete_datas = array_values($post_delete);
 
-$create_sheet = $_POST['create_sheet'] ?? [];
+$create_sheet = $_POST['CreateSheet'] ?? [];
 $insert_step_ids = $_POST['insert_input'] ?? [];
 $insert_sql = [];
+
+// テスト用
+$_SESSION['user']['student_number'] = "0000000";
+if($create_sheet!=[]){
+    try{
+        $pdo->beginTransaction();
+        $adopt_id_Max = $pdo->query("select max(adopt_id) as 'Max_ID' from adopt_state")->fetch();
+        // インサートする際にadopt_idのAUTO_INCREMENTを解除したので注意
+        // この場合、Maxを使用したInsertが必須となる
+        $Adopt_State_Insert = "INSERT INTO adopt_state VALUES (?,?,?,?)";
+        $NewSheetInsert = $pdo->prepare($Adopt_State_Insert);
+        $NewSheetInsert->execute([$adopt_id_Max["Max_ID"]+1,$_SESSION['user']['student_number'],$_POST['company_name'],$_POST['NewNote']]);
+        $Adopt_Detail_Insert = "INSERT INTO adopt_state_details VALUES (?,1,?,?)";
+        $NewSheetDetailInsert = $pdo->prepare($Adopt_Detail_Insert);
+        $NewSheetDetailInsert->execute([$adopt_id_Max["Max_ID"]+1,$_POST['AdoptWay'],$_POST['AdoptDate']]);
+        $pdo->commit();
+    }catch(Exception $e){
+        $pdo->rollBack();
+    }
+}
+
 
 // 追加されたかの判別
 if($insert_step_ids!=[]){
@@ -34,11 +56,11 @@ if($insert_step_ids!=[]){
 
 // 削除されたかの判別
 if($delete_datas!=[]){
-
+    // 削除処理
     try{
         $pdo->beginTransaction();
-        $test[] = $_POST['adopt_id'];
-        $delete_datas_exe = array_merge($delete_datas,$test);
+        $post_id[] = $_POST['adopt_id'];
+        $delete_datas_exe = array_merge($delete_datas,$post_id);
         $delete_placeholder = implode(',', array_fill(0, count($_POST['delete_input']), '?'));
         $delete_sql = "delete from adopt_state_details where adopt_step_id IN (".$delete_placeholder.") and adopt_id = ?";
         $set_query = $pdo->prepare($delete_sql);
@@ -48,7 +70,7 @@ if($delete_datas!=[]){
         $pdo->rollBack();
         echo json_encode(['status' => 'success', 'data' => "fail"]);
     }
-
+    // 連番振り直し
     try{
         $pdo->beginTransaction();
 
@@ -113,7 +135,6 @@ if($delete_datas!=[]){
 
     $exe_value[] = $_POST['adopt_id'];
 
-
     // メモ内容のupdateSQLを発行
     $note_update_sql = "UPDATE adopt_state SET note = ? WHERE adopt_id = ?";
 
@@ -128,5 +149,4 @@ if($delete_datas!=[]){
         echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
     }
 
-    // echo json_encode(['status' => 'success', 'data' => $exe_value]);
 exit;
