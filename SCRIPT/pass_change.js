@@ -36,7 +36,8 @@ $(function(){
                 data: {pass: password}
                 }).done(function(data){
                     let result = JSON.parse(data);
-                    alert("パスワードを変更しました。\nパスワード："+result.request[0]);
+                    // alert("パスワードを変更しました。\nパスワード："+result.request[0]);
+                    alert("今はこの機能を使えません。\nパスワード："+result.request[0]);
                     location.href="my_page_screen.php";
                 }).fail(function(){
                     alert("パスワード変更に失敗しました。");
