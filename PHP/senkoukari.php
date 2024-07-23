@@ -70,7 +70,7 @@
                     </form>
 
                     <div class="d-flex justify-content-start w-75 mb-4">
-                        <button type="button" class="btn shadow btn-primary" data-bs-toggle="modal" id="newsheet" data-bs-target="#modal_num">+ 追加</button>
+                        <button type="button" class="btn shadow btn-primary" data-bs-toggle="modal" id="newsheet" data-bs-target="#insert_modal">+ 追加</button>
                     </div>
 
 
@@ -90,11 +90,11 @@
                             $select_detail->execute([$row['adopt_id']]);
                             $select_detail = $select_detail->fetchAll();
                             ?>
-                            <div class="col">
+                            <div class="col" id="deleteArea<?= $row['adopt_id'] ?>">
                                 <div class="card w-75 mx-auto" data-bs-toggle="modal" data-bs-target="#modal_num<?= $row['adopt_id'] ?>" onclick="open_sheet(this)" id="sheet_number<?= $row['adopt_id'] ?>">
                                     <div class="card-body" id="card_area<?= $row['adopt_id'] ?>">
                                         <h2 class="card-title my-5 text-center"><?= $row['company_name_txt'] ?></h2>
-                                        <div class="element">
+                                        <div class="onload_area">
                                             <?php foreach ($select_detail as $i => $detail) : ?>
                                                 <div class="card-text pe-none">
                                                     <input type="text" class="form-control form-control-lg" id="Input" value="<?= $detail['adopt_way'] ?>">
@@ -167,6 +167,9 @@
                                         <div class="mb-3">
                                             <button class="btn btn-primary" id="save_btn<?= $row['adopt_id'] ?>" onclick="save_sheet(this)" type="button">保存</button>
                                         </div>
+                                        <div class="mb-3">
+                                            <button class="btn btn-primary" id="delete_sheet_btn<?= $row['adopt_id'] ?>" onclick="DeleteSheet(this)" type="button">シート削除</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div><!-- /.modal-dialog -->
@@ -181,7 +184,7 @@
                         <div class="card w-75 mx-auto" data-bs-toggle="modal" data-bs-target="#modal_num" onclick="new_open_sheet()" id="sheet_number adopt_id">
                             <div class="card-body" id="card_area adopt_id">
                                 <h2 class="card-title my-5 text-center">company_name_txt</h2>
-                                <div class="element">
+                                <div>
                                     <div class="card-text pe-none">
                                         <input type="text" class="form-control form-control-lg" id="Input" value="">
                                     </div>
@@ -198,7 +201,7 @@
 
                 <!-- 新規モーダル用 -->
                 <div class="template_modal">
-                    <div class="modal fade" id="modal_num" tabindex="-1" aria-labelledby="exampleModalLabel">
+                    <div class="modal fade" id="insert_modal" tabindex="-1" aria-labelledby="exampleModalLabel">
                         <div class="modal-dialog modal-dialog-centered" id="modal_dialog">
                             <div class="modal-content" id="modal_content">
                                 <div class="card w-100" id="card">
@@ -206,17 +209,15 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="閉じる"></button>
                                     </div>
                                     <div class="card-body" id="edit_area">
-                                        <h2 class="card-title my-5 text-center">company_name</h2>
+                                        <h2 class="card-title my-5 text-center" id="template_title">company_name</h2>
 
-                                        <div id="adopt_area_1">
+                                        <div id="adopt_area_1" class="onload_area1">
                                             <div class="card-text position-relative" id="input_adopt_step_id">
                                                 <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" value="adopt_date">
                                                 <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way">
                                                 <button onclick="new_delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_adopt_id_1">✕</button>
                                             </div>
-                                            <div class="text-center">
-                                                <i class="bi bi-caret-down-fill" style="font-size: 3rem;"></i>
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
