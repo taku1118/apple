@@ -443,25 +443,25 @@ VALUES
 (4, '59'),
 (5, '35');
 
--- 選考状況テーブル
-INSERT INTO Adopt_State (adopt_id, student_number, company_name_txt, note)
-VALUES 
-(
-    NULL,
-    '0000000',
-    '学校法人麻生塾',
-    '学校経由で申込、一次試験が明日ある'
-);
+-- -- 選考状況テーブル
+-- INSERT INTO Adopt_State (adopt_id, student_number, company_name_txt, note)
+-- VALUES 
+-- (
+--     NULL,
+--     '0000000',
+--     '学校法人麻生塾',
+--     '学校経由で申込、一次試験が明日ある'
+-- );
 
--- 戦況状況詳細テーブル
-INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
-VALUES 
-(
-    1,
-    NULL,
-    '一次面接',
-    '2024-05-16'
-);
+-- -- 戦況状況詳細テーブル
+-- INSERT INTO Adopt_State_Details (adopt_id, adopt_step_id, adopt_way, adopt_date)
+-- VALUES 
+-- (
+--     1,
+--     NULL,
+--     '一次面接',
+--     '2024-05-16'
+-- );
 
 -- -- 資格管理テーブル
 -- INSERT INTO Licences (licence_id, licence_name)
