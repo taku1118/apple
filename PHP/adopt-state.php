@@ -94,7 +94,7 @@
                                 <div class="modal-body">
                                     <div id="adopt_area_1" class="onload_area1">
                                         <div class="card-text position-relative" id="input_adopt_step_id">
-                                            <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" value="adopt_date">
+                                            <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" placeholder="選考状況">
                                             <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way" style="--bs-border-color: #1dc219;">
                                             <button onclick="new_delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_adopt_id_1">✕</button>
                                         </div>        
@@ -106,13 +106,13 @@
                                 </div>
                                 <div class="modal-footer justify-content-start" style="--bs-border-color: #1dc219;border-top:var(--bs-modal-footer-border-width) dashed #1dc219;">
                                     <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="--bs-border-color: #1dc219;"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="--bs-border-color: #1dc219;" placeholder="やること"></textarea>
                                 </div>
                             </div>
                             <div class="modal-content w-25 align-items-center" style="background-color: #11ffee00;border: #11ffee00;">
-                                <button type="button" class="btn btn-danger rounded-5" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                                <!-- <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-eraser"></i></button> -->
+                                <button type="button" class="btn btn-danger rounded-5 mb-2" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                                <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-eraser"></i></button>
                                 <button class="btn btn-success rounded-5 mb-2" id="save_btn_adopt_id" onclick="new_save_sheet(this)" type="button"><i class="bi bi-upload"></i></button>
                             </div>
                         </div><!-- /.modal-dialog -->
