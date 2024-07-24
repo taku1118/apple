@@ -94,8 +94,8 @@
                                 <div class="modal-body">
                                     <div id="adopt_area_1" class="onload_area1">
                                         <div class="card-text position-relative" id="input_adopt_step_id">
-                                            <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" placeholder="選考状況">
-                                            <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way" style="--bs-border-color: #1dc219;">
+                                            <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id">
+                                            <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" placeholder="選考状況" style="--bs-border-color: #1dc219;">
                                             <button onclick="new_delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_adopt_id_1">✕</button>
                                         </div>        
                                     </div>
