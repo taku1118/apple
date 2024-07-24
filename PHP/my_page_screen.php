@@ -33,8 +33,18 @@
         line-height: 24px;
         margin-bottom: 1rem;
     }
+    .fontMainTitle{
+        color: white;
+        font-weight: bold;
+    }
     .fontNormal{
         font-size: 14px;
+    }
+    .mypage-background{
+        background-image: url("../IMAGE/tukue.jpg");
+        background-size: cover;
+        height: 200px;
+        width: 100%;
     }
     </style>
 </head>
@@ -54,6 +64,9 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
+<div class="mypage-background d-flex align-items-center">
+    <h1 class="ms-4 fs4 fontMainTitle">マイページ</h1>
+</div>
 <div class="row py-3">
     <div class="col-xl-8">
         <!-- あなたの情報 -->
@@ -136,9 +149,6 @@
         <!-- 所持スキル -->
         <div class="p-4">
             <?php
-                $Licence_Inform = $pdo->prepare('SELECT * FROM Licence_Inform where student_number = ?');
-                $Licence_Inform->execute([$_SESSION['user']['student_number']]);
-                $fetch_data = $Licence_Inform->fetchAll();
                 $personal_skill = $pdo->prepare('SELECT * FROM Skill_Manage where student_number = ?');
                 $personal_skill->execute([$_SESSION['user']['student_number']]);
             ?>

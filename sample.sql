@@ -558,9 +558,11 @@ VALUES
 INSERT INTO Chat_Room_Participants (chat_room_id, student_number)
 VALUES 
 (1, '0000000'),
-(2, '0000000');
+(1, '0000001'),
+(2, '0000000'),
+(2, '0000001');
 
 -- チャットメッセージテーブル
 INSERT INTO Chat_Room_Messages (chat_room_id, send_by, message)
 VALUES 
-(1, '0000000', 'ヒャッハー！');
+(1, '0000000', 'こんにちは');

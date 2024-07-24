@@ -1,26 +1,29 @@
+<?php session_start(); ?>
+<?php require 'judge.php'; ?>
 <!doctype html>
 <html lang="ja" data-bs-theme="auto">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>テンプレート</title>
+    <title></title>
 
     <!-- リセットCSS -->
-    <link rel="stylesheet" href="https://unpkg.com/modern-css-reset/dist/reset.min.css" />
-
+    <link rel="stylesheet" href="../CSS/reset.css"/>
+    
     <!-- bootstrap.CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- bootstrap icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/>
 
     <!-- sidebar.CSS -->
     <link href="../CSS/sidebars.css" rel="stylesheet">
 
     <!-- DB接続 -->
-
     <?php require 'db-connect.php'; ?>
 
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- common.CSS -->
+    <link href="../CSS/common.css" rel="stylesheet">
 
     <style>
         .background-image {
@@ -48,14 +51,13 @@
         }
     </style>
 </head>
-
 <body>
     <!-- サイドバーとメインコンテンツのラッパー -->
     <div class="wrapper">
-        <?php require 'sidebars.php'; ?>
+      <?php require 'sidebars.php'; ?>
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
-            <!-- サイドバーとメインコンテンツのラッパー -->
+<!----------------------------------------------------ここから-------------------------------------------------------------------->
             <div class="background-image d-flex align-items-center">
                 <h1 style="margin-left:2rem">選考状況</h1>
             </div>
@@ -76,8 +78,8 @@
 
                     <!-- 選考シート -->
                     <?php
-                    $value = "0000000";
-                    $select_state = $pdo->prepare('SELECT * FROM adopt_state where student_number = ?');
+                    $value = $_SESSION['user']['student_number'];
+                    $select_state = $pdo->prepare('SELECT * FROM Adopt_State where student_number = ?');
                     $select_state->execute([$value]);
                     $select_state = $select_state->fetchAll(PDO::FETCH_ASSOC);
                     $select_state_modal = $select_state;
@@ -244,6 +246,11 @@
                     </div><!-- /.modal -->
                 </div>
             </div>
+<!----------------------------------------------------ここまで-------------------------------------------------------------------->
+            <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
+            <div class="d-md-none copyright">
+                @ 2024 AppleChupachups
+            </div>
         </main>
     </div>
 
@@ -255,13 +262,18 @@
 
     <!-- sidebar.Script-->
     <script src="../SCRIPT/sidebars.js"></script>
+
+    <!-- common.Script-->
+    <script src="../SCRIPT/common.js"></script>
+
     <!-- シート内編集用のJS -->
     <script src="../SCRIPT/card_edit.js"></script>
+
     <!-- シート追加用のJS -->
     <script src="../SCRIPT/sheet_add.js"></script>
 
-    <!-- DB切断 -->
-    <?php $pdo = null; ?>
-</body>
 
+    <!-- DB切断 -->
+    <?php $pdo = null;?>
+</body>
 </html>

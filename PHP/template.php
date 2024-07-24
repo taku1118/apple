@@ -37,7 +37,38 @@
         <!-- メインコンテンツ -->
         <main class="container-fluid main-content" style="padding: 0;">
 <!----------------------------------------------------ここから-------------------------------------------------------------------->
-
+<form action="test.php" method="post">
+<?php 
+$sql = $pdo->query('SELECT * FROM Companies');
+$res = $sql->fetchAll(PDO::FETCH_ASSOC);
+$Jsql = $pdo->query('SELECT * FROM JobTypes');
+$Jres = $Jsql->fetchAll(PDO::FETCH_ASSOC);
+$Psql = $pdo->query('SELECT * FROM Prefectures');
+$Pres = $Psql->fetchAll(PDO::FETCH_ASSOC);
+$Isql = $pdo->query('SELECT * FROM Industries');
+$Ires = $Isql->fetchAll(PDO::FETCH_ASSOC);
+foreach($res as $row){
+    echo '<input type="hidden" name="companies[' . $row['company_id'] . '][id]" value="',$row['company_id'],'">';
+    echo $row['company_name'],'<br>';
+    echo '<select name="companies[' . $row['company_id'] . '][JobType]">';                               
+        foreach ($Jres as $Jrow) {
+        echo '<option value=',$Jrow['job_id'],'>',$Jrow['job_name'],'</option>';
+        }
+    echo '</select>','<br>';
+    echo '<select name="companies[' . $row['company_id'] . '][Prefecture]">';                               
+        foreach ($Pres as $Prow) {
+        echo '<option value=',$Prow['prefecture_id'],'>',$Prow['prefecture_name'],'</option>';
+        }
+    echo '</select>','<br>';
+    echo '<select name="companies[' . $row['company_id'] . '][Industry]">';                               
+        foreach ($Ires as $Irow) {
+        echo '<option value=',$Irow['industry_id'],'>',$Irow['industry_name'],'</option>';
+        }
+    echo '</select>','<br>';
+}
+?>
+<button type="submit">送信</button>
+</form>
 <!----------------------------------------------------ここまで-------------------------------------------------------------------->
             <!-- スマホレイアウトでのfooter、戻るなどで見えなくなるため-->
             <div class="d-md-none copyright">
