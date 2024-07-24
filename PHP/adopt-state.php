@@ -88,14 +88,14 @@
                     <div class="modal fade" id="insert_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content w-75">
-                                <div class="modal-header">
-                                    <input type="text" class="modal-title" placeholder="企業名">
+                                <div class="modal-header" style="border-bottom:unset">
+                                    <input type="text" class="modal-title form-control form-control-lg" placeholder="企業名" style="--bs-border-color: #1dc219;">
                                 </div>
                                 <div class="modal-body">
                                     <div id="adopt_area_1" class="onload_area1">
                                         <div class="card-text position-relative" id="input_adopt_step_id">
                                             <input type="date" class="form-control" style="width: 30%; margin-left: 69%;" id="date_adopt_id_adopt_step_id" value="adopt_date">
-                                            <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way">
+                                            <input type="text" class="form-control form-control-lg" id="step_adopt_id_adopt_step_id" value="adopt_way" style="--bs-border-color: #1dc219;">
                                             <button onclick="new_delete_input(this)" class="btn btn-danger position-absolute top-50 start-100 translate-middle btn-sm rounded-5" id="delete_adopt_id_1">✕</button>
                                         </div>        
                                     </div>
@@ -104,15 +104,16 @@
                                         <button type="button" id="add_input_adopt_id" class="btn" onclick="new_add_input(this)"><i class="bi bi-plus-circle" style="font-size: 2rcap;"></i></button>
                                     </div>
                                 </div>
-                                <div class="modal-footer">
+                                <div class="modal-footer justify-content-start" style="--bs-border-color: #1dc219;border-top:var(--bs-modal-footer-border-width) dashed #1dc219;">
                                     <label for="exampleFormControlTextarea1" class="form-label">メモ</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3">note</textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="--bs-border-color: #1dc219;"></textarea>
                                 </div>
                             </div>
-                            <div class="modal-content w-25 align-content-center" style="background-color: #11ffee00;border: #11ffee00;">
-                                <button type="button" class="btn-close btn-danger btn-sm rounded-5" data-bs-dismiss="modal" aria-label="Close"></button>
-                                <button class="btn btn-primary" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button">編集</button>
-                                <button class="btn btn-primary" id="save_btn_adopt_id" onclick="new_save_sheet(this)" type="button">保存</button>
+                            <div class="modal-content w-25 align-items-center" style="background-color: #11ffee00;border: #11ffee00;">
+                                <button type="button" class="btn btn-danger rounded-5" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                                <!-- <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-pencil"></i></button>
+                                <button class="btn btn-success rounded-5 mb-2" id="edit_btn_adopt_id" onclick="new_edit_sheet(this)" type="button"><i class="bi bi-eraser"></i></button> -->
+                                <button class="btn btn-success rounded-5 mb-2" id="save_btn_adopt_id" onclick="new_save_sheet(this)" type="button"><i class="bi bi-upload"></i></button>
                             </div>
                         </div><!-- /.modal-dialog -->
                     </div><!-- /.modal -->
