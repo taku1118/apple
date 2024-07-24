@@ -60,7 +60,7 @@
                 <div id="card_area">
                     <div class="row my-5"> <!-- ここでFor文を回す -->
                         <div class="col">
-                            <span class="fs-4">希望する勤務地</span>
+                            <span class="fs-4 text-nowrap">希望する勤務地</span>
                         </div>
                         <div class="col-7">
                             <select class="form-select" id="exampleFormSelect1" name="prefecture">                          
@@ -79,7 +79,7 @@
                     </div>
                     <div class="row my-5">
                         <div class="col">
-                            <span class="fs-4">希望する業界</span>
+                            <span class="fs-4 text-nowrap">希望する業界</span>
                         </div>
                         <div class="col-7">
                             <select class="form-select" id="exampleFormSelect1" name="industry">
@@ -98,7 +98,7 @@
                     </div>
                     <div class="row my-5">
                         <div class="col">
-                            <span class="fs-4">希望する職種</span>
+                            <span class="fs-4 text-nowrap">希望する職種</span>
                         </div>
                         <div class="col-7">
                             <select class="form-select" id="exampleFormSelect1" name="jobtype">

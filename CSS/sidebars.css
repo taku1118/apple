@@ -22,7 +22,6 @@ html {
 }
 
 .main-content {
-  height: 100vh;
   height: -webkit-fill-available;
   flex-shrink: 1;
   overflow-y: auto;
